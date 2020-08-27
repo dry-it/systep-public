@@ -1,0 +1,92 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+.activity-box {
+  width: 95%;
+  border-top: 1px solid #ccc;
+  border-left: 3px solid #ccc;
+  border-bottom: none;
+  border-right: none;
+  padding: 10px;
+  padding-bottom: 1px;
+}
+
+.icon-box {
+  display: inline-block;
+  margin-left: -40px;
+  margin-bottom: -10px;
+}
+
+.arrow-box {
+  display: inline-block;
+  width: 14px;
+  bottom: 0px;
+  left: -6px;
+  position: relative;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  margin-left: -5px;
+  border-radius: 50px;
+  background-color: #ccc;
+  display: inline-block;
+  border: 2px solid #fff;
+  padding-top: 6px;
+}
+
+.text-container {
+  padding-top: 10px;
+  margin-top: -33px;
+  margin-left: 15px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #ccc;
+}
+
+.arrow {
+  margin-bottom: 10px;
+}
+
+.mt-1 {
+  margin-top: 5px;
+}
+
+.main {
+  padding-top: 10px;
+  padding-left: 40px;
+}
+
+.sub-activity-wraper {
+  padding-left: 10px;
+  margin: 30px;
+}
+
+.logo1 {
+  font-family: 'Pacifico', ;
+  font-size: 2rem;
+  margin-bottom: 13px;
+}
+
+.logo2 {
+  font-family: 'Cabin', ;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 2px;
+  margin-right: 5px;
+}
+
+.menu-padding {
+  padding: 15px;
+}
+
+
+body {
+  background-color: rgba(255, 255, 255, 0.4)
+}
+

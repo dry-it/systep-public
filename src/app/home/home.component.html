@@ -1,0 +1,132 @@
+<!-- <nav class="navbar is-black" role="navigation" aria-label="main navigation" style="-webkit-app-region: drag">
+  <div class="navbar-brand">
+    <div class="navbar-item">
+      <span class="logo has-text-white">SYSTEP</span><span class="logo has-text-info">!</span>
+    </div>
+
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-brand">
+
+    </div>
+  </div>
+
+
+</nav> -->
+<div class="dragable"></div>
+
+<div class="columns">
+  <div style="-webkit-app-region: drag" class="column is-2 has-background-light is-hidden-touch fixed-width">
+    <aside style="margin-top: 1.5rem; position:fixed;" class="menu menu-padding">
+      <div class="field has-addons">
+        <div class="control">
+          <input class="input is-fullwidth is-small" type="text" placeholder="Find a project">
+        </div>
+        <div class="control">
+          <a class="button is-info is-small">
+            Search
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="user$ | async as user" class="img-div">
+        <div class="columns is-gapless">
+          <div class="column is-4">
+            <img style="border-radius: 100%" width="52" src="../../assets/profile.jpg" alt="">
+          </div>
+          <div class="column">
+            <p class="is-size-7 has-text-weight-bold">{{user.displayName}}</p>
+            <p class="is-size-7">Raksystems Sverige</p>
+            <button (click)="signOut()" class="button is-small is-danger">Logout</button>
+          </div>
+        </div>
+      </div>
+      <p class="menu-label">
+        General
+      </p>
+      <ul class="menu-list">
+        <li><a><i class="fas fa-folder"></i> Projekt</a></li>
+        <li><a><i class="fas fa-filter"></i> Filter</a></li>
+        <li><a><i class="fas fa-bell"></i> Notiser</a></li>
+        <li><a><i class="fas fa-cog"></i> Settings</a></li>
+      </ul>
+      <p class="menu-label">
+        Senaste projekt
+      </p>
+      <ul class="menu-list">
+        <li><a><i class="fas fa-folder"></i> Projekt</a></li>
+        <li><a><i class="fas fa-filter"></i> Filter</a></li>
+        <li><a><i class="fas fa-bell"></i> Notiser</a></li>
+      </ul>
+
+    </aside>
+  </div>
+  <div class="column">
+    <router-outlet></router-outlet>
+
+  </div>
+
+
+
+
+</div>
+
+<div *ngIf="activate" class="overlay">
+  <div style="margin-top: 4rem;" class="container">
+    <div class="box blur-white">
+      <h1 class="title is-2">Välkommen</h1>
+      <p class="lead">Innan du kan använda ditt konto måste det aktiveras. Fyll i formuläret nedan för att aktivera ditt
+        konto</p>
+      <app-activate (activate)="checkUser()"></app-activate>
+    </div>
+  </div>
+</div>
+
+<!-- <div style="top: 60px;" class="sidebar">
+  <div *ngIf="user$ | async as user" [@openClose]="isOpen ? 'open' : 'closed'" class="blur comp">
+    <button (click)=toggleUser() class="button is-small is-danger"><i class="fas" [class.fa-arrow-right]="isOpen"
+        [class.fa-user]="!isOpen"></i></button>
+    <span style="margin-left: 4px;" class="title is-7 has-text-white menu-label">{{user.displayName}}</span>
+    <div class="img-div">
+      <img [@openCloseImage]="isOpen ? 'open' : 'closed'" src="../../assets/profile.jpg" alt="">
+    </div>
+    <aside class="menu mt-1 dark padding">
+      <div class="buttons">
+        <button class="button is-small is-fullwidth is-success">Visa min profil</button>
+        <button class="button is-small is-fullwidth is-info">Inställningar</button>
+        <button class="button is-small is-fullwidth is-danger">Logga ut</button>
+      </div>
+
+
+    </aside>
+  </div>
+</div>
+
+<div [@move]="isOpen ? 'open' : 'closed'" style="top: 120px;" class="sidebar">
+  <div [@openCloseProject]="isOpenProject ? 'open' : 'closed'" class="blur comp">
+    <button (click)=toggleProject() class="button is-small is-warning"><i class="fas"
+        [class.fa-arrow-right]="isOpenProject" [class.fa-project-diagram]="!isOpenProject"></i></button>
+    <span style="margin-left: 8px;" class="title is-7 has-text-white menu-label ">Projektmeny</span>
+    <aside class="menu mt-1 dark padding">
+      <ul>
+        <p class="menu-label has-text-white has-text-weight-bold">Mina projekt</p>
+        <ng-container *ngIf="projects$ | async as projects">
+          <a>
+            <li *ngFor="let p of projects" class="is-size-6">{{p.name}}</li>
+          </a>
+        </ng-container>
+      </ul><br>
+
+      <ul>
+        <p class="menu-label has-text-white has-text-weight-bold">Senast Aktivitet</p>
+        <ng-container *ngIf="projects$ | async as projects">
+          <a>
+            <li *ngFor="let p of projects" class="is-size-6">{{p.name}}</li>
+          </a>
+        </ng-container>
+      </ul>
+
+
+    </aside>
+  </div>
+</div> -->

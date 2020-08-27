@@ -1,0 +1,46 @@
+<section class="hero is-link is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Välkommen till SYSTEP!
+      </h1>
+      <h2 class="subtitle">
+        Hjälper dig, steg för steg!
+      </h2>
+    </div>
+  </div>
+</section>
+<button (click)="navigate('/admin/block-builder')" class="button is-small is-dark">Go to admin</button>
+<button (click)="navigate('/home/create-project')" class="button is-small is-success">Go to create project</button>
+<button (click)="navigate('/home/project')" class="button is-small is-success">Go to project</button>
+<button (click)="navigate('/home/dryfix')" class="button is-small is-success">Go to dryfix</button>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title is-5">Mina Projekt</h2>
+        <div *ngIf="projects$ | async as projects" class="box">
+          <div class="table-container">
+            <table class="table is-fullwidth is-striped is-hoverable">
+              <thead class="has-background-dark">
+                <th class="has-text-white">Projektnamn</th>
+                <th class="has-text-white">Pnummer</th>
+                <th class="has-text-white">Kund</th>
+                <th class="has-text-white">Uppdragsansvarig</th>
+              </thead>
+              <tbody>
+                <tr (click)="openProject(project.id)" *ngFor="let project of projects">
+                  <td>{{project.name}}</td>
+                  <td>{{project.pNumber}}</td>
+                  <td>{{project.company}}</td>
+                  <td>{{project.owner.displayName}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

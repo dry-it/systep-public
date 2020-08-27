@@ -1,0 +1,16 @@
+<div class="container">
+    <table *ngIf="projects$ | async as projects" class="table is-fullwidth">
+        <thead>
+        <th>Project Name</th>
+        <th>Company</th>
+        <th>Pnumber</th>
+        </thead>
+        <tbody>
+            <tr (click)="open(project.id)" *ngFor="let project of projects">
+                <td>{{project.name}}</td>
+                <td>{{project.company}}</td>
+                <td>{{project.pNumber}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,154 @@
+<div class="activity-box">
+  <div class="icon-box">
+    <div class="arrow-box">
+      <i *ngIf="activity.style.arrow === 'to'" class="fas fa-level-down-alt fa-rotate-270"></i>
+      <i *ngIf="activity.style.arrow === 'from'" class="fas fa-level-down-alt fa-rotate-180"></i>
+    </div>
+    <div [class]="'icon-circle has-text-centered has-text-white has-background-' + activity.style.color"
+      [class.has-text-dark]="activity.style.color === 'warning' || activity.style.color === 'light' || activity.style.color === 'grey-lighter'">
+      <i [class]="iconParser(activity.style.icon)"></i>
+    </div>
+  </div>
+  <div class="text-container">
+    <h6 class="title is-5 is-marginless">{{activity.title}}</h6>
+    <span class="is-size-6 is-paddingless">{{activity.desc}}</span><br>
+    <ng-container *ngIf="blocks">
+
+      <ng-container *ngFor="let block of blocks, let bi = index">
+
+        <nav *ngIf="block.type === 'checkList'" style="margin-top: 1rem;" class="panel">
+          <div *ngFor="let check of block.checkPoints; let i = index" class="panel-block has-text-weight-bold"
+            [class.has-background-success]="check.state">
+            <button style="margin-top: 6px; margin-right: 10px;" (click)="delete(i, bi)" class="delete is-small"
+              [class.has-background-dark]="check.deleteable"></button>
+            <label>
+
+              <input (change)="saveCheck(i, bi)" [(ngModel)]="check.state" type="checkbox">
+              {{check.label}}
+              <button *ngIf="check.action" [disabled]="check.state" (click)="action(check.action.execute)" class="button is-dark is-small is-borderless"
+                style="margin-left: 10px;">{{check.action.label}}</button>
+            </label>
+          </div>
+
+          <div class="panel-block">
+            <input class="input is-small" [(ngModel)]="newCheckPoint" placeholder="Add a custom checkpoint"
+              type="text"><button (click)="addCheckPoint(bi)" class="button ml-2 is-dark is-small">Add
+              checkpoint</button>
+          </div>
+        </nav>
+
+        <nav *ngIf="block.type === 'meeting'" style="margin-top: 1rem;" class="panel">
+          <p class="panel-heading">
+            {{block.meeting.title}} <span class="tag is-white ml-2">{{block.meeting.date | date}}</span>
+          </p>
+          <a class="panel-block has-background-dark has-text-white">
+            <span class="panel-icon has-text-primary">
+              <i class="fas fa-users" aria-hidden="true"></i>
+            </span>
+            Deltagare
+          </a>
+          <div *ngFor="let participant of block.meeting.participants; let i = index" class="panel-block">
+            <span class="has-text-weight-bold ml-3">{{participant.name}}</span><span
+              class="tag is-dark ml-2">{{participant.company}}</span> <span
+              class="tag is-primary ml-1">{{participant.position}}</span>
+          </div>
+
+          <div class="panel-block">
+            <input class="input is-small" placeholder="Name" type="text">
+            <input class="input is-small ml-1" placeholder="Company" type="text">
+            <input class="input is-small ml-1" placeholder="Position" type="text">
+            <button (click)="addCheckPoint()" class="button ml-2 is-dark is-small">Add participant</button>
+          </div>
+          <a class="panel-block is-active has-background-dark has-text-white">
+            <span class="panel-icon">
+              <i class="fas fa-file" aria-hidden="true"></i>
+            </span>
+            Mötesprotokoll
+          </a>
+          <div class="panel-block">
+            <ng-container *ngIf="!block.meeting.protocol">
+              <span class="has-text-grey is-size-7">No protocol avalible...</span>
+            </ng-container>
+          </div>
+          <div class="panel-block">
+            <input class="input is-small" placeholder="Name" type="file">
+            <button (click)="addCheckPoint()" class="button ml-2 is-dark is-small">Upload file</button>
+          </div>
+        </nav>
+
+
+        <nav *ngIf="block.type === 'measurement'" style="margin-top: 1rem;" class="panel">
+          <p class="panel-heading">
+            {{block.title}}
+          </p>
+
+          <ng-container *ngFor="let measurement of block.measurements"><a
+              class="panel-block has-background-dark has-text-weight-bold has-text-white">
+
+              {{measurement.title}} - <span>{{measurement.subtitle}}</span><span
+                class="tag is-info is-small has-text-dark ml-2">{{measurement.type}}</span>
+            </a>
+            <div *ngFor="let check of measurement.checkPoints; let i = index" class="panel-block has-text-weight-bold"
+              [class.has-background-success]="check.state">
+              <button style="margin-top: 6px; margin-right: 10px;" (click)="delete(i, bi)" class="delete is-small"
+                [class.has-background-dark]="check.deleteable"></button>
+              <label>
+                <input (change)="saveActivity()" [(ngModel)]="check.state" type="checkbox">
+                {{check.label}}
+                <button *ngIf="check.action" [disabled]="check.state" class="button is-info is-small is-borderless"
+                  style="margin-left: 10px;">{{check.action.label}}</button>
+              </label>
+            </div>
+            <div class="panel-block"></div>
+          </ng-container>
+
+
+        </nav>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="activity.owners">
+      <hr>
+      <span class="is-size-7 is-paddingless">Ansvarig</span><br>
+      <ng-container *ngFor="let owner of activity.owners">
+        <span (mouseover)="owner.showDesc = true" (mouseleave)="owner.showDesc = false" class="tag is-dark"
+          style="cursor: pointer;">
+          <div *ngIf="owner.showDesc" style="position:absolute; margin-top: 80px;" class="box popover">
+            <li *ngFor="let bullet of owner.bullets">{{bullet}}</li>
+          </div>
+          <i [class]="iconParser(owner.icon)"
+            [class.is-success]="owner.name ==='Uppdragsansvarig'"></i>&nbsp;{{owner.name}}
+        </span>
+      </ng-container>
+
+    </ng-container>
+    <ng-container *ngIf="activity.tools">
+      <hr>
+      <span class="is-size-7 is-paddingless">Verktyg</span><br>
+      <ng-container *ngFor="let tool of activity.tools">
+
+        <span (click)="openPath(tool.path)" class="tag is-dark" style="cursor: pointer;"><i
+            [class]="iconParser(tool.icon)"></i>&nbsp;{{tool.name}}</span>
+      </ng-container>
+
+    </ng-container><br>
+
+    <ng-container *ngIf="activity.subActivities">
+      <br>
+      <button (click)="activity.hideSubActivities = !activity.hideSubActivities"
+        class="button is-success is-disabled is-small is-rounded"
+        [class.is-outlined]="activity.hideSubActivities">Aktiviteter att
+        utföra</button>
+    </ng-container>
+
+
+
+    <div *ngIf="!activity.hideSubActivities" class="sub-activity-wraper">
+      <app-activity *ngFor="let s of activity.subActivities; let i = index" [activity]="s" [index]="i"
+        [length]="activity.subActivities.length"></app-activity>
+    </div>
+
+  </div>
+  <div *ngIf="index + 1 !== length" class="down-arrow-box">
+    <i class="fas fa-arrow-down fa-lg has-text-dark"></i>
+  </div>
+</div>

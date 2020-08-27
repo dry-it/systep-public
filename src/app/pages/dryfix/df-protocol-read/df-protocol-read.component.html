@@ -1,0 +1,6 @@
+<div class="box">
+
+    <ng-container *ngIf="mps">
+        <dryfix-protocol-read-mp *ngFor="let mp of mps" [mp]="mp"></dryfix-protocol-read-mp>
+    </ng-container>
+</div>

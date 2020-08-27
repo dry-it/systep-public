@@ -1,0 +1,45 @@
+<div style="margin-top: 1rem;" class="card">
+    <div class="card-content">
+        <form [formGroup]="readForm" (ngSubmit)="onSubmit()">
+            <div class="columns">
+                <div class="column is-2">
+                    <p class="title is-4">{{mp.name}}</p>
+                    <p class="subtitle is-7">{{mp.placement}}</p>
+                </div>
+                <div class="column is-2">
+                    <p class="title is-7">RH</p>
+                    <input class="input subtitle is-small" formControlName="rh" type="number" placeholder="RH">
+                </div>
+                <div class="column is-2">
+                    <p class="title is-7">Temp</p>
+                    <input class="input subtitle is-small" formControlName="temp" type="number" placeholder="Temp">
+                </div>
+                <div class="column is-2">
+                    <p class="title is-7">Readout Date</p>
+                    <input class="input subtitle is-small" formControlName="readoutDate" type="datetime-local"
+                        placeholder="Probe">
+                </div>
+                <div class="column is-1">
+                    <p class="title is-7">Result</p>
+                </div>
+                <div class="column is-3">
+                    <div class="buttons has-addons is-right">
+                        <button (click)="expanded = !expanded" class="button is-small is-info"><i
+                                class="fas fa-info"></i></button>
+                        <button (click)="edit = true" class="button is-small is-dark"><i
+                                class="fas fa-edit"></i></button>
+                        <button (click)="duplicate = true" class="button is-small is-dark"><i
+                                class="fas fa-copy"></i></button>
+                        <button (click)="delete()" class="button is-small is-dark has-text-danger"><i
+                                class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="expanded" class="columns">
+                <div class="column">
+                    display extra info here..
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

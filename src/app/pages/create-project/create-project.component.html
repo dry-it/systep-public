@@ -1,0 +1,46 @@
+<div class="container">
+    <h1 class="title">In this page you build your project</h1>
+
+    <div class="box">
+        <form [formGroup]="createProjectForm" (ngSubmit)="onSubmit()">
+            <div class="field">
+                <label class="label">Projektnamn</label>
+                <div class="control">
+                    <input formControlName="name" class="input" type="text" placeholder="Projektnamn">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Pnummer</label>
+                <div class="control">
+                    <input formControlName="pNumber" class="input" type="text" placeholder="Pnummer">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Kund</label>
+                <div class="control">
+                    <input formControlName="company" class="input" type="text" placeholder="Kund">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Uppdragsansvarig</label>
+                <div class="control">
+                    <select *ngIf="users$ | async as users" formControlName="owner" class="select" name="" id="">
+                        <option *ngFor="let user of users" [value]="user.id">{{user.displayName}} -  {{user.title}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <button style="margin-right: 4px;" class="button is-link" type="submit"
+                [disabled]="!createProjectForm.valid">Create project</button>
+
+
+        </form>
+    </div>
+
+    <ng-container *ngIf="activities">
+        <app-activity-outline *ngFor="let a of activities; let i = index" (save)="save($event, i)"
+            (execute)="execute($event)" [activity]="a" [index]="i" [length]="activities.length"></app-activity-outline>
+    </ng-container>
+</div>

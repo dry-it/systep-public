@@ -1,0 +1,38 @@
+<form [formGroup]="activateForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+            <input readonly formControlName="email" class="input" type="email" placeholder="E-mail">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Namn</label>
+        <div class="control">
+            <input formControlName="displayName" class="input" type="text" placeholder="Förnamn Efternamn">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Titel</label>
+        <div class="control">
+            <input formControlName="title" class="input" type="text" placeholder="Fukttekniker, Regionschef, etc.">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Telefonnummer</label>
+        <div class="control">
+            <input formControlName="phone" class="input" type="text" placeholder="Telefonnummer">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Region</label>
+        <div class="control">
+            <input formControlName="region" class="input" type="text" placeholder="Stockholm, Uppsala, Göteborg, Malmö">
+        </div>
+    </div>
+
+    <button style="margin-right: 4px;" class="button is-large is-success" type="submit"
+        [disabled]="!activateForm.valid">Aktivera</button>
+    
+
+
+</form>

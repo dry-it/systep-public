@@ -1,0 +1,33 @@
+<div style="margin-top: 1rem;" class="card">
+    <div class="card-content">
+        <div class="columns">
+            <div class="column is-3">
+                <p class="title is-4">{{mp.name}}</p>
+                <p class="subtitle is-7">{{mp.placement}}</p>
+            </div>
+            <div class="column is-3">
+                <p class="title is-6">{{mp.constructionType}}</p>
+                <p class="subtitle is-7">{{mp.thickness}}mm - vct {{mp.vct}} <br> {{mp.concreteType}}</p>
+            </div>
+            <div class="column is-3">
+                <p class="title is-6">Borrdatum</p>
+                <p class="subtitle is-7">{{mp.drillDate | date : 'yyyy-MM-dd HH:mm'}}</p>
+            </div>
+            <div class="column is-3 i">
+                <div class="buttons has-addons is-right">
+                    <button (click)="expanded = !expanded" class="button is-small is-info"><i class="fas fa-info"></i></button>
+                    <button (click)="edit = true" class="button is-small is-dark"><i class="fas fa-edit"></i></button>
+                    <button (click)="duplicate = true" class="button is-small is-dark"><i class="fas fa-copy"></i></button>
+                    <button (click)="delete()" class="button is-small is-dark has-text-danger"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="expanded" class="columns">
+            <div class="column">
+                display extra info here..
+            </div>
+        </div>
+    </div>
+</div>
+<dryfix-mp-create *ngIf="duplicate" [mp]="mp" [duplicate]="duplicate" (done)="duplicate = false"></dryfix-mp-create>
+<dryfix-mp-create *ngIf="edit" [mp]="mp" (done)="edit = false"></dryfix-mp-create>

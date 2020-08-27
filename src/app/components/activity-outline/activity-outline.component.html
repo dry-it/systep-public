@@ -1,0 +1,117 @@
+<div class="activity-box">
+    <div class="icon-box">
+        <div class="arrow-box">
+            <i *ngIf="activity.style.arrow === 'to'" class="fas fa-level-down-alt fa-rotate-270"></i>
+            <i *ngIf="activity.style.arrow === 'from'" class="fas fa-level-down-alt fa-rotate-180"></i>
+        </div>
+        <div [class]="'icon-circle has-text-centered has-text-white has-background-' + activity.style.color"
+            [class.has-text-dark]="activity.style.color === 'warning' || activity.style.color === 'light' || activity.style.color === 'grey-lighter'">
+            <i [class]="iconParser(activity.style.icon)"></i>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column is-9">
+            <div class="text-container">
+                <h6 class="title is-5 is-marginless">{{activity.title}}</h6>
+                <span class="is-size-6 is-paddingless">{{activity.desc}}</span><br>
+                <ng-container *ngIf="activity.blocks">
+
+                    <ng-container *ngFor="let block of activity.blocks, let bi = index">
+                        <h3 style="margin-top: 1rem;" class="title is-5">{{block.title}}</h3>
+
+                        <nav *ngIf="block.type === 'checkList'" style="margin-top: 1rem;" class="panel">
+                            <div *ngFor="let check of block.checkPoints; let i = index"
+                                class="panel-block has-text-weight-bold" [class.has-background-success]="check.state">
+                                <button style="margin-top: 6px; margin-right: 10px;" (click)="delete(i, bi)"
+                                    class="delete is-small" [class.has-background-dark]="check.deleteable"></button>
+                                <label>
+
+                                    <input (change)="saveActivity()" [(ngModel)]="check.state" type="checkbox">
+                                    {{check.label}}
+                                    <button *ngIf="check.action" [disabled]="check.state"
+                                        (click)="action(check.action.execute)"
+                                        class="button is-dark is-small is-borderless"
+                                        style="margin-left: 10px;">{{check.action.label}}</button>
+                                </label>
+                            </div>
+
+                            <div class="panel-block">
+                                <input class="input is-small" [(ngModel)]="newCheckPoint"
+                                    placeholder="Add a custom checkpoint" type="text"><button
+                                    (click)="addCheckPoint(bi)" class="button ml-2 is-dark is-small">Add
+                                    checkpoint</button>
+                            </div>
+                        </nav>
+
+
+                    </ng-container>
+                </ng-container>
+
+                <div style="border: 1px solid rgb(0, 153, 255); background-color: rgb(240, 240, 240);"
+                    *ngIf="newBlockPreview" class="box">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-medium" [(ngModel)]="newBlockPreview.title" type="text"
+                                placeholder="Medium input">
+                        </div>
+                    </div>
+                    <nav style="margin-top: 1rem; background-color: #fdfdfd;" class="panel">
+                        <div *ngFor="let check of newBlockPreview.checkPoints; let i = index"
+                            class="panel-block has-text-weight-bold" [class.has-background-success]="check.state">
+                            <button style="margin-top: 6px; margin-right: 10px;" class="delete is-small"
+                                [class.has-background-dark]="check.deleteable"></button>
+                            <label>
+
+                                <input (change)="saveActivity()" [(ngModel)]="check.state" type="checkbox">
+                                {{check.label}}
+                                <button *ngIf="check.action" [disabled]="check.state"
+                                    (click)="action(check.action.execute)" class="button is-dark is-small is-borderless"
+                                    style="margin-left: 10px;">{{check.action.label}}</button>
+                            </label>
+                        </div>
+
+                        <div class="panel-block">
+                            <input class="input is-small" [(ngModel)]="newCheckPointPreview"
+                                placeholder="Add a custom checkpoint" type="text"><button
+                                class="button ml-2 is-dark is-small">Add
+                                checkpoint</button>
+                        </div>
+                        <button (click)="saveNewBlock()" class="button is-success is-small">Save new block</button>
+                    </nav>
+                </div>
+
+                <div *ngIf="newBlock" class="box">
+                    <h2 class="title is-6">Add new block</h2>
+                    <ng-container *ngIf="newBlockLoading"><i class="fas fa-spinner fa-spin"></i><span
+                            class="has-text-info"> Loading blocks</span></ng-container>
+                    <ng-container *ngIf="!newBlockLoading">
+                        <span class="is-size-7">Select a block</span>
+                        <div class="select is-multiple is-fullwidth">
+                            <select (change)="selectBlock()" [(ngModel)]="selectedBlock" multiple size="5">
+                                <option *ngFor="let b of blocks" [value]="b.id">{{b.title}}</option>
+                            </select>
+                        </div>
+                    </ng-container>
+                    <button (click)="newBlock = false" style="margin-top: 0.5rem"
+                        class="button is-small is-danger">Cancel</button>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+        <div class="column">
+            <div class="box">
+                <p class="subtitle is-7">Activity Settings</p>
+                <button (click)="addNewBlock()" class="button is-small is-success">Add new block</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="index + 1 !== length" class="down-arrow-box">
+        <i class="fas fa-arrow-down fa-lg has-text-dark"></i>
+    </div>
+</div>

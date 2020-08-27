@@ -1,0 +1,169 @@
+<div class="overlay">
+    <div class="container">
+        <div style="margin-top: 3rem;" class="box">
+            <h1 class="title">New Measurement Point</h1>
+            <form [formGroup]="mpForm" (ngSubmit)="onSubmit()">
+                <p class="subtitle">General information</p>
+                <div class="columns">
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Name</label>
+                            <div class="control">
+                                <input formControlName="name" class="input is-small" type="text" placeholder="Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Placement</label>
+                            <div class="control">
+                                <input formControlName="placement" class="input is-small" type="text"
+                                    placeholder="ex. Plan 10, LGH 1001, wc, ritn.A-10-1004">
+                                <p class="is-size-7 has-text-grey">ex. Plan 10, LGH 1001, wc, ritn.A-10-1004</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Planned Flooring</label>
+                            <div class="control">
+                                <input formControlName="flooring" class="input is-small" type="text"
+                                    placeholder="Flooring">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">RH Limit</label>
+                            <div class="control">
+                                <input formControlName="rhLimit" class="input is-small" type="number"
+                                    placeholder="RH Limit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="subtitle">Construction information</p>
+                <div class="columns">
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Construction Type</label>
+                            <div class="control">
+                                <input formControlName="constructionType" class="input is-small" type="text"
+                                    placeholder="Construction Type">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Concrete Type</label>
+                            <div class="control">
+                                <input formControlName="concreteType" class="input is-small" type="text"
+                                    placeholder="Concrete Type">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Concrete addons</label>
+                            <div class="control">
+                                <input formControlName="concreteAddons" class="input is-small" type="text"
+                                    placeholder="Concrete Addons">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Construction Thickness</label>
+                            <div class="control">
+                                <input formControlName="thickness" class="input is-small" type="number"
+                                    placeholder="Concrete Type">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Concrete VCT</label>
+                            <div class="control">
+                                <input formControlName="vct" class="input is-small" type="number" placeholder="vct">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Casting Date</label>
+                            <div class="control">
+                                <input formControlName="castingDate" class="input is-small" type="date"
+                                    placeholder="Concrete Type">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Dehydration</label>
+                            <div class="control">
+                                <input formControlName="dehydration" class="input is-small" type="text"
+                                    placeholder="Dehydration">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Ekv Depth</label>
+                            <div class="control">
+                                <input formControlName="ekvDepth" class="input is-small" type="number"
+                                    placeholder="Ekvivalent drill depth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="subtitle">Drilling information</p>
+                <div class="columns">
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Drill Date</label>
+                            <div class="control">
+                                <input formControlName="drillDate" class="input is-small" type="datetime-local"
+                                    placeholder="Dehydration">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Ekv Depth</label>
+                            <div class="control">
+                                <input formControlName="depth" class="input is-small" type="number"
+                                    placeholder="Drill depth">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="subtitle">Optional information</p>
+                <div class="columns">
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label">Thickness leveling screed</label>
+                            <div class="control">
+                                <input formControlName="levelingScreed" class="input is-small" type="number"
+                                    placeholder="Thickness leveling screed">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button style="margin-right: 4px;" class="button is-succes" type="submit"
+                    [disabled]="!mpForm.valid">Save MP</button>
+                <button type="button" (click)="cancel()" class="button is-danger">Cancel</button>
+
+            </form>
+        </div>
+    </div>
+</div>

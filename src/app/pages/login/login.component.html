@@ -1,0 +1,36 @@
+<section class="hero is-dark">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title logo">
+                SYSTEP<span class="has-text-link">!</span>
+            </h1>
+            <h2 class="subtitle">
+                You have to login to continue
+            </h2>
+        </div>
+    </div>
+</section>
+<div style="margin-top: 1rem;" class="container">
+    <div class="box">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input formControlName="email" class="input" type="email" placeholder="E-mail">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input formControlName="password" class="input" type="password" placeholder="password">
+                </div>
+            </div>
+
+            <button style="margin-right: 4px;" class="button is-link" type="submit"
+                [disabled]="!loginForm.valid">Login</button>
+            <button (click)="login()" class="button is-warning" type="button">Login with google</button>
+
+
+        </form>
+    </div>
+</div>
