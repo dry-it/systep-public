@@ -23,10 +23,8 @@ export class DfProjectsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.projects$ = this.stateService.getProjects()
-    this.store.dispatch(new actions.Query());
-    this.store.dispatch(new mpActions.Query('U3anVouPLzU9kPdSEqux'));
 
-    
+
 
   }
 

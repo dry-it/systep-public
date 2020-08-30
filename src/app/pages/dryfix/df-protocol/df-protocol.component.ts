@@ -15,7 +15,9 @@ export class DfProtocolComponent implements OnInit {
   id: string
   pid: string
   protocol$: Observable<any>
+  protocols$: Observable<any>
   mps$: Observable<any>
+  loading$: Observable<boolean>
 
   state: string = 'mount'
 
@@ -27,10 +29,12 @@ export class DfProtocolComponent implements OnInit {
   constructor(private fireBaseService: FireBaseService, private route: ActivatedRoute, private stateService: StateService) { }
 
   ngOnInit(): void {
+    this.loading$ = this.stateService.loading
     this.id = this.route.snapshot.paramMap.get('id')
     this.pid = this.route.snapshot.paramMap.get('pid')
 
-    this.mps$ = this.stateService.queryMps(this.pid)
+    this.mps$ = this.stateService.queryMpsIds(this.pid)
+    this.protocols$ = this.stateService.queryProtocols(this.id)
  
     this.protocol$ = this.stateService.getProtocol(this.pid)
     this.protocol$.subscribe((protocol) => {

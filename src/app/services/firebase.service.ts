@@ -62,10 +62,7 @@ export class FireBaseService {
         this.getCollectionOrderDescLimit(`testarea/dryfix/probes/${probe.id}/calibrations`, 'date')
           .subscribe((calibrations: any) => {
             const calibration = calibrations[0]
-            resolve({
-              probe: probe,
-              calibration: calibration
-            })
+            resolve({...probe, calibration: calibration})
           })
 
 

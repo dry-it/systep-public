@@ -1,33 +1,35 @@
 <div style="margin-top: 1rem;" class="card">
-    <div class="card-content">
+    <div *ngIf="mp$ | async as m" class="card-content">
         <form [formGroup]="mountForm" (ngSubmit)="onSubmit()">
-        <div class="columns">
-            <div class="column is-3">
-                <p class="title is-4">{{mp.name}}</p>
-                <p class="subtitle is-7">{{mp.placement}}</p>
-            </div>
-            <div class="column is-3">
-                <p class="title is-7">Probe</p>
-                <input class="input subtitle is-medium" formControlName="probeName" type="text" placeholder="Probe">            
-            </div>
-            <div class="column is-3">
-                <p class="title is-7">Mount Date</p>
-                <input class="input subtitle is-medium" formControlName="probeName" type="datetime-local" placeholder="Probe">            
-            </div>
-            <div class="column is-3 i">
-                <div class="buttons has-addons is-right">
-                    <button (click)="expanded = !expanded" class="button is-small is-info"><i class="fas fa-info"></i></button>
-                    <button (click)="edit = true" class="button is-small is-dark"><i class="fas fa-edit"></i></button>
-                    <button (click)="duplicate = true" class="button is-small is-dark"><i class="fas fa-copy"></i></button>
-                    <button (click)="delete()" class="button is-small is-dark has-text-danger"><i class="fas fa-trash"></i></button>
+            <div class="columns">
+                <div class="column is-3">
+                    <p class="title is-4">{{m.name}}</p>
+                    <p class="subtitle is-7">{{m.placement}}</p>
+                </div>
+                <div class="column is-3">
+                    <p class="title is-7">Probe</p>
+                    <input (blur)="getProbe()" class="input subtitle is-small" formControlName="probeName" type="text"
+                        placeholder="Probe">
+                </div>
+                <div class="column is-3">
+                    <p class="title is-7">Mount Date</p>
+                    <input (change)="setMountDate()" class="input subtitle is-small" formControlName="mountDate"
+                        type="datetime-local" placeholder="Probe">
+                </div>
+                <div class="column is-3 i">
+                    <div class="buttons has-addons is-right">
+                        <button (click)="expanded = !expanded" class="button is-small is-info"><i
+                                class="fas fa-info"></i></button>
+                        <button (click)="delete()" class="button is-small is-dark has-text-danger"><i
+                                class="fas fa-trash"></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div *ngIf="expanded" class="columns">
-            <div class="column">
-                display extra info here..
+            <div *ngIf="expanded" class="columns">
+                <div class="column">
+                    display extra info here..
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
     </div>
 </div>

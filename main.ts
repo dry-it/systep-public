@@ -13,10 +13,14 @@ function createWindow(): BrowserWindow {
 
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height,
+    width: 1200,
+    height: 800,
+    hasShadow: true,
+    frame: false,
+    vibrancy: 'light',
+    transparent: true,
+    backgroundColor: '#0000000',
+    titleBarStyle: 'hiddenInset',
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
@@ -25,7 +29,7 @@ function createWindow(): BrowserWindow {
 
   if (serve) {
 
-    win.webContents.openDevTools();
+    win.webContents.openDevTools({ mode: 'undocked' })
 
     require('electron-reload')(__dirname, {
       electron: require(`${__dirname}/node_modules/electron`)

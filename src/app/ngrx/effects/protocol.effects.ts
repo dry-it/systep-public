@@ -8,6 +8,7 @@ import * as ProtocolActions from '../actions/protocol.actions'
 
 import { FireBaseService } from '../../services/firebase.service'
 import { Action } from '@ngrx/store';
+import { StateService } from 'app/services/state.service';
 
 @Injectable()
 export class protocolsEffects {
@@ -33,9 +34,13 @@ export class protocolsEffects {
     map((action: ProtocolActions.Query) => action),
     switchMap(data => {
       console.log(data.id)
+      this.stateService.setLoadingState(true)
       return this.fireBaseService.getProtocols(data.id)
     }),
-    mergeMap(actions => actions),
+    mergeMap(actions => {
+      this.stateService.setLoadingState(false)
+      return actions
+    }),
     map(action => {
       const data: any = action.payload.doc.data()
       return {
@@ -54,6 +59,7 @@ export class protocolsEffects {
 
   constructor(
     private actions$: Actions,
-    private fireBaseService: FireBaseService
+    private fireBaseService: FireBaseService,
+    private stateService: StateService
   ) { }
 }

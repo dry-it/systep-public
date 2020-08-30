@@ -1,71 +1,78 @@
 <div style="margin-top: 2rem;" class="container">
-    <h1 class="title is-3">{{protocolForm.value.name}}</h1>
-    <div class="box">
-         <form [formGroup]="protocolForm" (ngSubmit)="onSubmit()">
-        <div class="field">
-            <label class="label">Name</label>
-            <div class="control">
-                <input formControlName="name" class="input" type="text" placeholder="Protocol name">
-            </div>
+  <h1 class="title is-3">{{protocolForm.value.name}}</h1>
+  <div class="box">
+    <form [formGroup]="protocolForm" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input formControlName="name" class="input" type="text" placeholder="Protocol name">
         </div>
-        <div class="field">
-            <label class="label">Description</label>
-            <div class="control">
-                <input formControlName="desc" class="input" type="text" placeholder="Description">
-            </div>
+      </div>
+      <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+          <input formControlName="desc" class="input" type="text" placeholder="Description">
         </div>
-       
-
-        <button style="margin-right: 4px;" class="button is-link" type="submit"
-            [disabled]="!protocolForm.valid">Create</button>
-
-    </form> 
-    </div>
-
-
-    <ng-container *ngIf="mps$ | async as mps">
-        <div class="tabs">
-        <ul>
-          <li  [class.is-active]="state === 'drill'">
-            <a (click)="state = 'drill'">
-              <span class="icon is-small"><i class="far fa-circle" [class.fas]="state === 'drill'"></i></span>
-              <span>Borrning</span>
-            </a>
-          </li>
-          <li [class.is-active]="state === 'mount'">
-            <a (click)="state = 'mount'">
-              <span class="icon is-small"><i class="far fa-circle" [class.fas]="state === 'mount'"></i></span>
-              <span>Montering</span>
-            </a>
-          </li>
-          <li [class.is-active]="state === 'read'">
-            <a (click)="state = 'read'">
-              <span class="icon is-small"><i class="far fa-circle" [class.fas]="state === 'read'" aria-hidden="true"></i></span>
-              <span>Avläsning</span>
-            </a>
-          </li>
-          <li>
-            <a>
-              <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-              <span>Översikt</span>
-            </a>
-          </li>
-        </ul>
       </div>
 
-      <ng-container *ngIf="state === 'drill'">
-          <dryfix-protocol-drill [mps]="mps"></dryfix-protocol-drill>
-      </ng-container>
 
-      <ng-container *ngIf="state === 'mount'">
-        <dryfix-protocol-mount [mps]="mps"></dryfix-protocol-mount>
+      <button style="margin-right: 4px;" class="button is-link" type="submit"
+        [disabled]="!protocolForm.valid">Create</button>
+
+    </form>
+  </div>
+
+
+  <ng-container *ngIf="mps$ | async as mps">
+    <div class="tabs">
+      <ul>
+        <li [class.is-active]="state === 'drill'">
+          <a (click)="state = 'drill'">
+            <span class="icon is-small"><i class="far fa-circle" [class.fas]="state === 'drill'"></i></span>
+            <span>Borrning</span>
+          </a>
+        </li>
+        <li [class.is-active]="state === 'mount'">
+          <a (click)="state = 'mount'">
+            <span class="icon is-small"><i class="far fa-circle" [class.fas]="state === 'mount'"></i></span>
+            <span>Montering</span>
+          </a>
+        </li>
+        <li [class.is-active]="state === 'read'">
+          <a (click)="state = 'read'">
+            <span class="icon is-small"><i class="far fa-circle" [class.fas]="state === 'read'"
+                aria-hidden="true"></i></span>
+            <span>Avläsning</span>
+          </a>
+        </li>
+        <li>
+          <a>
+            <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+            <span>Översikt</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <ng-container *ngIf="loading$ | async">
+      <div class="box">
+        <p>Loading mps <i class="fas fa-spinner fa-spin"></i> </p>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="state === 'drill'">
+      <dryfix-protocol-drill [mps]="mps"></dryfix-protocol-drill>
+    </ng-container>
+
+    <ng-container *ngIf="state === 'mount'">
+      <dryfix-protocol-mount [mps]="mps"></dryfix-protocol-mount>
     </ng-container>
 
     <ng-container *ngIf="state === 'read'">
-        <dryfix-protocol-read [mps]="mps"></dryfix-protocol-read>
+      <dryfix-protocol-read [mps]="mps"></dryfix-protocol-read>
     </ng-container>
-    </ng-container>
+  </ng-container>
 
-    
-  
+
+
 </div>

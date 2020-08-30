@@ -1,26 +1,29 @@
 <div style="margin-top: 1rem;" class="card">
-    <div class="card-content">
+    <div *ngIf="mp$ | async as m" class="card-content">
         <form [formGroup]="readForm" (ngSubmit)="onSubmit()">
             <div class="columns">
                 <div class="column is-2">
-                    <p class="title is-4">{{mp.name}}</p>
-                    <p class="subtitle is-7">{{mp.placement}}</p>
+                    <p class="title is-4">{{m.name}}</p>
+                    <p class="subtitle is-7">{{m.placement}}</p>
                 </div>
                 <div class="column is-2">
                     <p class="title is-7">RH</p>
-                    <input class="input subtitle is-small" formControlName="rh" type="number" placeholder="RH">
+                    <input (blur)="updateRh()" class="input subtitle is-small" formControlName="rhRead" type="number"
+                        placeholder="RH">
                 </div>
                 <div class="column is-2">
                     <p class="title is-7">Temp</p>
-                    <input class="input subtitle is-small" formControlName="temp" type="number" placeholder="Temp">
+                    <input (blur)="updateTemp()" class="input subtitle is-small" formControlName="temp" type="number"
+                        placeholder="Temp">
                 </div>
                 <div class="column is-2">
                     <p class="title is-7">Readout Date</p>
-                    <input class="input subtitle is-small" formControlName="readoutDate" type="datetime-local"
-                        placeholder="Probe">
+                    <input (blur)="updateDate()" class="input subtitle is-small" formControlName="readoutDate"
+                        type="datetime-local" placeholder="Probe">
                 </div>
                 <div class="column is-1">
                     <p class="title is-7">Result</p>
+                    <p *ngIf="m.readout" class="title is-7">{{m.readout.result}}%</p>
                 </div>
                 <div class="column is-3">
                     <div class="buttons has-addons is-right">

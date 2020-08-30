@@ -8,6 +8,7 @@ import * as MpActions from '../actions/mps.actions'
 
 import { FireBaseService } from '../../services/firebase.service'
 import { Action } from '@ngrx/store';
+import { StateService } from 'app/services/state.service';
 
 @Injectable()
 export class MpsEffects {
@@ -33,9 +34,13 @@ export class MpsEffects {
     map((action: MpActions.Query) => action),
     switchMap(data => {
       console.log(data.id)
+      this.stateService.setLoadingState(true)
       return this.fireBaseService.getMps(data.id)
     }),
-    mergeMap(actions => actions),
+    mergeMap(actions => {
+      this.stateService.setLoadingState(false)
+      return actions
+    }),
     map(action => {
       const data: any = action.payload.doc.data()
       return {
@@ -54,6 +59,7 @@ export class MpsEffects {
 
   constructor(
     private actions$: Actions,
-    private fireBaseService: FireBaseService
+    private fireBaseService: FireBaseService,
+    private stateService: StateService
   ) { }
 }

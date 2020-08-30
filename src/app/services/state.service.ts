@@ -9,7 +9,7 @@ import * as fromProject from '../ngrx/reducers/dryfix.reducer'
 import * as fromMps from '../ngrx/reducers/mps.reducer'
 import * as fromProtocols from '../ngrx/reducers/protocol.reducer'
 import { map, single, mergeMap, filter } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { of, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +17,13 @@ import { of } from 'rxjs';
 export class StateService {
 
   projects: any
+  loading = new BehaviorSubject(false)
 
   constructor(private store: Store<fromProject.State>) {
-    this.store.dispatch(new projectActions.Query())
   }
 
   getProjects = () => {
+    this.store.dispatch(new projectActions.Query())
     return this.store.select(fromProject.selectAll)
   }
 
@@ -36,9 +37,17 @@ export class StateService {
     return this.store.select(fromMps.selectAll)
   }
 
-  getMP = (id: string) => {
-    console.log(id)
+  queryMpsIds = (protocolID: string) => {
+    this.store.dispatch(new mpActions.Query(protocolID))
+    return this.store.select(fromMps.selectIds)
+  }
+
+  getMp = (id: string) => {
     return this.store.select(fromMps.selectEntity, { id: id })
+  }
+
+  setLoadingState = (state: boolean) => {
+    this.loading.next(state)
   }
 
   queryProtocols = (id: string) => {
@@ -51,14 +60,4 @@ export class StateService {
     return this.store.select(fromProtocols.selectEntity, { id: id })
   }
 
-
-
 }
-
-
-
-
-
-// this.projects$ = this.store.select(fromProject.selectAll)
-// this.store.dispatch(new actions.Query());
-// this.store.dispatch(new mpActions.Query('U3anVouPLzU9kPdSEqux'));
