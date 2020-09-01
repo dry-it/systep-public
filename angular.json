@@ -21,9 +21,15 @@
             ],
             "styles": [
               "src/styles.scss",
-              "./node_modules/bulma/css/bulma.css"
+              "./node_modules/bulma/css/bulma.css",
+              "node_modules/prismjs/themes/prism-okaidia.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/marked/lib/marked.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-csharp.min.js",
+              "node_modules/prismjs/components/prism-css.min.js"
+            ],
             "customWebpackConfig": {
               "path": "./angular.webpack.js"
             }

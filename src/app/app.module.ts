@@ -16,6 +16,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { HomeModule } from './home/home.module';
 import { AdminModule } from './admin/admin.module';
+import { DocumentModule } from './documents/document.module';
 import { DetailModule } from './detail/detail.module';
 
 import { AppComponent } from './app.component';
@@ -65,7 +66,10 @@ import { DryfixEffects } from './ngrx/effects/dryfix.effects'
 import { MpsEffects } from './ngrx/effects/mps.effects'
 import { protocolsEffects } from './ngrx/effects/protocol.effects'
 
-import {StateService} from './services/state.service'
+import { StateService } from './services/state.service'
+import { MarkdownModule } from 'ngx-markdown';
+
+import { DocumentService } from './services/document.service'
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -106,7 +110,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SharedModule,
     HomeModule,
     AdminModule,
+    DocumentModule,
     DetailModule,
+    MarkdownModule.forRoot(),
     AngularFireModule.initializeApp(AppConfig.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
@@ -127,7 +133,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: AppConfig.production }),
 
   ],
-  providers: [DataService, FireBaseService, StateService], 
+  providers: [DataService, FireBaseService, StateService, DocumentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

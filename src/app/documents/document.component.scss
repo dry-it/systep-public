@@ -1,0 +1,27 @@
+
+
+.dark {
+    background-color: #222;
+    color: #fff;
+
+    hr {
+        color: #444
+    }
+}
+
+.light {
+    color: #111; 
+}
+
+.document-navbar {
+    background: rgba(0, 0, 0, 0.1); // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(2px); // This be the blur
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 99;
+    -webkit-box-shadow: -10px 9px 41px -14px rgba(0,0,0,0.75);
+    -moz-box-shadow: -10px 9px 41px -14px rgba(0,0,0,0.75);
+    box-shadow: -10px 9px 41px -14px rgba(0,0,0,0.75);
+}

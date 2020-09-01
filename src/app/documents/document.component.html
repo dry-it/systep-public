@@ -1,0 +1,16 @@
+<div class="columns">
+  <div class="column is-12 document-navbar">
+    <div class="buttons is-right is-small">
+      <button [class.is-dark]="!dark" (click)="toggleFontSize()" class="button is-small"><i
+          class="fas fa-font fa-lg"></i><i class="fas fa-font"></i></button>
+      <button [class.is-dark]="!dark" (click)="toggleDarkMode()" class="button is-small"><i class="fas fa-adjust fa-lg"></i></button>
+    </div>
+  </div>
+</div>
+<div class="document-container" [class.dark]="dark" [class.text-small]="textSize == 1"
+  [class.text-medium]="textSize == 2" [class.text-large]="textSize == 3">
+
+
+
+  <router-outlet></router-outlet>
+</div>

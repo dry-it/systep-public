@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ElectronService } from '../../core/services';
 import { FireBaseService } from '../../services/firebase.service';
 import { Observable } from 'rxjs';
+import { DocumentService } from 'app/services/document.service';
 
 @Component({
   selector: 'app-activity',
@@ -24,7 +25,7 @@ export class ActivityComponent implements OnInit {
   blocks: any
 
 
-  constructor(private electron: ElectronService, private fireBaseService: FireBaseService) { }
+  constructor(private electron: ElectronService, private fireBaseService: FireBaseService, private documentService: DocumentService) { }
 
   ngOnInit() {
 
@@ -54,6 +55,10 @@ export class ActivityComponent implements OnInit {
     console.log(event)
   }
 
+  openDoc(file: string) {
+    this.documentService.openDoc(file);
+  }
+
   getBlocks() {
     this.blocks$.subscribe((blocks) => {
       this.blocks = blocks
@@ -61,13 +66,13 @@ export class ActivityComponent implements OnInit {
       if (blocks) {
         for (let i = 0; i < this.blocks.length; i++) {
           this.fireBaseService.getCollectionSnapshot(`projects/${this.id}/activities/${this.aid}/blocks/${i}/checkpoints`)
-          .subscribe((checkPoints) => {
-            this.blocks[i].checkPoints = checkPoints
-          })
-      }
+            .subscribe((checkPoints) => {
+              this.blocks[i].checkPoints = checkPoints
+            })
+        }
       }
 
-      
+
 
     })
   }
@@ -82,22 +87,31 @@ export class ActivityComponent implements OnInit {
 
   openPath(path) {
     this.electron.shell.openPath(path)
-    .then((res) => console.log(res))
-    .catch((err) => console.error(err))
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err))
   }
 
   saveActivity() {
     this.save.emit(this.activity)
   }
 
-  saveCheck(i: number, bi:number) {
+  saveCheck(i: number, bi: number) {
 
     const check = this.blocks[bi].checkPoints[i]
     const cid = this.blocks[bi].checkPoints[i].id
     const bid = this.blocks[bi].id
 
+    if (check.flag) {
+
+      const flagField = `${check.flag}`
+
+
+      this.fireBaseService.updateDocument('projects', this.id, { [flagField]: check.state })
+        .then(() => console.log('updated'))
+    }
+
     this.fireBaseService.setDocumentPath(`projects/${this.id}/activities/${this.aid}/blocks/${bid}/checkpoints/${cid}`, check)
-    .then()
+      .then()
 
     //let body = { `activities[${this.index}]` : `dsd`}
 
@@ -106,26 +120,26 @@ export class ActivityComponent implements OnInit {
 
     let activities = []
     activities[this.index] = { blocks: [] }
-   // activities[this.index].blocks = {  }
-   // activities[this.index].blocks[bi].checkPoints = []
-   // activities[this.index].blocks[bi].checkPoints[i] = this.activity.blocks[bi].checkPoints[i]
+    // activities[this.index].blocks = {  }
+    // activities[this.index].blocks[bi].checkPoints = []
+    // activities[this.index].blocks[bi].checkPoints[i] = this.activity.blocks[bi].checkPoints[i]
 
-   // console.log(body)
+    // console.log(body)
 
- 
+
   }
 
-  addCheckPoint(bi?:number) {
+  addCheckPoint(bi?: number) {
     const block = this.blocks[bi]
     const newCheckPoint = { label: this.newCheckPoint, state: false, deleteable: true }
     this.fireBaseService.setDocumentPath(`projects/${this.id}/activities/${this.aid}/blocks/${block.id}/checkpoints/${block.checkPoints.length}`, newCheckPoint)
-    .then((checkPoint) => {
-      this.newCheckPoint = undefined;
-    })
-        // this.saveActivity();
+      .then((checkPoint) => {
+        this.newCheckPoint = undefined;
+      })
+    // this.saveActivity();
   }
 
-  action(execute:string) {
+  action(execute: string) {
     this.execute.emit(execute)
   }
 

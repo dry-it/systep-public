@@ -100,8 +100,13 @@
     "@ngrx/entity": "^10.0.0",
     "@ngrx/store": "^10.0.0",
     "@ngrx/store-devtools": "^10.0.0",
+    "angular-markdown-editor": "2.0.2",
+    "bootstrap-markdown": "2.10.0",
     "bulma": "0.8.2",
-    "firebase": "^7.13.1"
+    "firebase": "^7.13.1",
+    "jquery": "3.5.1",
+    "ng-simple-markdown-editor": "1.0.26",
+    "ngx-markdown": "10.1.1"
   },
   "engines": {
     "node": ">=10.13.0"

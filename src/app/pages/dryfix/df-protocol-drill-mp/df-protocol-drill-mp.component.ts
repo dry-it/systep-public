@@ -16,12 +16,12 @@ export class DfProtocolDrillMpComponent implements OnInit {
 
   duplicate: boolean
   edit: boolean
-  expanded:boolean
+  expanded: boolean
 
   constructor(private firebaseService: FireBaseService, private stateService: StateService) { }
 
   ngOnInit(): void {
-    this.mp$ = this.stateService.getMP(this.mp)
+    this.mp$ = this.stateService.getMp(this.mp)
   }
 
   delete() {

@@ -38,9 +38,4 @@
 
         </form>
     </div>
-
-    <ng-container *ngIf="activities">
-        <app-activity-outline *ngFor="let a of activities; let i = index" (save)="save($event, i)"
-            (execute)="execute($event)" [activity]="a" [index]="i" [length]="activities.length"></app-activity-outline>
-    </ng-container>
 </div>

@@ -28,7 +28,7 @@ export class DfProtocolReadMpComponent implements OnInit {
   constructor(private fireBaseService: FireBaseService, private stateService:StateService) { }
 
   ngOnInit(): void {
-    this.mp$ = this.stateService.getMP(this.mp)
+    this.mp$ = this.stateService.getMp(this.mp)
     this.mp$.subscribe((mp) => {
       if (mp.readout) {
         const readout = mp.readout

@@ -9,6 +9,7 @@ import { ActivityComponent } from '../components/activity/activity.component';
 import { SubActivityComponent } from '../components/sub-activity/sub-activity.component';
 import { ActivateComponent } from '../components/activate/activate.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [

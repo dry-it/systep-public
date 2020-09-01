@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
 .activity-box {
   width: 95%;
   border-top: 1px solid #ccc;
@@ -88,5 +90,105 @@
 
 body {
   background-color: rgba(255, 255, 255, 0.4)
+}
+
+h1, h2, h3 ,h4 {
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+
+
+
+
+.document-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  padding-top: 70px;
+  padding-left: 40px;
+  -webkit-app-region: drag;
+  font-family: 'Crimson Text', serif;
+
+  h1,
+  h2,
+  h3,
+  h4
+  p {
+    font-family: 'Crimson Text', serif
+  }
+
+  #text {
+    font-family: 'Crimson Text', serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    font-weight: 800;
+    color: rgb(44, 71, 110)
+  }
+}
+
+.text-small {
+  h1 {
+    font-size: 1.5rem
+  }
+
+  h2 {
+    font-size: 1.2rem
+  }
+
+  h3 {
+    font-size: 1rem
+  }
+
+  p {
+    font-size: 0.9rem
+  }
+}
+
+.text-medium {
+  h1 {
+    font-size: 1.6rem
+  }
+
+  h2 {
+    font-size: 1.3rem
+  }
+
+  h3 {
+    font-size: 1.1rem
+  }
+
+  p {
+    font-size: 1rem
+  }
+}
+
+.text-large {
+  h1 {
+    font-size: 1.9rem
+  }
+
+  h2 {
+    font-size: 1.6rem
+  }
+
+  h3 {
+    font-size: 1.4rem
+  }
+
+  p {
+    font-size: 1.3rem
+  }
+}
+
+.dark {
+  h1, h2, h3 {
+    color: rgb(176, 197, 226)
+  }
 }
 
