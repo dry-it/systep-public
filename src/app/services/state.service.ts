@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 
-import * as projectActions from '../ngrx/actions/dryfix.actions'
+import * as projectsActions from '../ngrx/actions/dryfix.actions'
+import * as projectActions from '../ngrx/actions/project.actions'
 import * as mpActions from '../ngrx/actions/mps.actions'
 import * as protocolActions from '../ngrx/actions/protocol.actions'
-import * as fromProject from '../ngrx/reducers/dryfix.reducer'
+import * as fromProjects from '../ngrx/reducers/dryfix.reducer'
+import * as fromProject from '../ngrx/reducers/project.reducer'
 import * as fromMps from '../ngrx/reducers/mps.reducer'
 import * as fromProtocols from '../ngrx/reducers/protocol.reducer'
 import { map, single, mergeMap, filter } from 'rxjs/operators';
@@ -19,17 +21,26 @@ export class StateService {
   projects: any
   loading = new BehaviorSubject(false)
 
-  constructor(private store: Store<fromProject.State>) {
+  constructor(private store: Store<any>) {
   }
 
   getProjects = () => {
-    this.store.dispatch(new projectActions.Query())
-    return this.store.select(fromProject.selectAll)
+    this.store.dispatch(new projectsActions.Query())
+    return this.store.select(fromProjects.selectAll)
   }
 
   getProject = (id: string) => {
     console.log(id)
-    return this.store.select(fromProject.selectEntity, { id: id })
+    return this.store.select(fromProjects.selectEntity, { id: id })
+  }
+
+  loadProject = (id: string) => {
+    console.log(id)
+    this.store.dispatch(new projectActions.Query(id))
+  }
+
+  returnCurrentProject() {
+    return this.store.pipe(select('currentProject'))
   }
 
   queryMps = (protocolID: string) => {

@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ElectronService } from '../../core/services';
 import { FireBaseService } from '../../services/firebase.service';
 import { Location } from '@angular/common';
+import { StateService } from 'app/services/state.service';
 
 interface Activity {
   title: string;
@@ -87,25 +88,29 @@ export class ProjectComponent implements OnInit {
   act: Activity[]
   project$: Observable<any>
   project: any
-  id:string
+  id: string
   activities$: Observable<any>
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private route: ActivatedRoute,
-    private data: DataService, 
-    private electron: ElectronService, 
+    private data: DataService,
+    private electron: ElectronService,
     private fireBaseService: FireBaseService,
-    private _location: Location) { }
+    private _location: Location,
+    private stateService: StateService) { }
 
   ngOnInit(): void {
 
     this.id = this.route.snapshot.paramMap.get('id')
 
     // this.project$ = this.data.get('project/5f2d3bdb2a7883725b161c19')
-    this.project$ = this.fireBaseService.getDocumentValueChanges('projects', this.id)
-    this.project$.subscribe((project) => this.project = project)
-    this.activities$ = this.fireBaseService.getCollectionSnapshot(`projects/${this.id}/activities`)
+    this.project$ = this.stateService.returnCurrentProject()
+    this.project$.subscribe((project) => {
+      console.log(project.id)
+      this.project = project
+      this.activities$ = this.fireBaseService.getCollectionSnapshot(`projects/${project.id}/activities`)
+    })
 
 
     this.act = [

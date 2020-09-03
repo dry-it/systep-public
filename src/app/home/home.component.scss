@@ -10,7 +10,16 @@
     height: 50px;
     width: 100%;
     z-index: 100;
+    left: 238px;
     -webkit-app-region: drag
+}
+
+.back-button {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    z-index: 100;
+    left: 238px;
 }
 
 .logo {
@@ -76,6 +85,11 @@
 
 .blur {
     background: rgba(0, 0, 0, 0.5); // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(3px); // This be the blur
+}
+
+.blur-less {
+    background: rgba(0, 0, 0, 0.1); // Make sure this color has an opacity of less than 1
     backdrop-filter: blur(3px); // This be the blur
 }
 

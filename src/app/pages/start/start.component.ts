@@ -72,7 +72,7 @@ const language = 'typescript';
   }
 
   openProject(id) {
-    this.router.navigateByUrl(`/home/project/${id}`)
+    this.router.navigateByUrl(`/home/projectview/${id}/project`)
   }
 
 }

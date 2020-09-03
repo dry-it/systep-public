@@ -10,6 +10,8 @@ import { CreateProjectComponent } from '../pages/create-project/create-project.c
 import { DryfixComponent } from '../pages/dryfix/dryfix.component';
 import { DfProjectComponent } from '../pages/dryfix/df-project/df-project.component';
 import { DfProtocolComponent } from '../pages/dryfix/df-protocol/df-protocol.component';
+import { ProjectWrapperComponent } from 'app/pages/project-wrapper/project-wrapper.component';
+import { DocumentListerComponent } from 'app/pages/document-lister/document-lister.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -24,10 +26,22 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
+
       {
-        path: 'project/:id',
-        component: ProjectComponent
+        path: 'projectview/:id',
+        component: ProjectWrapperComponent,
+        children: [
+          {
+            path: 'project',
+            component: ProjectComponent
+          },
+          {
+            path: 'documents',
+            component: DocumentListerComponent
+          },
+        ]
       },
+
       {
         path: 'start',
         component: StartComponent

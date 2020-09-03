@@ -1,13 +1,12 @@
 <div class="main">
-  <div style="padding-top: 30px;" class="container mt-3">
-    <button style="margin-bottom: 10px;" (click)="goBack()" class="button is-small is-dark">Tillbaka</button>
+  <div  class="container mt-3">
     <h1 class="title">Proccessbeskrivning Mätuppdrag</h1>
     <h2 class="subtitle is-7 has-text-grey">Uppdaterades 2020-02-28 av <span class="has-text-link"
         style="cursor: pointer;">Jesper Martinsson</span></h2>
 
     <ng-container *ngIf="activities$ | async as activities">
       <app-activity *ngFor="let a of activities; let i = index" (save)="save($event, i)"
-        (execute)="execute($event)" [activity]="a" [index]="i" [aid]="a.id" [id]="id" [length]="activities.length"></app-activity>
+        (execute)="execute($event)" [activity]="a" [index]="i" [aid]="a.id" [id]="project.id" [length]="activities.length"></app-activity>
     </ng-container>
 
   </div>

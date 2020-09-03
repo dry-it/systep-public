@@ -13,7 +13,12 @@
 
 
 </nav> -->
-<div class="dragable"></div>
+<div class="dragable">
+</div>
+
+<div class="back-button" style="margin-top: 20px; margin-left: 10px; z-index: 10000;">
+  <a (click)="_location.back()"><i class="fas fa-chevron-left has-text-dark"></i></a>
+</div>
 
 <div class="columns">
   <div style="-webkit-app-region: drag" class="column is-2 has-background-light is-hidden-touch fixed-width">
@@ -62,7 +67,9 @@
     </aside>
   </div>
   <div class="column">
-    <router-outlet></router-outlet>
+    <div style="margin-top: 5px" class="container">
+      <router-outlet></router-outlet>
+    </div>
 
   </div>
 

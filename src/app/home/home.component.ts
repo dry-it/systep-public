@@ -172,14 +172,13 @@ export class HomeComponent implements OnInit {
     private data: DataService,
     private auth: AngularFireAuth,
     private fireBaseService: FireBaseService,
-    private _location: Location) { }
+    public _location: Location) { }
 
 
 
   ngOnInit(): void {
 
     this.checkUser()
-
 
     this.user$ = this.auth.currentUser
 
@@ -379,6 +378,7 @@ export class HomeComponent implements OnInit {
 
   checkUser() {
     this.auth.currentUser.then((u:any) => {
+      localStorage.uid = u.uid
  if (localStorage.getItem('activated') === u.uid) {
       console.log('user id in local')
       this.activated = true;

@@ -62,14 +62,21 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { dryfixReducer } from './ngrx/reducers/dryfix.reducer'
 import { mpsReducer } from './ngrx/reducers/mps.reducer'
 import { protocolsReducer } from './ngrx/reducers/protocol.reducer'
+import { projectReducer } from './ngrx/reducers/project.reducer'
 import { DryfixEffects } from './ngrx/effects/dryfix.effects'
 import { MpsEffects } from './ngrx/effects/mps.effects'
 import { protocolsEffects } from './ngrx/effects/protocol.effects'
+import { ProjectEffects } from './ngrx/effects/project.effects'
 
 import { StateService } from './services/state.service'
 import { MarkdownModule } from 'ngx-markdown';
 
-import { DocumentService } from './services/document.service'
+import { DocumentService } from './services/document.service';
+import { ProjectWrapperComponent } from './pages/project-wrapper/project-wrapper.component';
+import { DocumentListerComponent } from './pages/document-lister/document-lister.component';
+import { FolderComponent } from './components/folder/folder.component';
+import { FileComponent } from './components/file/file.component';
+import { FileIconComponent } from './components/file-icon/file-icon.component'
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -99,6 +106,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DfProtocolMountMpComponent,
     DfProtocolReadComponent,
     DfProtocolReadMpComponent,
+    ProjectWrapperComponent,
+    DocumentListerComponent,
+    FolderComponent,
+    FileComponent,
+    FileIconComponent,
   ],
   imports: [
     BrowserModule,
@@ -127,9 +139,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     StoreModule.forRoot({
       dryfix: dryfixReducer,
       mps: mpsReducer,
-      protocols: protocolsReducer
+      protocols: protocolsReducer,
+      currentProject: projectReducer
     }),
-    EffectsModule.forRoot([DryfixEffects, MpsEffects, protocolsEffects]),
+    EffectsModule.forRoot([DryfixEffects, MpsEffects, protocolsEffects, ProjectEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: AppConfig.production }),
 
   ],

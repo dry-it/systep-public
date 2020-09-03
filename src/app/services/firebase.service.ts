@@ -10,6 +10,13 @@ export class FireBaseService {
 
   constructor(private readonly afs: AngularFirestore) { }
 
+  creation() {
+    return {
+      createdById: localStorage.uid,
+      created: new Date()
+    }
+  }
+
   getCollectionSnapshot = (collection: string) => {
     const colRef = this.afs.collection(collection)
     return colRef.snapshotChanges().pipe(
@@ -23,8 +30,8 @@ export class FireBaseService {
     );
   }
 
-  getCollectionStateChanges(collection:string) {
-   return this.afs.collection(collection).stateChanges()
+  getCollectionStateChanges(collection: string) {
+    return this.afs.collection(collection).stateChanges()
   }
 
   getCollectionValueChanges = (collection: string) => {
@@ -32,7 +39,15 @@ export class FireBaseService {
   }
 
   getDocumentValueChanges = (collection: string, document: string) => {
-    return this.afs.collection(collection).doc(document).valueChanges();
+    return this.afs
+      .collection(collection)
+      .doc(document)
+      .valueChanges()
+      .pipe(
+        map((project: any) => {
+          return { ...project, id: document }
+        })
+      );
   }
 
   deleteDoc = (collection: string, document: string) => {
@@ -62,7 +77,7 @@ export class FireBaseService {
         this.getCollectionOrderDescLimit(`testarea/dryfix/probes/${probe.id}/calibrations`, 'date')
           .subscribe((calibrations: any) => {
             const calibration = calibrations[0]
-            resolve({...probe, calibration: calibration})
+            resolve({ ...probe, calibration: calibration })
           })
 
 
@@ -104,11 +119,11 @@ export class FireBaseService {
 
   }
 
-  getMps(protocolID:string) {
+  getMps(protocolID: string) {
     return this.afs.collection<any>('testarea/dryfix/measurementpoints', ref => ref.where('protocolID', '==', protocolID).orderBy('name', 'asc')).stateChanges()
   }
 
-  getProtocols(projectID:string) {
+  getProtocols(projectID: string) {
     return this.afs.collection<any>(`testarea/dryfix/projects/${projectID}/protocols`).stateChanges()
   }
 

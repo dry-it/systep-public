@@ -101,14 +101,14 @@ export class ActivityComponent implements OnInit {
     const cid = this.blocks[bi].checkPoints[i].id
     const bid = this.blocks[bi].id
 
-    if (check.flag) {
+  /*   if (check.flag) {
 
       const flagField = `${check.flag}`
 
 
       this.fireBaseService.updateDocument('projects', this.id, { [flagField]: check.state })
         .then(() => console.log('updated'))
-    }
+    } */
 
     this.fireBaseService.setDocumentPath(`projects/${this.id}/activities/${this.aid}/blocks/${bid}/checkpoints/${cid}`, check)
       .then()

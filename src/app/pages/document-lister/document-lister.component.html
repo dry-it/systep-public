@@ -1,0 +1,11 @@
+<ng-container *ngIf="isElectron">
+    <div *ngIf="structure$ | async as s" class="box">
+        <app-folder *ngFor="let folder of s.folders" [data]="folder"></app-folder>
+        <app-file *ngFor="let file of s.files" [data]="file"></app-file>
+    </div>
+</ng-container>
+<ng-container *ngIf="!isElectron">
+    <div class="box">
+        <h3>Tyvärr! Den här funktionen funkar endast på Desktopversionen, Vi arbetar på en lösning!</h3>
+    </div>
+</ng-container>

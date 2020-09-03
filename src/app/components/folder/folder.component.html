@@ -1,0 +1,7 @@
+<span (click)="data.open = !data.open" class="is-block"><i [class.fa-folder-open]="data.open"
+        [class.fa-folder]="!data.open" class="fas folder"></i><span
+        class="has-text-weight-bold">{{data.name}}</span></span>
+<div style="margin-left: 1rem;" *ngIf="data.open">
+    <app-folder *ngFor="let folder of data.folders" [data]="folder"></app-folder>
+    <app-file *ngFor="let file of data.files" [data]="file"></app-file>
+</div>
