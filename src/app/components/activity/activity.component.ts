@@ -129,6 +129,44 @@ export class ActivityComponent implements OnInit {
 
   }
 
+  deleteCheck(i: number, bi: number) {
+
+    const check = this.blocks[bi].checkPoints[i]
+    const cid = this.blocks[bi].checkPoints[i].id
+    const bid = this.blocks[bi].id
+
+  /*   if (check.flag) {
+
+      const flagField = `${check.flag}`
+
+
+      this.fireBaseService.updateDocument('projects', this.id, { [flagField]: check.state })
+        .then(() => console.log('updated'))
+    } */
+
+    if (check.deleteable) {
+      this.fireBaseService.deleteDocumentPath(`projects/${this.id}/activities/${this.aid}/blocks/${bid}/checkpoints/${cid}`)
+      .then()
+    }
+
+    
+
+    //let body = { `activities[${this.index}]` : `dsd`}
+
+
+
+
+    let activities = []
+    activities[this.index] = { blocks: [] }
+    // activities[this.index].blocks = {  }
+    // activities[this.index].blocks[bi].checkPoints = []
+    // activities[this.index].blocks[bi].checkPoints[i] = this.activity.blocks[bi].checkPoints[i]
+
+    // console.log(body)
+
+
+  }
+
   addCheckPoint(bi?: number) {
     const block = this.blocks[bi]
     const newCheckPoint = { label: this.newCheckPoint, state: false, deleteable: true }

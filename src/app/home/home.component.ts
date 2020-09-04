@@ -13,6 +13,9 @@ import {
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FireBaseService } from '../services/firebase.service';
 import { Location } from '@angular/common';
+import { StateService } from 'app/services/state.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { auditTime } from 'rxjs/operators';
 
 interface Activity {
   title: string;
@@ -167,18 +170,35 @@ export class HomeComponent implements OnInit {
   projects$: Observable<any>
   user$: Promise<any>
 
+  searchForm = new FormGroup({
+    term: new FormControl('')
+  })
+
   constructor(
     private router: Router,
     private data: DataService,
     private auth: AngularFireAuth,
     private fireBaseService: FireBaseService,
-    public _location: Location) { }
+    public _location: Location,
+    private stateService: StateService) { }
 
+  results: any
 
 
   ngOnInit(): void {
 
     this.checkUser()
+
+    this.searchForm.valueChanges
+      .pipe(auditTime(1000))
+      .subscribe((result) => {
+        this.fireBaseService.searchProjects(result.term)
+          .subscribe((res) => {
+            console.log(res);
+            this.results = res;
+          })
+      })
+
 
     this.user$ = this.auth.currentUser
 
@@ -346,7 +366,7 @@ export class HomeComponent implements OnInit {
   isOpenProject = false;
 
   activated: boolean
-  activate: boolean 
+  activate: boolean
 
   toggleUser() {
     this.isOpen = !this.isOpen;
@@ -377,28 +397,32 @@ export class HomeComponent implements OnInit {
   }
 
   checkUser() {
-    this.auth.currentUser.then((u:any) => {
+    this.auth.currentUser.then((u: any) => {
+      if (u) {
+        this.stateService.loadUser(u.uid);
+        console.log(u)
+      }
       localStorage.uid = u.uid
- if (localStorage.getItem('activated') === u.uid) {
-      console.log('user id in local')
-      this.activated = true;
-      this.activate = false;
-    } else {
-      console.log('user ID not in local')
-      this.fireBaseService.getDocumentValueChanges('users', u.uid)
-        .subscribe((user: any) => {
-          if (user.active) {
-            this.activated = true;
-            this.activate = false;
-            localStorage.setItem('activated', u.uid)
-          } else {
-            this.activate = true
-          }
-        })
-    }
+      if (localStorage.getItem('activated') === u.uid) {
+        console.log('user id in local')
+        this.activated = true;
+        this.activate = false;
+      } else {
+        console.log('user ID not in local')
+        this.fireBaseService.getDocumentValueChanges('users', u.uid)
+          .subscribe((user: any) => {
+            if (user.active) {
+              this.activated = true;
+              this.activate = false;
+              localStorage.setItem('activated', u.uid)
+            } else {
+              this.activate = true
+            }
+          })
+      }
     })
 
-   
+
   }
 
 

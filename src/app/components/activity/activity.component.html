@@ -19,7 +19,7 @@
         <nav *ngIf="block.type === 'checkList'" style="margin-top: 1rem;" class="panel">
           <div *ngFor="let check of block.checkPoints; let i = index" class="panel-block has-text-weight-bold"
             [class.has-background-success]="check.state">
-            <button style="margin-top: 6px; margin-right: 10px;" (click)="delete(i, bi)" class="delete is-small"
+            <button style="margin-top: 6px; margin-right: 10px;" (click)="deleteCheck(i, bi)" class="delete is-small"
               [class.has-background-dark]="check.deleteable"></button>
             <label>
 

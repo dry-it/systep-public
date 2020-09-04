@@ -12,6 +12,7 @@ import { DfProjectComponent } from '../pages/dryfix/df-project/df-project.compon
 import { DfProtocolComponent } from '../pages/dryfix/df-protocol/df-protocol.component';
 import { ProjectWrapperComponent } from 'app/pages/project-wrapper/project-wrapper.component';
 import { DocumentListerComponent } from 'app/pages/document-lister/document-lister.component';
+import { SettingsComponent } from 'app/pages/settings/settings.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -45,6 +46,10 @@ const routes: Routes = [
       {
         path: 'start',
         component: StartComponent
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent
       },
       {
         path: 'create-project',

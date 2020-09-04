@@ -1,4 +1,11 @@
 <!-- file -->
 <a (click)="open()" class="has-text-dark"><span class="is-block">
-        <app-file-icon [extension]="data.extension"></app-file-icon>{{data.name}}
+        <div class="columns">
+            <div style="text-overflow: clip;" class="column is-7 fixed-height">
+                <app-file-icon [extension]="data.extension"></app-file-icon>{{data.name}}
+            </div>
+            <div class="column is-size-7">{{sizeParser()}}</div>
+            <div class="column is-size-7">{{data.modified | date: 'yyyy-MM-dd HH:mm'}}</div>
+            <div class="column is-size-7">{{data.created | date: 'yyyy-MM-dd HH:mm'}}</div>
+        </div>
     </span></a>

@@ -4,6 +4,7 @@ import { Store, select } from '@ngrx/store';
 
 import * as projectsActions from '../ngrx/actions/dryfix.actions'
 import * as projectActions from '../ngrx/actions/project.actions'
+import * as userActions from '../ngrx/actions/user.actions'
 import * as mpActions from '../ngrx/actions/mps.actions'
 import * as protocolActions from '../ngrx/actions/protocol.actions'
 import * as fromProjects from '../ngrx/reducers/dryfix.reducer'
@@ -39,8 +40,17 @@ export class StateService {
     this.store.dispatch(new projectActions.Query(id))
   }
 
+  loadUser = (id: string) => {
+    console.log(id)
+    this.store.dispatch(new userActions.Query(id));
+  }
+
   returnCurrentProject() {
     return this.store.pipe(select('currentProject'))
+  }
+
+  returnCurrentUser() {
+    return this.store.pipe(select('currentUser'))
   }
 
   queryMps = (protocolID: string) => {

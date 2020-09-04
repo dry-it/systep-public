@@ -1,5 +1,6 @@
 <ng-container *ngIf="isElectron">
     <div *ngIf="structure$ | async as s" class="box">
+        <span class="is-block">Total project size: {{sizeParser(s.totalSize)}}</span>
         <app-folder *ngFor="let folder of s.folders" [data]="folder"></app-folder>
         <app-file *ngFor="let file of s.files" [data]="file"></app-file>
     </div>

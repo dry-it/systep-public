@@ -15,6 +15,7 @@ export class DocumentListerComponent implements OnInit {
     isElectron: boolean
 
     structure: any = {
+        totalSize: 0,
         open: true,
         files: [],
         folders: []
@@ -46,6 +47,25 @@ export class DocumentListerComponent implements OnInit {
         })
     }
 
+    sizeParser(size:number) {
+
+        if (!size) {
+            return 'Calculating...'
+        }
+
+        else if (size > 10000000) {
+          return (size / 1000000000).toFixed(1) + 'GB'
+        }
+    
+        else if (size > 1000000) {
+          return (size / 1000000).toFixed(1) + 'MB'
+        }
+    
+        else {
+          return (size / 1000).toFixed(0) + 'K'
+        } 
+    }
+
     async startDigging(moveFrom) {
         // Our starting point
         try {
@@ -65,9 +85,13 @@ export class DocumentListerComponent implements OnInit {
                     if (file === '.DS_Store') {
                         // console.log('removing ds_store')
                     } else {
+                        this.structure.totalSize = this.structure.totalSize + stat.size
                         this.structure.files.push({
                             name: file,
                             type: 'file',
+                            size: stat.size,
+                            modified: stat.mtime,
+                            created: stat.birthtime,
                             extension: this.electronService.path.extname(fromPath),
                             path: fromPath
                         })
@@ -130,9 +154,13 @@ export class DocumentListerComponent implements OnInit {
                     if (file === '.DS_Store') {
                         // console.log('removing ds_store')
                     } else {
+                        this.structure.totalSize = this.structure.totalSize + stat.size
                         par.files.push({
                             name: file,
                             type: 'file',
+                            size: stat.size,
+                            modified: stat.mtime,
+                            created: stat.birthtime,
                             extension: this.electronService.path.extname(fromPath),
                             path: fromPath
                         })

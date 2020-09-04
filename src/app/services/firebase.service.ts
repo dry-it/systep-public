@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, mergeMap, mergeMapTo, flatMap } from 'rxjs/operators';
+import { concat, zip } from 'rxjs';
 
 
 @Injectable({
@@ -231,6 +232,11 @@ export class FireBaseService {
     return this.afs.doc(path).set(body);
   }
 
+  deleteDocumentPath = (path: string) => {
+    return this.afs.doc(path).delete();
+  }
+
+
   updateDocument = (collection: string, id: string, body: any) => {
     return this.afs.collection(collection).doc(id).update(body);
   }
@@ -248,4 +254,37 @@ export class FireBaseService {
         tiles: tiles
       });
   }
+
+  searchProjects = (value: string) => {
+    const queryName = this.afs.collection('projects', ref => ref.where('name', '>=', value).where('name', '<=', value + '\uf8ff'))
+      .snapshotChanges()
+      .pipe(
+        map(actions =>
+          actions.map(a => {
+            const data = a.payload.doc.data() as any;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+        )
+      );
+
+    const queryPnum = this.afs.collection('projects', ref => ref.where('pNumber', '>=', value).where('pNumber', '<=', value + '\uf8ff'))
+      .snapshotChanges()
+      .pipe(
+        map(actions =>
+          actions.map(a => {
+            const data = a.payload.doc.data() as any;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+        )
+      );
+
+    return zip(queryName, queryPnum).pipe(map(x => x[0].concat(x[1])))
+
+
+
+
+  }
+
 }

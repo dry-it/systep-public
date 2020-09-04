@@ -23,9 +23,10 @@
 <div class="columns">
   <div style="-webkit-app-region: drag" class="column is-2 has-background-light is-hidden-touch fixed-width">
     <aside style="margin-top: 1.5rem; position:fixed;" class="menu menu-padding">
+      <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
       <div class="field has-addons">
         <div class="control">
-          <input class="input is-fullwidth is-small" type="text" placeholder="Find a project">
+          <input formControlName="term" class="input is-fullwidth is-small" type="text" placeholder="Find a project">
         </div>
         <div class="control">
           <a class="button is-info is-small">
@@ -33,6 +34,14 @@
           </a>
         </div>
       </div>
+    </form>
+    <div *ngIf="results" class="result blur-white">
+      <span class="is-block has-text-weight-bold">Sökresultat</span>
+      <div *ngFor="let result of results" class="is-block">
+        <span class="is-block">{{result.name}}</span>
+        <span class="is-block is-size-7">{{result.pNumber}}</span>
+      </div>
+    </div>
 
       <div *ngIf="user$ | async as user" class="img-div">
         <div class="columns is-gapless">
@@ -50,18 +59,10 @@
         General
       </p>
       <ul class="menu-list">
-        <li><a><i class="fas fa-folder"></i> Projekt</a></li>
-        <li><a><i class="fas fa-filter"></i> Filter</a></li>
-        <li><a><i class="fas fa-bell"></i> Notiser</a></li>
-        <li><a><i class="fas fa-cog"></i> Settings</a></li>
-      </ul>
-      <p class="menu-label">
-        Senaste projekt
-      </p>
-      <ul class="menu-list">
-        <li><a><i class="fas fa-folder"></i> Projekt</a></li>
-        <li><a><i class="fas fa-filter"></i> Filter</a></li>
-        <li><a><i class="fas fa-bell"></i> Notiser</a></li>
+        <li><a routerLink="/home/start"><i class="fas fa-folder"></i> Projekt</a></li>
+        <li><a class="has-text-grey"><i class="fas fa-filter"></i> Filter</a></li>
+        <li><a class="has-text-grey"><i class="fas fa-bell"></i> Notiser</a></li>
+        <li><a routerLink="/home/settings"><i class="fas fa-cog"></i> Settings</a></li>
       </ul>
 
     </aside>

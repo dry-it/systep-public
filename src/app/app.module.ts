@@ -63,10 +63,12 @@ import { dryfixReducer } from './ngrx/reducers/dryfix.reducer'
 import { mpsReducer } from './ngrx/reducers/mps.reducer'
 import { protocolsReducer } from './ngrx/reducers/protocol.reducer'
 import { projectReducer } from './ngrx/reducers/project.reducer'
+import { userReducer } from './ngrx/reducers/user.reducer'
 import { DryfixEffects } from './ngrx/effects/dryfix.effects'
 import { MpsEffects } from './ngrx/effects/mps.effects'
 import { protocolsEffects } from './ngrx/effects/protocol.effects'
 import { ProjectEffects } from './ngrx/effects/project.effects'
+import { UserEffects } from './ngrx/effects/user.effects'
 
 import { StateService } from './services/state.service'
 import { MarkdownModule } from 'ngx-markdown';
@@ -76,12 +78,13 @@ import { ProjectWrapperComponent } from './pages/project-wrapper/project-wrapper
 import { DocumentListerComponent } from './pages/document-lister/document-lister.component';
 import { FolderComponent } from './components/folder/folder.component';
 import { FileComponent } from './components/file/file.component';
-import { FileIconComponent } from './components/file-icon/file-icon.component'
+import { FileIconComponent } from './components/file-icon/file-icon.component';
+import { SettingsComponent } from './pages/settings/settings.component'
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+} 
 
 @NgModule({
   declarations: [
@@ -111,6 +114,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     FolderComponent,
     FileComponent,
     FileIconComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -140,9 +144,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       dryfix: dryfixReducer,
       mps: mpsReducer,
       protocols: protocolsReducer,
-      currentProject: projectReducer
+      currentProject: projectReducer,
+      currentUser: userReducer
     }),
-    EffectsModule.forRoot([DryfixEffects, MpsEffects, protocolsEffects, ProjectEffects]),
+    EffectsModule.forRoot([DryfixEffects, MpsEffects, protocolsEffects, ProjectEffects, UserEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: AppConfig.production }),
 
   ],
