@@ -40,4 +40,18 @@
 
 
     </form>
+
+    <div style="margin-top: 1rem;" *ngIf="currentUser$ | async as user">
+       <img [src]="user.profilePictureUrl" alt=""> 
+    </div>
+
+    
+
+    <div class="field">
+        <label class="label">Profilbild</label>
+        <div class="control">
+            <input (change)="saveAvatar($event)" #file class="input is-small" type="file"
+                placeholder="Stockholm, Uppsala, Göteborg, Malmö">
+        </div>
+    </div>
 </div>

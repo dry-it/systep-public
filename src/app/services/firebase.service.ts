@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map, switchMap, mergeMap, mergeMapTo, flatMap } from 'rxjs/operators';
 import { concat, zip } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 @Injectable({
@@ -9,13 +10,17 @@ import { concat, zip } from 'rxjs';
 })
 export class FireBaseService {
 
-  constructor(private readonly afs: AngularFirestore) { }
+  constructor(private readonly afs: AngularFirestore, private storage: AngularFireStorage) { }
 
   creation() {
     return {
       createdById: localStorage.uid,
       created: new Date()
     }
+  }
+
+  getImgUrl(path:string) {
+    return this.storage.ref(path).getDownloadURL()
   }
 
   getCollectionSnapshot = (collection: string) => {

@@ -168,7 +168,7 @@ export class HomeComponent implements OnInit {
 
   activities: Activity[]
   projects$: Observable<any>
-  user$: Promise<any>
+  user$: Observable<any>
 
   searchForm = new FormGroup({
     term: new FormControl('')
@@ -184,6 +184,9 @@ export class HomeComponent implements OnInit {
 
   results: any
 
+  profilePic$: Observable<any>
+
+
 
   ngOnInit(): void {
 
@@ -192,15 +195,18 @@ export class HomeComponent implements OnInit {
     this.searchForm.valueChanges
       .pipe(auditTime(1000))
       .subscribe((result) => {
-        this.fireBaseService.searchProjects(result.term)
-          .subscribe((res) => {
-            console.log(res);
-            this.results = res;
-          })
+        if (result.term.length > 1) {
+          this.fireBaseService.searchProjects(result.term)
+            .subscribe((res) => {
+              console.log(res);
+              this.results = res;
+            })
+        }
+
       })
 
 
-    this.user$ = this.auth.currentUser
+    this.user$ = this.stateService.returnCurrentUser()
 
     this.projects$ = this.fireBaseService.getCollectionSnapshot('projects')
     this.projects$.subscribe((project) => console.log(project))
@@ -400,6 +406,13 @@ export class HomeComponent implements OnInit {
     this.auth.currentUser.then((u: any) => {
       if (u) {
         this.stateService.loadUser(u.uid);
+        this.stateService.returnCurrentUser()
+          .subscribe((user: any) => {
+            console.log(user)
+            if (user.profilePicture) {
+              this.profilePic$ = this.fireBaseService.getImgUrl(user.profilePicture)
+            }
+          })
         console.log(u)
       }
       localStorage.uid = u.uid
@@ -423,6 +436,13 @@ export class HomeComponent implements OnInit {
     })
 
 
+  }
+
+
+  openProject(id: string) {
+    this.router.navigateByUrl(`/home/projectview/${id}/project`)
+    this.searchForm.patchValue({ term: '' });
+    this.results = undefined;
   }
 
 

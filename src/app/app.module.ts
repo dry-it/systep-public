@@ -30,6 +30,7 @@ import { StartComponent } from './pages/start/start.component'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AppConfig } from '../environments/environment';
 
 import { FireBaseService } from './services/firebase.service';
@@ -80,6 +81,7 @@ import { FolderComponent } from './components/folder/folder.component';
 import { FileComponent } from './components/file/file.component';
 import { FileIconComponent } from './components/file-icon/file-icon.component';
 import { SettingsComponent } from './pages/settings/settings.component'
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -132,6 +134,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AngularFireModule.initializeApp(AppConfig.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {

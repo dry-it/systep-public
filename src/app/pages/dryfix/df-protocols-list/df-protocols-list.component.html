@@ -1,9 +1,9 @@
 <div style="margin-top: 1rem;" class="container">
     <div class="box">
         <ng-container *ngIf="protocols$ | async as protocols">
-            <ng-container *ngIf="!loading$ | async">
+<!--             <ng-container *ngIf="!loading$ | async">
                 <ng-container *ngIf="protocols.length == 0">No protocols found...</ng-container>
-            </ng-container>       
+            </ng-container>  -->      
         <table *ngIf="protocols.length > 0" class="table is-fullwidth">
             <thead>
                 <th>Name</th>
@@ -28,9 +28,9 @@
         </table>
         </ng-container>
 
-        <ng-container *ngIf="loading$ | async">
+<!--         <ng-container *ngIf="loading$ | async">
             <p>Loading protocols <i class="fas fa-spinner fa-spin"></i> </p>
-        </ng-container>
+        </ng-container> -->
 
     </div>
 </div>
