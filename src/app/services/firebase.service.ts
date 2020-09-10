@@ -129,6 +129,10 @@ export class FireBaseService {
     return this.afs.collection<any>('testarea/dryfix/measurementpoints', ref => ref.where('protocolID', '==', protocolID).orderBy('name', 'asc')).stateChanges()
   }
 
+  getUsers() {
+    return this.afs.collection<any>('users').stateChanges()
+  }
+
   getProtocols(projectID: string) {
     return this.afs.collection<any>(`testarea/dryfix/projects/${projectID}/protocols`).stateChanges()
   }

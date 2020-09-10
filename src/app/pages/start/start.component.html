@@ -20,25 +20,9 @@
     <div class="columns">
       <div style="margin: 10px;" class="column">
         <h2 class="title is-5">Mina Projekt</h2>
-        <div *ngIf="projects$ | async as projects" class="box">
-          <div class="table-container">
-            <table class="table is-fullwidth is-striped is-hoverable">
-              <thead class="has-background-dark">
-                <th class="has-text-white">Projektnamn</th>
-                <th class="has-text-white">Pnummer</th>
-                <th class="has-text-white">Kund</th>
-                <th class="has-text-white">Uppdragsansvarig</th>
-              </thead>
-              <tbody>
-                <tr (click)="openProject(project.id)" *ngFor="let project of projects">
-                  <td>{{project.name}}</td>
-                  <td>{{project.pNumber}}</td>
-                  <td>{{project.company}}</td>
-                  <td>{{project.owner.displayName}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <button style="margin-bottom: 1rem;" class="button is-link is-large">Skapa nytt projekt</button>
+        <div *ngIf="projects$ | async as projects">
+          <app-project-panel *ngFor="let project of projects" [owner]="project.owner" [project]="project"></app-project-panel>
         </div>
       </div>
     </div>

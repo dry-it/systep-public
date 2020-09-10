@@ -41,9 +41,6 @@ export class CreateProjectComponent implements OnInit {
         project_registered: false,
       }
     }
-
-
-
   }
 
   onSubmit() {
@@ -56,7 +53,7 @@ export class CreateProjectComponent implements OnInit {
     }
 
 
-    this.fireBaseService.addDocument('projects', { ...this.createProjectForm.value })
+    this.fireBaseService.addDocument('projects', {...this.createProjectForm.value, createdBy: localStorage.uid})
       .then((project: any) => {
         const projectID = project.id
 
@@ -87,8 +84,6 @@ export class CreateProjectComponent implements OnInit {
 
 
       })
-
-
     console.log(newProject);
   }
 

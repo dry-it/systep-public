@@ -65,11 +65,13 @@ import { mpsReducer } from './ngrx/reducers/mps.reducer'
 import { protocolsReducer } from './ngrx/reducers/protocol.reducer'
 import { projectReducer } from './ngrx/reducers/project.reducer'
 import { userReducer } from './ngrx/reducers/user.reducer'
+import { usersReducer } from './ngrx/reducers/users.reducer'
 import { DryfixEffects } from './ngrx/effects/dryfix.effects'
 import { MpsEffects } from './ngrx/effects/mps.effects'
 import { protocolsEffects } from './ngrx/effects/protocol.effects'
 import { ProjectEffects } from './ngrx/effects/project.effects'
 import { UserEffects } from './ngrx/effects/user.effects'
+import { UsersEffects } from './ngrx/effects/users.effects'
 
 import { StateService } from './services/state.service'
 import { MarkdownModule } from 'ngx-markdown';
@@ -80,7 +82,9 @@ import { DocumentListerComponent } from './pages/document-lister/document-lister
 import { FolderComponent } from './components/folder/folder.component';
 import { FileComponent } from './components/file/file.component';
 import { FileIconComponent } from './components/file-icon/file-icon.component';
-import { SettingsComponent } from './pages/settings/settings.component'
+import { SettingsComponent } from './pages/settings/settings.component';
+import { ProjectPanelComponent } from './components/project-panel/project-panel.component';
+import { ProjectStatusComponent } from './components/project-status/project-status.component'
 
 
 // AoT requires an exported function for factories
@@ -117,6 +121,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     FileComponent,
     FileIconComponent,
     SettingsComponent,
+    ProjectPanelComponent,
+    ProjectStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -148,9 +154,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       mps: mpsReducer,
       protocols: protocolsReducer,
       currentProject: projectReducer,
-      currentUser: userReducer
+      currentUser: userReducer,
+      users: usersReducer
     }),
-    EffectsModule.forRoot([DryfixEffects, MpsEffects, protocolsEffects, ProjectEffects, UserEffects]),
+    EffectsModule.forRoot([DryfixEffects, MpsEffects, protocolsEffects, ProjectEffects, UserEffects, UsersEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: AppConfig.production }),
 
   ],

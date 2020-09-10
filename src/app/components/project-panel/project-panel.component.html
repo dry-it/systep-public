@@ -1,0 +1,29 @@
+<div (click)="openProject()" style="padding: 10px; margin-bottom: 0.5rem" class="box">
+    <div class="columns">
+        <div class="column is-3">
+            <h4 class="title is-6" style="margin: 2px;">{{project.name}}</h4>
+            <h4 class="subtitle is-6" style="margin-top: 2px;">{{project.company}}</h4>
+            <h4 class="subtitle is-7" style="margin-top: 2px;">{{project.pNumber}}</h4>
+        </div>
+        <div class="column is-1 has-text-centered">
+            <h4 class="title is-7" style="margin: 2px;">UA</h4>
+            <ng-container *ngIf="owner$ | async as owner">
+                <span class="is-block">
+                    <img class="small-avatar" [src]="owner.profilePictureUrl" alt="">
+                </span>
+            </ng-container>
+        </div>
+        <div class="column is-1 has-text-centered">
+            <h4 class="title is-7" style="margin: 2px;">Deltagare</h4>
+            <ng-container *ngIf="owner$ | async as owner">
+                <span class="is-block">
+                    <img class="small-avatar" [src]="owner.profilePictureUrl" alt="">
+                </span>
+            </ng-container>
+        </div>
+            <div class="column">
+                <app-project-status [id]="project.id"></app-project-status>
+            </div>
+    </div>
+
+</div>

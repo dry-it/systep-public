@@ -190,6 +190,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.stateService.loadUsers()
+
     this.checkUser()
 
     this.searchForm.valueChanges
