@@ -10,20 +10,21 @@
     </div>
   </div>
 </section>
-<button (click)="navigate('/admin/block-builder')" class="button is-small is-dark">Go to admin</button>
+<!-- <button (click)="navigate('/admin/block-builder')" class="button is-small is-dark">Go to admin</button>
 <button (click)="navigate('/home/create-project')" class="button is-small is-success">Go to create project</button>
 <button (click)="navigate('/home/project')" class="button is-small is-success">Go to project</button>
 <button (click)="navigate('/home/dryfix')" class="button is-small is-success">Go to dryfix</button>
-<button (click)="openDoc()" class="button is-small is-warning">Go to doc</button>
+<button (click)="openDoc()" class="button is-small is-warning">Go to doc</button> -->
 
-  <div class="container">
-    <div class="columns">
-      <div style="margin: 10px;" class="column">
-        <h2 class="title is-5">Mina Projekt</h2>
-        <button style="margin-bottom: 1rem;" class="button is-link is-large">Skapa nytt projekt</button>
-        <div *ngIf="projects$ | async as projects">
-          <app-project-panel *ngFor="let project of projects" [owner]="project.owner" [project]="project"></app-project-panel>
-        </div>
+<div class="container">
+  <div class="columns">
+    <div style="margin: 10px;" class="column">
+      <h2 class="title is-5">Mina Projekt</h2>
+      <button style="margin-bottom: 1rem;" class="button is-link is-large">Skapa nytt projekt</button>
+      <div *ngIf="projects$ | async as projects">
+        <app-project-panel *ngFor="let project of projects" [owner]="project.owner" [project]="project">
+        </app-project-panel>
       </div>
     </div>
   </div>
+</div>
