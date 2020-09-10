@@ -11,12 +11,22 @@ function createWindow(): BrowserWindow {
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
+  let frame = false
+
+  console.log(process.platform)
+
+  if (process.platform !== 'darwin') {
+    frame = true
+  }
+
+
   // Create the browser window.
   win = new BrowserWindow({
     width: 1200,
     height: 800,
     hasShadow: true,
-    frame: false,
+    frame: frame,
+    resizable: true,
     vibrancy: 'light',
     transparent: true,
     backgroundColor: '#0000000',
