@@ -89,7 +89,6 @@ export class ProjectComponent implements OnInit {
   project$: Observable<any>
   project: any
   id: string
-  activities$: Observable<any>
 
   constructor(
     private router: Router,
@@ -106,11 +105,6 @@ export class ProjectComponent implements OnInit {
 
     // this.project$ = this.data.get('project/5f2d3bdb2a7883725b161c19')
     this.project$ = this.stateService.returnCurrentProject()
-    this.project$.subscribe((project) => {
-      console.log(project.id)
-      this.project = project
-      this.activities$ = this.fireBaseService.getCollectionSnapshot(`projects/${project.id}/activities`)
-    })
 
 
     this.act = [

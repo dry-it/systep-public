@@ -111,7 +111,7 @@ export class FireBaseService {
 
   }
 
-  getCollectionQueryOrder = (collection: string, field: string, value: string, order: string) => {
+  getCollectionQueryOrder = (collection: string, field: string, value: any, order: string) => {
     return this.afs.collection<any>(collection, ref => ref.where(field, '==', value).orderBy(order, 'asc')).snapshotChanges().pipe(
       map(actions =>
         actions.map(a => {

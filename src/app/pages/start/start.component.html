@@ -10,15 +10,15 @@
     </div>
   </div>
 </section>
-<!-- <button (click)="navigate('/admin/block-builder')" class="button is-small is-dark">Go to admin</button>
+<button (click)="navigate('/admin/block-builder')" class="button is-small is-dark">Go to admin</button>
 <button (click)="navigate('/home/create-project')" class="button is-small is-success">Go to create project</button>
 <button (click)="navigate('/home/project')" class="button is-small is-success">Go to project</button>
 <button (click)="navigate('/home/dryfix')" class="button is-small is-success">Go to dryfix</button>
-<button (click)="openDoc()" class="button is-small is-warning">Go to doc</button> -->
-<section class="section">
+<button (click)="openDoc()" class="button is-small is-warning">Go to doc</button>
+
   <div class="container">
     <div class="columns">
-      <div class="column">
+      <div style="margin: 10px;" class="column">
         <h2 class="title is-5">Mina Projekt</h2>
         <div *ngIf="projects$ | async as projects" class="box">
           <div class="table-container">
@@ -43,4 +43,3 @@
       </div>
     </div>
   </div>
-</section>

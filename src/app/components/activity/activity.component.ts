@@ -24,14 +24,21 @@ export class ActivityComponent implements OnInit {
   blocks$: Observable<any>
   blocks: any
 
+  checkpoints$: Observable<any>
+
 
   constructor(private electron: ElectronService, private fireBaseService: FireBaseService, private documentService: DocumentService) { }
 
   ngOnInit() {
+    console.log(this.index)
 
-    this.blocks$ = this.fireBaseService.getCollectionSnapshot(`projects/${this.id}/activities/${this.aid}/blocks`)
+    //this.blocks$ = this.fireBaseService.getCollectionSnapshot(`projects/${this.id}/activities/${this.aid}/blocks`)
 
-    this.getBlocks()
+    // this.getBlocks()
+
+    this.checkpoints$ = this.fireBaseService.getCollectionQueryOrder(`projects/${this.id}/checkPoints`, 'activityID', this.index, 'order')
+
+    this.checkpoints$.subscribe((res) => console.log(res))
 
   }
 
@@ -95,11 +102,8 @@ export class ActivityComponent implements OnInit {
     this.save.emit(this.activity)
   }
 
-  saveCheck(i: number, bi: number) {
+  saveCheck(checkPoint:any) {
 
-    const check = this.blocks[bi].checkPoints[i]
-    const cid = this.blocks[bi].checkPoints[i].id
-    const bid = this.blocks[bi].id
 
   /*   if (check.flag) {
 
@@ -110,7 +114,7 @@ export class ActivityComponent implements OnInit {
         .then(() => console.log('updated'))
     } */
 
-    this.fireBaseService.setDocumentPath(`projects/${this.id}/activities/${this.aid}/blocks/${bid}/checkpoints/${cid}`, check)
+    this.fireBaseService.updateDocument(`projects/${this.id}/checkPoints`, checkPoint.id, checkPoint)
       .then()
 
     //let body = { `activities[${this.index}]` : `dsd`}
@@ -129,13 +133,9 @@ export class ActivityComponent implements OnInit {
 
   }
 
-  deleteCheck(i: number, bi: number) {
+  deleteCheck(checkPoint: any) {
 
-    const check = this.blocks[bi].checkPoints[i]
-    const cid = this.blocks[bi].checkPoints[i].id
-    const bid = this.blocks[bi].id
-
-  /*   if (check.flag) {
+     /*   if (check.flag) {
 
       const flagField = `${check.flag}`
 
@@ -144,8 +144,8 @@ export class ActivityComponent implements OnInit {
         .then(() => console.log('updated'))
     } */
 
-    if (check.deleteable) {
-      this.fireBaseService.deleteDocumentPath(`projects/${this.id}/activities/${this.aid}/blocks/${bid}/checkpoints/${cid}`)
+    if (checkPoint.deleteable) {
+      this.fireBaseService.deleteDocumentPath(`projects/${this.id}/checkpoints/${checkPoint.id}`)
       .then()
     }
 

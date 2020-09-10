@@ -13,18 +13,14 @@ export const activities = [
       icon: 'none',
       arrow: ''
     },
-    blocks: [
-      {
-        type: 'checkList',
-        title: 'Checkpoints',
+        checkListTitle: 'Checkpoints',
         checkPoints: [
           { label: 'Projekt registrerat i pyramid', state: false, flag: 'project_registerd' },
           { label: 'Projektmapp skapad', state: false },
           { label: 'Uppdragsansvarig utsedd', state: false },
           { label: 'Uppdragsorganisation', state: false },
         ]
-      }
-    ]
+
     ,
   },
   {
@@ -35,10 +31,7 @@ export const activities = [
       icon: 'chalkboard-teacher',
       arrow: ''
     },
-    blocks: [
-      {
-        type: 'checkList',
-        title: 'Checkpoints',
+        checkListTitle: 'Checkpoints',
         checkPoints: [
           { label: 'Startmöte utfört', state: false },
           { label: 'Behovsanalys utförd', state: false },
@@ -46,10 +39,7 @@ export const activities = [
           { label: 'Offert upprättad', state: false },
           { label: 'Offert Levererad/Pressenterad', state: false }
         ]
-      }
-
-    ]
-  },
+      },
   {
     title: 'Uppdragsbekräftelse/Avtal',
     desc: 'När kunden har godkänt upprättad offert bekräftas uppdraget genom ett avtal som kunden upprättar alt skickar uppdragsansvarig (UA) uppdragsbekräftelse. (Uppdragsbekräftelse måste godkännas av kund  alt signerat avtal innan arbete påbörjas.)',
@@ -58,20 +48,17 @@ export const activities = [
       icon: 'chalkboard-teacher',
       arrow: ''
     },
-    blocks: [
-      {
+
         type: 'checkList',
-        title: 'Checkpoints',
+        checkListTitle: 'Checkpoints',
         checkPoints: [
           { label: 'Offert godkänd av kund', state: false },
           { label: 'Uppdragsbekräftelse/Avtal skickat', state: false },
           { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false },
           { label: 'Faktureringsrutiner fastställda i pramid', state: false },
         ]
-      }
+      },
 
-    ]
-  },
   {
     title: 'Genomförande',
     desc: `
@@ -94,10 +81,7 @@ export const activities = [
       color: 'primary',
       icon: 'tools',
       arrow: 'to'
-    },
-    blocks: [
-
-    ]
+    }
   },
   {
     title: 'Intern granskning',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FireBaseService } from '../../services/firebase.service';
 import { Observable } from 'rxjs';
-import { activities} from './standard-activities'
+import { activities } from './standard-activities'
 
 @Component({
   selector: 'app-create-project',
@@ -43,7 +43,7 @@ export class CreateProjectComponent implements OnInit {
     }
 
 
-    
+
   }
 
   onSubmit() {
@@ -55,41 +55,37 @@ export class CreateProjectComponent implements OnInit {
       }
     }
 
-    this.fireBaseService.getDocumentValueChanges('users', newProject.owner)
-      .subscribe((owner: any) => {
-        newProject.owner = owner
-        this.fireBaseService.addDocument('projects', { ...newProject, owner: owner })
-          .then((doc) => {
-            console.log(doc)
-            console.log(doc.id)
-            for (let i = 0; i < activities.length; i++) {
 
-              this.fireBaseService.setDocumentPath(`projects/${doc.id}/activities/${i}`, { ...activities[i], blocks: [] })
-                .then((res) => {
-                  if (activities[i].blocks) {
-                    for (let j = 0; j < activities[i].blocks.length; j++) {
-                      this.fireBaseService.setDocumentPath(`projects/${doc.id}/activities/${i}/blocks/${j}`, { ...activities[i].blocks[j], checkPoints: [] })
-                        .then(() => {
-                          if (activities[i].blocks[j].checkPoints) {
-                            for (let k = 0; k < activities[i].blocks[j].checkPoints.length; k++) {
-                              this.fireBaseService.setDocumentPath(`projects/${doc.id}/activities/${i}/blocks/${j}/checkpoints/${k}`, { ...activities[i].blocks[j].checkPoints[k] })
-                                .then(() => console.log('done'))
-                            }
-                          }
+    this.fireBaseService.addDocument('projects', { ...this.createProjectForm.value })
+      .then((project: any) => {
+        const projectID = project.id
 
-
-                        })
-                    }
-                  }
-
+        for (let i = 0; i < activities.length; i++) {
+          const a = activities[i]
+          if (a.checkPoints) {
+            for (let j = 0; j < a.checkPoints.length; j++) {
+              const checkPoint = a.checkPoints[j];
+              this.fireBaseService.addDocument(`projects/${projectID}/checkPoints`, { ...checkPoint, activityID: i, order: j })
+                .then((c: any) => {
+                  console.log(`Checkpoint with id: ${c.id} added`)
                 })
-
-              /*   this.fireBaseService.addDocumentActivities('projects', doc.id, 'activities', i.toString(), {...this.activities[i], blocks: undefined})
-                .then((res) => {
-        
-                }) */
             }
-          })
+          }
+        }
+
+        let strippedActivities = Object.assign(activities)
+        for (let i = 0; i < strippedActivities.length; i++) {
+          const a = strippedActivities[i]
+          if (a.checkPoints) {
+            a.hasCheckpoints = true
+            delete a.checkPoints;
+          }
+        }
+
+        this.fireBaseService.updateDocument('projects', projectID, {activities: strippedActivities})
+        .then(() => console.log('Activities added!'))
+
+
       })
 
 

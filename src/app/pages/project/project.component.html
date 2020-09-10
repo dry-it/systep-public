@@ -4,9 +4,9 @@
     <h2 class="subtitle is-7 has-text-grey">Uppdaterades 2020-02-28 av <span class="has-text-link"
         style="cursor: pointer;">Jesper Martinsson</span></h2>
 
-    <ng-container *ngIf="activities$ | async as activities">
-      <app-activity *ngFor="let a of activities; let i = index" (save)="save($event, i)"
-        (execute)="execute($event)" [activity]="a" [index]="i" [aid]="a.id" [id]="project.id" [length]="activities.length"></app-activity>
+    <ng-container *ngIf="project$ | async as project">
+      <app-activity *ngFor="let a of project.activities; let i = index" (save)="save($event, i)"
+        (execute)="execute($event)" [activity]="a" [index]="i" [aid]="a.id" [id]="project.id" [length]="project.activities.length"></app-activity>
     </ng-container>
 
   </div>
