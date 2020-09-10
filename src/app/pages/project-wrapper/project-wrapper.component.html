@@ -1,14 +1,14 @@
 <div class="columns">
     <div *ngIf="project$ | async as project" class="column">
-        <div style="margin-top: 1rem; margin-left: 20px;" class="box">
-            <h2 style="margin: 0px;" class="title">{{project.name}}</h2>
-            <h3 style="margin-top: 0px;" class="subtitle is-6">{{project.company}} - {{project.pNumber}}</h3>
+        <div style="margin-top: 1.5rem;" class="box has-background-dark">
+            <h2 style="margin: 0px;" class="title has-text-white">{{project.name}}</h2>
+            <h3 style="margin-top: 0px;" class="subtitle is-6 has-text-light">{{project.company}} - {{project.pNumber}}</h3>
         </div>
         <router-outlet></router-outlet>
     </div>
 
     <div class="column is-2 bg-sidebar is-hidden-touch fixed-width">
-        <aside style="margin-top: 1rem; position:fixed;" class="menu menu-padding">
+        <aside style="margin-top: 1rem; position:fixed;" class="menu">
 
             <p class="menu-label">
                 Navigation

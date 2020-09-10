@@ -193,7 +193,7 @@ export class HomeComponent implements OnInit {
     this.checkUser()
 
     this.searchForm.valueChanges
-      .pipe(auditTime(1000))
+      .pipe(auditTime(500))
       .subscribe((result) => {
         if (result.term.length > 1) {
           this.fireBaseService.searchProjects(result.term)
@@ -201,6 +201,8 @@ export class HomeComponent implements OnInit {
               console.log(res);
               this.results = res;
             })
+        } else {
+          this.results = undefined
         }
 
       })
