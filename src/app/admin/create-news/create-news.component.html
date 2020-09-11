@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="field">
+        <input [(ngModel)]="title" class="input is-large" type="text" placeholder="Titel">
+    </div>
+    <div class="field">
+        <div [froalaEditor] [(froalaModel)]="editorContent"></div>
+    </div>
+
+    <div class="field">
+        <button (click)="save()" class="button">save</button>
+    </div>
+
+
+
+
+    <div style="padding: 20px;" class="box">
+        <h3 style="margin: 0px;">Preview</h3>
+        <hr>
+        <h1 style="margin-bottom: 1.5rem;">{{title}}</h1>
+        <div [froalaView]="editorContent"></div>
+    </div>
+</div>

@@ -10,10 +10,13 @@ import { ActivityComponent } from '../components/activity/activity.component';
 import { SubActivityComponent } from '../components/sub-activity/sub-activity.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FireBaseService } from '../services/firebase.service';
+import { CreateNewsComponent } from './create-news/create-news.component';
+import { FroalaViewModule, FroalaEditorModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
-    AdminComponent, BlockBuilderComponent],
-  imports: [CommonModule, SharedModule, AdminRoutingModule, ReactiveFormsModule]
+    AdminComponent, BlockBuilderComponent, CreateNewsComponent],
+  imports: [CommonModule, SharedModule, AdminRoutingModule, ReactiveFormsModule,     FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot(),]
 })
 export class AdminModule { }

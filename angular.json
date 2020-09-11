@@ -22,7 +22,9 @@
             "styles": [
               "src/styles.scss",
               "./node_modules/bulma/css/bulma.css",
-              "node_modules/prismjs/themes/prism-okaidia.css"
+              "node_modules/prismjs/themes/prism-okaidia.css",
+              "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
+              "./node_modules/froala-editor/css/froala_style.min.css"
             ],
             "scripts": [
               "node_modules/marked/lib/marked.js",

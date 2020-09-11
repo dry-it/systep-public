@@ -71,8 +71,14 @@ const language = 'typescript';
 
   }
 
+  public editorContent: string = 'My Document\'s Title'
+
   openProject(id) {
     this.router.navigateByUrl(`/home/projectview/${id}/project`)
+  }
+
+  showText() {
+    console.log(this.editorContent)
   }
 
 }

@@ -86,6 +86,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { ProjectPanelComponent } from './components/project-panel/project-panel.component';
 import { ProjectStatusComponent } from './components/project-status/project-status.component'
 
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -142,6 +143,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AngularFirestoreModule,
     AngularFireStorageModule,
     AppRoutingModule,
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
