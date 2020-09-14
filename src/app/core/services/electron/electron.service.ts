@@ -36,4 +36,8 @@ export class ElectronService {
       this.path = window.require('path');
     }
   }
+
+  public sendTest() {
+    this.ipcRenderer.send('create-doc', 'test')
+  }
 }

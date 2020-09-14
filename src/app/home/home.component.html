@@ -21,7 +21,7 @@
 </div>
 
 <div class="columns is-gapless">
-  <div style="-webkit-app-region: drag" class="column is-2 has-background-light is-hidden-touch fixed-width">
+  <div *ngIf="!hideSidebar" style="-webkit-app-region: drag" class="column is-2 has-background-light is-hidden-touch fixed-width">
     <aside style="margin-top: 1.5rem; position:fixed;" class="menu menu-padding">
       <form [formGroup]="searchForm">
         <div style="margin-bottom: 1rem;" class="field is-fullwidth">

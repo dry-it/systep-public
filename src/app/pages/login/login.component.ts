@@ -16,25 +16,27 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  constructor(public auth: AngularFireAuth, private router:Router) { }
+  constructor(public auth: AngularFireAuth, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     this.auth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
-    .then((user) => {
-      if (user) {
-        this.router.navigateByUrl('/home/start')
-      }
-    })
-    .catch((err) => console.error(err))
+      .then((user) => {
+        if (user) {
+          this.router.navigateByUrl('/home/start')
+        }
+      })
+      .catch((err) => console.error(err))
 
   }
 
   login() {
-    this.auth.signInWithPopup(new auth.GoogleAuthProvider())
+    this.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(() => {
+      this.auth.setPersistence('LOCAL')
+    })
   }
- 
+
 
 }

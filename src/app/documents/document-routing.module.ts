@@ -11,6 +11,7 @@ import { DryfixComponent } from '../pages/dryfix/dryfix.component';
 import { DfProjectComponent } from '../pages/dryfix/df-project/df-project.component';
 import { DfProtocolComponent } from '../pages/dryfix/df-protocol/df-protocol.component';
 import { ViewerComponent } from './viewer/viewer.component';
+import { ProtocolViewComponent } from 'app/dryfix/protocol-view/protocol-view.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -29,8 +30,13 @@ const routes: Routes = [
         path: '',
         component: ViewerComponent
       },
+      {
+        path: 'protocol-viewer/:projectid/:protocolid',
+        component: ProtocolViewComponent
+      }
     ]
-  },];
+  }
+];
 
 @NgModule({
   declarations: [],

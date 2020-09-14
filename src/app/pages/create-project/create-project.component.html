@@ -22,12 +22,22 @@
                     <input formControlName="company" class="input" type="text" placeholder="Kund">
                 </div>
             </div>
+            <div class="field">
+                <label class="label">Omfattning</label>
+                <div class="control">
+                    <select class="select input" formControlName="type" name="" id="">
+                        <option selected value="sm">Litet < 100h</option>
+                        <option value="lg">Stort > 100h</option>
+                    </select>
+                </div>
+            </div>
 
             <div class="field">
                 <label class="label">Uppdragsansvarig</label>
                 <div class="control">
                     <select *ngIf="users$ | async as users" formControlName="owner" class="select" name="" id="">
-                        <option *ngFor="let user of users" [value]="user.id">{{user.displayName}} -  {{user.title}}</option>
+                        <option *ngFor="let user of users" [value]="user.id">{{user.displayName}} - {{user.title}}
+                        </option>
                     </select>
                 </div>
             </div>

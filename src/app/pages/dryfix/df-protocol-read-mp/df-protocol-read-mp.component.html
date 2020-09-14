@@ -22,27 +22,42 @@
                         type="datetime-local" placeholder="Probe">
                 </div>
                 <div class="column is-1">
-                    <p class="title is-7">Result</p>
-                    <p *ngIf="m.readout" class="title is-7">{{m.readout.result}}%</p>
+                    <p style="margin: 0px; margin-bottom: 10px;" class="title is-7">Result</p>
+                    <p *ngIf="m.readout" class="title is-6" [class.has-text-danger]="m.readout.invalid">
+                        {{m.readout.result}}%</p>
                 </div>
-                <div class="column is-3">
+                <div class="column is-1">
+                    <p style="margin: 0px; margin-bottom: 10px;" class="title is-7">Limit</p>
+                    <p class="title is-6">
+                        {{m.rhLimit}}%</p>
+                </div>
+                <div class="column is-2">
                     <div class="buttons has-addons is-right">
                         <button (click)="expanded = !expanded" class="button is-small is-info"><i
                                 class="fas fa-info"></i></button>
-                        <button (click)="edit = true" class="button is-small is-dark"><i
-                                class="fas fa-edit"></i></button>
-                        <button (click)="duplicate = true" class="button is-small is-dark"><i
-                                class="fas fa-copy"></i></button>
                         <button (click)="delete()" class="button is-small is-dark has-text-danger"><i
                                 class="fas fa-trash"></i></button>
                     </div>
                 </div>
             </div>
-            <div *ngIf="expanded" class="columns">
-                <div class="column">
-                    display extra info here..
+            <div *ngIf="expanded" class="box has-background-dark has-text-light is-family-monospace is-size-7">
+                <div class="columns">
+                    <div class="column">
+                        <span class="is-block">
+                            <span class="has-text-weight-bold">Temperature Correction: </span> <span
+                                class="has-text-warning">{{m.readout.tempCorr}}</span>
+                        </span>
+
+                        <span class="is-block">
+                            <span class="has-text-weight-bold">Probe info: </span> Probe <span
+                                class="has-text-primary">{{m.probe.name}}</span> was calibrated: <span
+                                class="has-text-primary">{{m.probe.calibration.date}}</span>
+                        </span>
+
+                    </div>
                 </div>
             </div>
+
         </form>
     </div>
 </div>

@@ -13,6 +13,8 @@ import { DfProtocolComponent } from '../pages/dryfix/df-protocol/df-protocol.com
 import { ProjectWrapperComponent } from 'app/pages/project-wrapper/project-wrapper.component';
 import { DocumentListerComponent } from 'app/pages/document-lister/document-lister.component';
 import { SettingsComponent } from 'app/pages/settings/settings.component';
+import { ProtocolViewComponent } from 'app/dryfix/protocol-view/protocol-view.component';
+import { TemplateWrapperComponent } from 'app/template-tool/template-wrapper/template-wrapper.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -40,6 +42,10 @@ const routes: Routes = [
             path: 'documents',
             component: DocumentListerComponent
           },
+          {
+            path: 'template-tool',
+            component: TemplateWrapperComponent
+          },
         ]
       },
 
@@ -66,9 +72,15 @@ const routes: Routes = [
       {
         path: 'dryfix/project/:id/protocol/:pid',
         component: DfProtocolComponent
-      }
+      },
     ]
-  },];
+  },
+  {
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    path: 'protocol-viewer/:projectid/:protocolid',
+    component: ProtocolViewComponent
+  }];
 
 @NgModule({
   declarations: [],

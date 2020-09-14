@@ -1,12 +1,15 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, ipcMain, ipcRenderer, remote, shell } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+
+import * as createDoc from './doc-creater/doc-creater'
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
 
 function createWindow(): BrowserWindow {
+
 
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
@@ -34,6 +37,7 @@ function createWindow(): BrowserWindow {
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
+      zoomFactor: 0.9
     },
   });
 
@@ -75,6 +79,52 @@ try {
   // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
   app.on('ready', () => setTimeout(createWindow, 400));
 
+  app.on('ready', () => {
+
+    const openProtocol = (projectID, protocolID) => {
+
+
+      // Create a browser window
+      var win = new BrowserWindow({
+        width: 1600,
+        height: 1000,
+        center: true,
+        hasShadow: true,
+        frame: false,
+        vibrancy: 'light',
+        transparent: true,
+        backgroundColor: '#0000000',
+        titleBarStyle: 'hiddenInset',
+      });
+      // Load the page + route
+      win.loadURL(`http://localhost:4200/index.html#/protocol-viewer/${projectID}/${protocolID}`);
+
+
+    }
+
+    ipcMain.on('create-doc', (event, args) => {
+
+      createDoc.createDoc({ path: args.path, data: args.data })
+        .then((res) => {
+          console.log(res)
+          shell.openPath(res)
+            .then(() => console.log('file opened'))
+            .catch((err) => console.error(err))
+          event.sender.send('reply', res);
+        })
+        .catch((err) => console.error(err))
+    })
+
+    ipcMain.on('test', (event, args) => {
+      console.log('test2')
+    })
+
+    ipcMain.on('open-protocol', (event, args) => {
+      console.log('window loaded')
+      openProtocol(args.projectID, args.protocolID)
+    })
+  })
+
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
     // On OS X it is common for applications and their menu bar
@@ -96,3 +146,5 @@ try {
   // Catch Error
   // throw e;
 }
+
+

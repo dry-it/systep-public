@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ElectronService } from '../core/services';
 import { Router } from '@angular/router';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DocumentService {
 
-  constructor(private electronService: ElectronService, private router: Router) { }
+  constructor(
+    private electronService: ElectronService, 
+    private router: Router,
+    private stateService: StateService) { }
 
   openDoc(file) {
 
@@ -35,9 +39,36 @@ export class DocumentService {
       this.router.navigate(['doc', { file: filepath }])
     }
 
+  }
+
+  generateProtocol(projectID:string, protocolID:string) {
+
+    this.stateService.getProject(projectID)
+    .subscribe((project:any)=> {
+      this.electronService.remote.dialog.showSaveDialog({})
+      .then((res) => {
+        if (!res.canceled) {
+          this.electronService.ipcRenderer.send('create-doc', { path: res.filePath, data: project })
+        }
+      })
 
 
+      this.electronService.ipcRenderer.on('reply', (event, args) => {
+        console.log(args)
+        //this.electronService.shell.openPath(args)
+      })
+    } )
 
+    
+
+  }
+
+  openProtocol(projectID, protocolID) {
+    if (this.electronService.isElectron) {
+      this.electronService.ipcRenderer.send('open-protocol', { projectID: projectID, protocolID: protocolID })
+    } else {
+      this.router.navigateByUrl(`/protocol-viewer/${projectID}/${protocolID}`)
+    }
 
   }
 

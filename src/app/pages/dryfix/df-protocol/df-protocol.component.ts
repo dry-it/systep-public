@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FireBaseService } from '../../../services/firebase.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StateService } from '../../../services/state.service';
+import { DocumentService } from 'app/services/document.service';
 
 @Component({
   selector: 'app-df-protocol',
@@ -26,7 +27,7 @@ export class DfProtocolComponent implements OnInit {
     desc: new FormControl('', Validators.required),
   })
 
-  constructor(private fireBaseService: FireBaseService, private route: ActivatedRoute, private stateService: StateService) { }
+  constructor(private fireBaseService: FireBaseService, private route: ActivatedRoute, private stateService: StateService, private router: Router, private documentService: DocumentService) { }
 
   ngOnInit(): void {
     this.loading$ = this.stateService.loading
@@ -45,6 +46,14 @@ export class DfProtocolComponent implements OnInit {
 
   onSubmit () {
     // do something
+  }
+
+  openProtocolView() {
+    this.documentService.openProtocol(this.id, this.pid)
+  }
+
+  generateProtocol() {
+    this.documentService.generateProtocol(this.id, this.pid)
   }
 
 }

@@ -87,6 +87,19 @@ import { ProjectPanelComponent } from './components/project-panel/project-panel.
 import { ProjectStatusComponent } from './components/project-status/project-status.component'
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { ProtocolViewComponent } from './dryfix/protocol-view/protocol-view.component';
+import { MpOverviewComponent } from './dryfix/protocol-view/components/mp-overview/mp-overview.component';
+import { MpOverviewHeaderComponent } from './dryfix/protocol-view/components/mp-overview-header/mp-overview-header.component';
+import { MpConstructionHeaderComponent } from './dryfix/protocol-view/components/mp-construction-header/mp-construction-header.component';
+import { MpConstructionComponent } from './dryfix/protocol-view/components/mp-construction/mp-construction.component';
+import { MpMountHeaderComponent } from './dryfix/protocol-view/components/mp-mount-header/mp-mount-header.component';
+import { MpMountComponent } from './dryfix/protocol-view/components/mp-mount/mp-mount.component';
+import { MpProbesHeaderComponent } from './dryfix/protocol-view/components/mp-probes-header/mp-probes-header.component';
+import { MpProbesComponent } from './dryfix/protocol-view/components/mp-probes/mp-probes.component';
+import { InfoPanelComponent } from './dryfix/protocol-view/components/info-panel/info-panel.component';
+import { HeaderPanelComponent } from './dryfix/protocol-view/components/header-panel/header-panel.component';
+import { FooterPanelComponent } from './dryfix/protocol-view/components/footer-panel/footer-panel.component';
+import { TemplateWrapperComponent } from './template-tool/template-wrapper/template-wrapper.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -124,6 +137,19 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SettingsComponent,
     ProjectPanelComponent,
     ProjectStatusComponent,
+    ProtocolViewComponent,
+    MpOverviewComponent,
+    MpOverviewHeaderComponent,
+    MpConstructionHeaderComponent,
+    MpConstructionComponent,
+    MpMountHeaderComponent,
+    MpMountComponent,
+    MpProbesHeaderComponent,
+    MpProbesComponent,
+    InfoPanelComponent,
+    HeaderPanelComponent,
+    FooterPanelComponent,
+    TemplateWrapperComponent,
   ],
   imports: [
     BrowserModule,

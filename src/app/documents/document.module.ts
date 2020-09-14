@@ -8,11 +8,12 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 import { ViewerComponent } from './viewer/viewer.component';
+import { CoreModule } from 'app/core/core.module';
 
 @NgModule({
   declarations: [
     DocumentComponent,
     ViewerComponent,],
-  imports: [CommonModule, SharedModule, DocumentRoutingModule, ReactiveFormsModule, MarkdownModule]
+  imports: [CommonModule, SharedModule, DocumentRoutingModule, ReactiveFormsModule, MarkdownModule, CoreModule]
 })
 export class DocumentModule { }

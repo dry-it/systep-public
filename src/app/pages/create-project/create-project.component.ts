@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { FireBaseService } from '../../services/firebase.service';
 import { Observable } from 'rxjs';
 import { activities } from './standard-activities'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-project',
@@ -15,7 +16,8 @@ export class CreateProjectComponent implements OnInit {
     name: new FormControl(''),
     pNumber: new FormControl(''),
     company: new FormControl(''),
-    owner: new FormControl('')
+    owner: new FormControl(''),
+    type: new FormControl('sm')
   });
 
 
@@ -24,7 +26,7 @@ export class CreateProjectComponent implements OnInit {
   newProject: any
   selectedOwner: any
 
-  constructor(private fireBaseService: FireBaseService) { }
+  constructor(private fireBaseService: FireBaseService, private Router: Router) { }
 
 
   ngOnInit(): void {
@@ -53,7 +55,7 @@ export class CreateProjectComponent implements OnInit {
     }
 
 
-    this.fireBaseService.addDocument('projects', {...this.createProjectForm.value, createdBy: localStorage.uid})
+    this.fireBaseService.addDocument('projects', { ...this.createProjectForm.value, createdBy: localStorage.uid })
       .then((project: any) => {
         const projectID = project.id
 
@@ -79,8 +81,10 @@ export class CreateProjectComponent implements OnInit {
           }
         }
 
-        this.fireBaseService.updateDocument('projects', projectID, {activities: strippedActivities})
-        .then(() => console.log('Activities added!'))
+        this.fireBaseService.updateDocument('projects', projectID, { activities: strippedActivities })
+          .then((doc: any) => {
+            this.Router.navigateByUrl(`/home/projectview/${doc.id}/project`)
+          })
 
 
       })

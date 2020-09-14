@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding, OnChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { Observable } from 'rxjs';
 import {
@@ -180,15 +180,24 @@ export class HomeComponent implements OnInit {
     private auth: AngularFireAuth,
     private fireBaseService: FireBaseService,
     public _location: Location,
+    public route: ActivatedRoute,
     private stateService: StateService) { }
 
   results: any
 
   profilePic$: Observable<any>
 
+  hideSidebar: boolean
+
 
 
   ngOnInit(): void {
+
+    console.log(this.route.snapshot.paramMap.get('sHidden'))
+
+    if (this.route.snapshot.paramMap.get('sHidden') === 'true') {
+      this.hideSidebar = true
+    }
 
     this.stateService.loadUsers()
 
