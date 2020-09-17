@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import {BlockBuilderComponent} from './block-builder/block-builder.component'
 
 import { AdminComponent } from './admin.component';
 import { SharedModule } from '../shared/shared.module';
@@ -15,7 +14,7 @@ import { FroalaViewModule, FroalaEditorModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
-    AdminComponent, BlockBuilderComponent, CreateNewsComponent],
+    AdminComponent, CreateNewsComponent],
   imports: [CommonModule, SharedModule, AdminRoutingModule, ReactiveFormsModule,     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),]
 })
