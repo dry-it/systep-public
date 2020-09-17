@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createDoc = void 0;
+exports.fromTemplate = exports.createDoc = void 0;
 var docx_templates_1 = __importDefault(require("docx-templates"));
 var fs = require('fs');
 function createDoc(input) {
@@ -65,4 +65,27 @@ function createDoc(input) {
     });
 }
 exports.createDoc = createDoc;
+function fromTemplate(input) {
+    return __awaiter(this, void 0, void 0, function () {
+        var template, buffer;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log('creating doc');
+                    template = fs.readFileSync(input.template);
+                    return [4 /*yield*/, docx_templates_1.default({
+                            template: template,
+                            data: input.data,
+                            cmdDelimiter: ['{', '}'],
+                            rejectNullish: false
+                        })];
+                case 1:
+                    buffer = _a.sent();
+                    fs.writeFileSync(input.savePath + ".docx", buffer);
+                    return [2 /*return*/, input.savePath + ".docx"];
+            }
+        });
+    });
+}
+exports.fromTemplate = fromTemplate;
 //# sourceMappingURL=doc-creater.js.map

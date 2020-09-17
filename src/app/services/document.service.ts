@@ -63,6 +63,28 @@ export class DocumentService {
 
   }
 
+  createFromTemplate(data: any) {
+
+    // Select template
+    this.electronService.remote.dialog.showOpenDialog({})
+    .then((open) => {
+      if (!open.canceled && open.filePaths) {
+        return open.filePaths[0]
+      }
+    })
+    .then((filePath) => {
+      this.electronService.remote.dialog.showSaveDialog({})
+      .then((save) => {
+        if (!save.canceled) {
+          this.electronService.ipcRenderer.send('createFromTemplate', {data: data, template: filePath, savePath: save.filePath})
+        }
+      })
+    })
+
+    
+
+  }
+
   openProtocol(projectID, protocolID) {
     if (this.electronService.isElectron) {
       this.electronService.ipcRenderer.send('open-protocol', { projectID: projectID, protocolID: protocolID })

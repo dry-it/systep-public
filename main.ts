@@ -115,9 +115,16 @@ try {
         .catch((err) => console.error(err))
     })
 
-    ipcMain.on('test', (event, args) => {
-      console.log('test2')
-    })
+    ipcMain.on('createFromTemplate', (event, args) => {
+      createDoc.fromTemplate(args)
+      .then((res) => {
+        console.log(res)
+        shell.openPath(res)
+          .then(() => console.log('file opened'))
+          .catch((err) => console.error(err))
+    }) 
+  });
+
 
     ipcMain.on('open-protocol', (event, args) => {
       console.log('window loaded')

@@ -15,35 +15,36 @@
 
 
     <ng-container *ngIf="activity.hasCheckpoints">
-        <nav *ngIf="checkpoints$ | async as checkPoints" style="margin-top: 1rem;" class="panel">
-          <div *ngFor="let check of checkPoints; let i = index" class="panel-block has-text-weight-bold"
-            [class.has-background-success]="check.state">
-            <button style="margin-top: 6px; margin-right: 10px;" (click)="deleteCheck(check)" class="delete is-small"
-              [class.has-background-dark]="check.deleteable"></button>
-            <label>
+      <nav *ngIf="checkpoints$ | async as checkPoints" style="margin-top: 1rem;" class="panel">
+        <div *ngFor="let check of checkPoints; let i = index" class="panel-block has-text-weight-bold"
+          [class.has-background-success]="check.state">
+          <button style="margin-top: 6px; margin-right: 10px;" (click)="deleteCheck(check)" class="delete is-small"
+            [class.has-background-dark]="check.deleteable"></button>
+          <label>
 
-              <input (change)="saveCheck(check)" [(ngModel)]="check.state" type="checkbox">
-              {{check.label}}
-              <button *ngIf="check.action" [disabled]="check.state" (click)="action(check.action.execute)"
-                class="button is-dark is-small is-borderless" style="margin-left: 10px;">{{check.action.label}}</button>
-            </label>
-          </div>
+            <input (change)="saveCheck(check)" [(ngModel)]="check.state" type="checkbox">
+            {{check.label}}
+            <button *ngIf="check.action" [disabled]="check.state" (click)="action(check.action.execute)"
+              class="button is-dark is-small is-borderless" style="margin-left: 10px;">{{check.action.label}}</button>
+          </label>
+        </div>
 
-          <div class="panel-block">
-            <input class="input is-small" [(ngModel)]="newCheckPoint" placeholder="Add a custom checkpoint"
-              type="text"><button (click)="addCheckPoint()" class="button ml-2 is-dark is-small">Add
-              checkpoint</button>
-          </div>
-        </nav>
+        <div class="panel-block">
+          <input class="input is-small" [(ngModel)]="newCheckPoint" placeholder="Add a custom checkpoint"
+            type="text"><button (click)="addCheckPoint()" class="button ml-2 is-dark is-small">Add
+            checkpoint</button>
+        </div>
+      </nav>
     </ng-container>
-      
+
 
     <ng-container *ngIf="activity.routines">
-      <p class="title is-6">Rutiner</p>
+      <p class="title is-6">Rutiner & Verktyg</p>
       <div class="tags">
-        <a><span (click)="openDoc(routine.file)" *ngFor="let routine of activity.routines"
-            class="tag is-dark">{{routine.label}} <i *ngIf="routine.type == 'document'"
-              class="fas fa-file-alt" style="margin-left: 6px;"></i></span></a>
+        <a><span (click)="routineHandler(routine)" *ngFor="let routine of activity.routines"
+            class="tag is-dark">{{routine.label}} <i *ngIf="routine.type == 'document'" class="fas fa-file-alt"
+              style="margin-left: 6px;"></i><i *ngIf="routine.type == 'link'" class="fas fa-external-link-alt"
+              style="margin-left: 6px;"></i></span></a>
       </div>
     </ng-container>
     <ng-container *ngIf="activity.owners">

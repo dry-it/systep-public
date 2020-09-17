@@ -1,0 +1,51 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+        <label class="label">Beskirv projektet</label>
+        <div class="control">
+            <textarea [froalaEditor] formControlName="description" class="input" type="text" placeholder="Projektnamn"></textarea>
+        </div>
+    </div>
+    <h3>Aktiviteter</h3>
+
+    <div formArrayName="aliases">
+
+        <div *ngFor="let alias of aliases.controls; let i=index">
+            <!-- The repeated alias template -->
+            <div [formGroupName]="i">
+                <div class="columns">
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Beskrivning</label>
+                            <div class="control">
+                                <input formControlName="name" class="input" type="text" placeholder="Projektnamn">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Startdatum</label>
+                            <div class="control">
+                                <input formControlName="dateStart" class="input" type="date" placeholder="Projektnamn">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Slutdatum</label>
+                            <div class="control">
+                                <input formControlName="dateEnd" class="input" type="date" placeholder="Projektnamn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="margin-top: 1rem;" class="field">
+          <button type="button" class="button is-link" (click)="addAlias()">Ny aktivitet</button>  
+        </div>
+
+        
+    </div>
+</form>

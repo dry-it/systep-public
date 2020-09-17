@@ -22,3 +22,18 @@ export async function createDoc(input: Input) {
     return `${input.path}.docx`
 }
 
+export async function fromTemplate(input: any) {
+    console.log('creating doc')
+    const template = fs.readFileSync(input.template);
+
+    const buffer = await createReport({
+        template,
+        data: input.data,
+        cmdDelimiter: ['{', '}'],
+        rejectNullish: false
+    });
+
+    fs.writeFileSync(`${input.savePath}.docx`, buffer)
+    return `${input.savePath}.docx`
+}
+

@@ -15,6 +15,7 @@ import { DocumentListerComponent } from 'app/pages/document-lister/document-list
 import { SettingsComponent } from 'app/pages/settings/settings.component';
 import { ProtocolViewComponent } from 'app/dryfix/protocol-view/protocol-view.component';
 import { TemplateWrapperComponent } from 'app/template-tool/template-wrapper/template-wrapper.component';
+import { ProjectPlanComponent } from 'app/pages/project-plan/project-plan.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -45,6 +46,10 @@ const routes: Routes = [
           {
             path: 'template-tool',
             component: TemplateWrapperComponent
+          },
+          {
+            path: 'project-plan',
+            component: ProjectPlanComponent
           },
         ]
       },

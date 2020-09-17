@@ -62,8 +62,28 @@ export class ActivityComponent implements OnInit {
     console.log(event)
   }
 
+  routineHandler(routine: any) {
+    if (routine.type === 'document') {
+      this.openDoc(routine.file)
+    }
+
+    if (routine.type === 'link') {
+      this.openLink(routine.url)
+    }
+  }
+
   openDoc(file: string) {
     this.documentService.openDoc(file);
+  }
+
+  openLink(url: string) {
+
+    if (this.electron.isElectron) {
+      this.electron.shell.openExternal(url)
+    } else {
+      window.open(url, "_blank");
+    }
+
   }
 
   getBlocks() {
@@ -102,17 +122,17 @@ export class ActivityComponent implements OnInit {
     this.save.emit(this.activity)
   }
 
-  saveCheck(checkPoint:any) {
+  saveCheck(checkPoint: any) {
 
 
-  /*   if (check.flag) {
-
-      const flagField = `${check.flag}`
-
-
-      this.fireBaseService.updateDocument('projects', this.id, { [flagField]: check.state })
-        .then(() => console.log('updated'))
-    } */
+    /*   if (check.flag) {
+  
+        const flagField = `${check.flag}`
+  
+  
+        this.fireBaseService.updateDocument('projects', this.id, { [flagField]: check.state })
+          .then(() => console.log('updated'))
+      } */
 
     this.fireBaseService.updateDocument(`projects/${this.id}/checkPoints`, checkPoint.id, checkPoint)
       .then()
@@ -135,21 +155,21 @@ export class ActivityComponent implements OnInit {
 
   deleteCheck(checkPoint: any) {
 
-     /*   if (check.flag) {
+    /*   if (check.flag) {
 
-      const flagField = `${check.flag}`
+     const flagField = `${check.flag}`
 
 
-      this.fireBaseService.updateDocument('projects', this.id, { [flagField]: check.state })
-        .then(() => console.log('updated'))
-    } */
+     this.fireBaseService.updateDocument('projects', this.id, { [flagField]: check.state })
+       .then(() => console.log('updated'))
+   } */
 
     if (checkPoint.deleteable) {
       this.fireBaseService.deleteDocumentPath(`projects/${this.id}/checkpoints/${checkPoint.id}`)
-      .then()
+        .then()
     }
 
-    
+
 
     //let body = { `activities[${this.index}]` : `dsd`}
 

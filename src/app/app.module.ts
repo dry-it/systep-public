@@ -100,6 +100,7 @@ import { InfoPanelComponent } from './dryfix/protocol-view/components/info-panel
 import { HeaderPanelComponent } from './dryfix/protocol-view/components/header-panel/header-panel.component';
 import { FooterPanelComponent } from './dryfix/protocol-view/components/footer-panel/footer-panel.component';
 import { TemplateWrapperComponent } from './template-tool/template-wrapper/template-wrapper.component';
+import { ProjectPlanComponent } from './pages/project-plan/project-plan.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -150,6 +151,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HeaderPanelComponent,
     FooterPanelComponent,
     TemplateWrapperComponent,
+    ProjectPlanComponent,
   ],
   imports: [
     BrowserModule,

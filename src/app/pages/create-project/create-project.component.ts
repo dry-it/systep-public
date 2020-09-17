@@ -26,7 +26,7 @@ export class CreateProjectComponent implements OnInit {
   newProject: any
   selectedOwner: any
 
-  constructor(private fireBaseService: FireBaseService, private Router: Router) { }
+  constructor(private fireBaseService: FireBaseService, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -83,7 +83,8 @@ export class CreateProjectComponent implements OnInit {
 
         this.fireBaseService.updateDocument('projects', projectID, { activities: strippedActivities })
           .then((doc: any) => {
-            this.Router.navigateByUrl(`/home/projectview/${doc.id}/project`)
+            console.log(doc)
+            this.router.navigateByUrl(`/home/projectview/${project.id}/project`)
           })
 
 
