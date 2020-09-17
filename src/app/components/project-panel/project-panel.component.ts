@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { StateService } from 'app/services/state.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { StateService } from 'app/services/state.service';
 
 @Component({
   selector: 'app-project-panel',

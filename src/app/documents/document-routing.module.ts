@@ -6,12 +6,7 @@ import { ProjectComponent } from '../pages/project/project.component';
 import { StartComponent } from '../pages/start/start.component';
 
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { CreateProjectComponent } from '../pages/create-project/create-project.component';
-import { DryfixComponent } from '../pages/dryfix/dryfix.component';
-import { DfProjectComponent } from '../pages/dryfix/df-project/df-project.component';
-import { DfProtocolComponent } from '../pages/dryfix/df-protocol/df-protocol.component';
 import { ViewerComponent } from './viewer/viewer.component';
-import { ProtocolViewComponent } from 'app/dryfix/protocol-view/protocol-view.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -29,10 +24,6 @@ const routes: Routes = [
       {
         path: '',
         component: ViewerComponent
-      },
-      {
-        path: 'protocol-viewer/:projectid/:protocolid',
-        component: ProtocolViewComponent
       }
     ]
   }

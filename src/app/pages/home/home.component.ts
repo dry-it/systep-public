@@ -1,6 +1,6 @@
 import { Component, OnInit, HostBinding, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DataService } from '../services/data.service';
+import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
 import {
   trigger,
@@ -11,11 +11,11 @@ import {
   // ...
 } from '@angular/animations';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { FireBaseService } from '../services/firebase.service';
+import { FireBaseService } from '../../services/firebase.service';
 import { Location } from '@angular/common';
-import { StateService } from 'app/services/state.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { auditTime } from 'rxjs/operators';
+import { StateService } from '../../services/state.service';
 
 interface Activity {
   title: string;

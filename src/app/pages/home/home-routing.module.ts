@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { ProjectComponent } from '../pages/project/project.component';
-import { StartComponent } from '../pages/start/start.component';
+import { ProjectComponent } from '../project/project.component';
+import { StartComponent } from '../start/start.component';
 
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { CreateProjectComponent } from '../pages/create-project/create-project.component';
+import { CreateProjectComponent } from '../create-project/create-project.component';
 import { ProjectWrapperComponent } from 'app/pages/project-wrapper/project-wrapper.component';
 import { SettingsComponent } from 'app/pages/settings/settings.component';
 

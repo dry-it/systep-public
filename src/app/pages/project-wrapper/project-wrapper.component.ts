@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StateService } from 'app/services/state.service';
 import { Observable } from 'rxjs';
+import { StateService } from 'app/services/state.service';
 
 @Component({
   selector: 'app-project-wrapper',

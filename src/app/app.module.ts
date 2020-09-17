@@ -14,7 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { HomeModule } from './home/home.module';
+import { HomeModule } from './pages/home/home.module';
 import { AdminModule } from './admin/admin.module';
 import { DocumentModule } from './documents/document.module';
 
