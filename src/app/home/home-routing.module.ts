@@ -8,7 +8,6 @@ import { StartComponent } from '../pages/start/start.component';
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { CreateProjectComponent } from '../pages/create-project/create-project.component';
 import { ProjectWrapperComponent } from 'app/pages/project-wrapper/project-wrapper.component';
-import { DocumentListerComponent } from 'app/pages/document-lister/document-lister.component';
 import { SettingsComponent } from 'app/pages/settings/settings.component';
 import { ProjectPlanComponent } from 'app/pages/project-plan/project-plan.component';
 
@@ -33,10 +32,6 @@ const routes: Routes = [
           {
             path: 'project',
             component: ProjectComponent
-          },
-          {
-            path: 'documents',
-            component: DocumentListerComponent
           },
           {
             path: 'project-plan',
