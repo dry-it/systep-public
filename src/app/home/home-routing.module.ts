@@ -9,7 +9,6 @@ import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectL
 import { CreateProjectComponent } from '../pages/create-project/create-project.component';
 import { ProjectWrapperComponent } from 'app/pages/project-wrapper/project-wrapper.component';
 import { SettingsComponent } from 'app/pages/settings/settings.component';
-import { ProjectPlanComponent } from 'app/pages/project-plan/project-plan.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -32,10 +31,6 @@ const routes: Routes = [
           {
             path: 'project',
             component: ProjectComponent
-          },
-          {
-            path: 'project-plan',
-            component: ProjectPlanComponent
           },
         ]
       },
