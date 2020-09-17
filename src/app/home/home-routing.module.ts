@@ -14,7 +14,6 @@ import { ProjectWrapperComponent } from 'app/pages/project-wrapper/project-wrapp
 import { DocumentListerComponent } from 'app/pages/document-lister/document-lister.component';
 import { SettingsComponent } from 'app/pages/settings/settings.component';
 import { ProtocolViewComponent } from 'app/dryfix/protocol-view/protocol-view.component';
-import { TemplateWrapperComponent } from 'app/template-tool/template-wrapper/template-wrapper.component';
 import { ProjectPlanComponent } from 'app/pages/project-plan/project-plan.component';
 
 const adminOnly = () => hasCustomClaim('admin');
@@ -42,10 +41,6 @@ const routes: Routes = [
           {
             path: 'documents',
             component: DocumentListerComponent
-          },
-          {
-            path: 'template-tool',
-            component: TemplateWrapperComponent
           },
           {
             path: 'project-plan',
