@@ -7,13 +7,9 @@ import { StartComponent } from '../pages/start/start.component';
 
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { CreateProjectComponent } from '../pages/create-project/create-project.component';
-import { DryfixComponent } from '../pages/dryfix/dryfix.component';
-import { DfProjectComponent } from '../pages/dryfix/df-project/df-project.component';
-import { DfProtocolComponent } from '../pages/dryfix/df-protocol/df-protocol.component';
 import { ProjectWrapperComponent } from 'app/pages/project-wrapper/project-wrapper.component';
 import { DocumentListerComponent } from 'app/pages/document-lister/document-lister.component';
 import { SettingsComponent } from 'app/pages/settings/settings.component';
-import { ProtocolViewComponent } from 'app/dryfix/protocol-view/protocol-view.component';
 import { ProjectPlanComponent } from 'app/pages/project-plan/project-plan.component';
 
 const adminOnly = () => hasCustomClaim('admin');
@@ -60,27 +56,9 @@ const routes: Routes = [
       {
         path: 'create-project',
         component: CreateProjectComponent
-      },
-      {
-        path: 'dryfix',
-        component: DryfixComponent
-      },
-      {
-        path: 'dryfix/project/:id',
-        component: DfProjectComponent
-      },
-      {
-        path: 'dryfix/project/:id/protocol/:pid',
-        component: DfProtocolComponent
-      },
+      }
     ]
-  },
-  {
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin },
-    path: 'protocol-viewer/:projectid/:protocolid',
-    component: ProtocolViewComponent
-  }];
+  }]
 
 @NgModule({
   declarations: [],

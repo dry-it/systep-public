@@ -1,9 +1,0 @@
-<div class="box">
-    <button (click)="newMP = true" class="button is-success is-small is-shadowless">New MP</button>
-    <dryfix-mp-create *ngIf="newMP" (done)="done()"></dryfix-mp-create>
-
-    <ng-container *ngIf="mps">
-        <dryfix-protocol-drill-mp *ngFor="let mp of mps" [mp]="mp"></dryfix-protocol-drill-mp>
-    </ng-container>
-</div>
-
