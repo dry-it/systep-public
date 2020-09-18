@@ -20,7 +20,6 @@ export class ProjectStatusComponent implements OnInit {
     this.fireBaseService.getCollectionSnapshot(`projects/${this.id}/checkPoints`)
       .subscribe((checkPoints: any) => {
         this.done = 0
-        console.log(checkPoints)
         this.total = checkPoints.length
 
         checkPoints.forEach((c) => {

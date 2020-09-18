@@ -71,6 +71,7 @@ import { ProjectStatusComponent } from './components/project-status/project-stat
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { ProjectParticipantsComponent } from './pages/project-participants/project-participants.component';
+import { ProfileImageComponent } from './components/profile-image/profile-image.component';
 
 
 // AoT requires an exported function for factories
@@ -95,6 +96,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ProjectPanelComponent,
     ProjectStatusComponent,
     ProjectParticipantsComponent,
+    ProfileImageComponent,
   ],
   imports: [
     BrowserModule,

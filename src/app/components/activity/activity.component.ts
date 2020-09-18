@@ -30,7 +30,6 @@ export class ActivityComponent implements OnInit {
   constructor(private electron: ElectronService, private fireBaseService: FireBaseService, private documentService: DocumentService) { }
 
   ngOnInit() {
-    console.log(this.index)
 
     //this.blocks$ = this.fireBaseService.getCollectionSnapshot(`projects/${this.id}/activities/${this.aid}/blocks`)
 
@@ -38,7 +37,6 @@ export class ActivityComponent implements OnInit {
 
     this.checkpoints$ = this.fireBaseService.getCollectionQueryOrder(`projects/${this.id}/checkPoints`, 'activityID', this.index, 'order')
 
-    this.checkpoints$.subscribe((res) => console.log(res))
 
   }
 
@@ -58,9 +56,6 @@ export class ActivityComponent implements OnInit {
     if (icon === 'none' || !icon) return 'fas fa-circle'
   }
 
-  onLoad(event: any) {
-    console.log(event)
-  }
 
   routineHandler(routine: any) {
     if (routine.type === 'document') {

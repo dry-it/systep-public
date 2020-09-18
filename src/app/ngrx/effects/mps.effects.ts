@@ -33,7 +33,6 @@ export class MpsEffects {
     ofType('[Dryfix-MP] query mps'),
     map((action: MpActions.Query) => action),
     switchMap(data => {
-      console.log(data.id)
       this.stateService.setLoadingState(true)
       return this.fireBaseService.getMps(data.id)
     }),

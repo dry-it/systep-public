@@ -193,7 +193,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.route.snapshot.paramMap.get('sHidden'))
 
     if (this.route.snapshot.paramMap.get('sHidden') === 'true') {
       this.hideSidebar = true
@@ -209,7 +208,6 @@ export class HomeComponent implements OnInit {
         if (result.term.length > 1) {
           this.fireBaseService.searchProjects(result.term)
             .subscribe((res) => {
-              console.log(res);
               this.results = res;
             })
         } else {
@@ -222,7 +220,6 @@ export class HomeComponent implements OnInit {
     this.user$ = this.stateService.returnCurrentUser()
 
     this.projects$ = this.fireBaseService.getCollectionSnapshot('projects')
-    this.projects$.subscribe((project) => console.log(project))
 
     this.activities = [
       {
@@ -421,20 +418,16 @@ export class HomeComponent implements OnInit {
         this.stateService.loadUser(u.uid);
         this.stateService.returnCurrentUser()
           .subscribe((user: any) => {
-            console.log(user)
             if (user.profilePicture) {
               this.profilePic$ = this.fireBaseService.getImgUrl(user.profilePicture)
             }
           })
-        console.log(u)
       }
       localStorage.uid = u.uid
       if (localStorage.getItem('activated') === u.uid) {
-        console.log('user id in local')
         this.activated = true;
         this.activate = false;
       } else {
-        console.log('user ID not in local')
         this.fireBaseService.getDocumentValueChanges('users', u.uid)
           .subscribe((user: any) => {
             if (user.active) {

@@ -21,10 +21,8 @@
         <div *ngFor="let participant of project.participants" style="padding: 5px; padding-bottom: 20px;" class="box">
             <div *ngIf="returnUser$(participant) | async as user" class="columns">
                 <div class="column">
-                    <img *ngIf="user.profilePictureUrl" style="margin-bottom: -1.1rem; margin-right: 0.5rem;"
-                        class="small-avatar" [src]="user.profilePictureUrl" alt="">
-                    <div class="profile-circle" *ngIf="!user.profilePictureUrl">{{user.displayName.substr(0, 1)}}
-                    </div>
+
+                    <app-profile-image [id]="user.id"></app-profile-image>
                     <span class="is-6">{{user.displayName}}</span>
                 </div>
                 <div class="column has-text-right">
