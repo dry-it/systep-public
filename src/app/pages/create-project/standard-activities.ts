@@ -94,6 +94,7 @@ export const activities = [
       { label: 'Uppdragsplan Upprättad', state: false },
       { label: 'Startmöte utfört', state: false },
       { label: 'Kvalitets och miljöplan upprättad', state: false },
+      { label: 'Avstämning med kund', state: false },
     ]
   },
   {
@@ -117,7 +118,7 @@ export const activities = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Leverans Utförd', state: false },
+      { label: 'Slutleverans Utförd', state: false },
     ]
   },
   {
@@ -160,7 +161,12 @@ export const activities = [
       color: 'success',
       icon: 'smile',
       arrow: ''
-    }
-  }
+    },
+    checkListTitle: 'Checkpoints',
+    checkPoints: [
+      { label: 'Avslutningsmöte', state: false },
+      { label: 'Lönsamhetsanalys', state: false },
+    ]
+  },
 
 ]
