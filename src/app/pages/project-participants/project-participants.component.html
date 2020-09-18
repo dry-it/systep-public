@@ -1,1 +1,50 @@
-<p>project-participants works!</p>
+<ng-container *ngIf="project$ | async as project">
+    <h3 class="title is-6">Uppdragsansvarig</h3>
+    <div style="padding: 5px; padding-bottom: 20px;" class="box">
+        <ng-container *ngIf="returnUser$(project.owner) | async as owner">
+            <p class="is-6"><img style="margin-bottom: -1.1rem; margin-right: 0.5rem;" class="small-avatar"
+                    [src]="owner.profilePictureUrl" alt=""> {{owner.displayName}}</p>
+        </ng-container>
+
+    </div>
+
+    <h3 class="title is-6">Deltagare</h3>
+    <button [disabled]="!selectedUser" (click)="addUser(project.id)" style="margin-bottom: 0.5rem" class="button is-success is-small
+">Lägg till deltagare</button>
+    <div class="field">
+        <select [(ngModel)]="selectedUser" *ngIf="usersList$() | async as users" name="" id="adduser"
+            class="select is-fullwidth">
+            <option *ngFor="let user of users" [value]="user.id">{{user.displayName}}</option>
+        </select>
+    </div>
+    <ng-container *ngIf="project.participants">
+        <div *ngFor="let participant of project.participants" style="padding: 5px; padding-bottom: 20px;" class="box">
+            <div *ngIf="returnUser$(participant) | async as user" class="columns">
+                <div class="column">
+                    <img *ngIf="user.profilePictureUrl" style="margin-bottom: -1.1rem; margin-right: 0.5rem;"
+                        class="small-avatar" [src]="user.profilePictureUrl" alt="">
+                    <div class="profile-circle" *ngIf="!user.profilePictureUrl">{{user.displayName.substr(0, 1)}}
+                    </div>
+                    <span class="is-6">{{user.displayName}}</span>
+                </div>
+                <div class="column has-text-right">
+                    <div class="buttons is-small is-right">
+                        <button style="margin-top: 1rem;" (click)="removeUser(project.id, user.id)"
+                            class="button is-danger is-small">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!project.participants">
+        <div style="padding: 5px; padding-bottom: 20px;" class="box">
+            <ng-container *ngIf="returnUser$(project.owner) | async as owner">
+                Inga övriga deltagare tillagda i projektet
+            </ng-container>
+
+        </div>
+    </ng-container>
+
+
+</ng-container>

@@ -55,6 +55,10 @@ export class StateService {
     return this.store.select(fromUsers.selectEntity, { id: id })
   }
 
+  getUsers = () => {
+    return this.store.select(fromUsers.selectAll)
+  }
+
   returnCurrentProject() {
     return this.store.pipe(select('currentProject'))
   }

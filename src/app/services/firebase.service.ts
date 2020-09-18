@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { map, switchMap, mergeMap, mergeMapTo, flatMap } from 'rxjs/operators';
 import { concat, zip } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { firestore } from 'firebase';
 
 
 @Injectable({
@@ -63,6 +64,18 @@ export class FireBaseService {
 
   getDevice = (doc: string) => {
     return this.getDocumentValueChanges('devices', doc);
+  }
+
+  addParticipant = (userID:string, projectID:string) => {
+    return this.afs.collection('projects').doc(projectID).update({
+      participants: firestore.FieldValue.arrayUnion(userID)
+    })
+  }
+
+  removeParticipant = (userID:string, projectID:string) => {
+    return this.afs.collection('projects').doc(projectID).update({
+      participants: firestore.FieldValue.arrayRemove(userID)
+    })
   }
 
   getControlUnit = (doc: string) => {

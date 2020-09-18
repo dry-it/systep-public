@@ -17,7 +17,8 @@
                                 </span>
                             </div>
                             <div class="column">
-                                <span style="margin-top: 0.5rem;" class="is-size-6 has-text-white has-text-weight-bold is-block">Uppdragsansvarig</span>
+                                <span style="margin-top: 0.5rem;"
+                                    class="is-size-6 has-text-white has-text-weight-bold is-block">Uppdragsansvarig</span>
                                 <span class="is-size-6 has-text-white">{{owner.displayName}}</span>
                             </div>
                         </div>
@@ -36,7 +37,8 @@
             </p>
             <ul class="menu-list">
                 <li><a routerLink="/home/projectview/{{id}}/project" routerLinkActive="active">Översikt</a></li>
-                <li><a>Deltagare</a></li>
+                <li><a routerLink="/home/projectview/{{id}}/participants" routerLinkActive="active">Deltagare</a>
+                </li>
                 <li><a>Inställningar</a></li>
             </ul>
         </aside>
