@@ -24,7 +24,14 @@ export async function createDoc(input: Input) {
 
 export async function fromTemplate(input: any) {
     console.log('creating doc')
-    const template = fs.readFileSync(input.template);
+
+    let p
+
+    if (input.template === 'risk') {
+        p = 'src/assets/templates/risk.docx'
+    }
+
+    const template = fs.readFileSync(p);
 
     const buffer = await createReport({
         template,

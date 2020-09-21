@@ -67,12 +67,15 @@ function createDoc(input) {
 exports.createDoc = createDoc;
 function fromTemplate(input) {
     return __awaiter(this, void 0, void 0, function () {
-        var template, buffer;
+        var p, template, buffer;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     console.log('creating doc');
-                    template = fs.readFileSync(input.template);
+                    if (input.template === 'risk') {
+                        p = 'src/assets/templates/risk.docx';
+                    }
+                    template = fs.readFileSync(p);
                     return [4 /*yield*/, docx_templates_1.default({
                             template: template,
                             data: input.data,

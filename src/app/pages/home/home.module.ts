@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 
@@ -16,6 +17,7 @@ import { MarkdownModule } from 'ngx-markdown';
     HomeComponent,
     SubActivityComponent,
     ActivateComponent],
-  imports: [CommonModule, SharedModule, HomeRoutingModule, ReactiveFormsModule]
+  imports: [CommonModule, SharedModule, HomeRoutingModule, ReactiveFormsModule],
+  providers: [DatePipe]
 })
 export class HomeModule { }

@@ -9,7 +9,7 @@ import { StateService } from './state.service';
 export class DocumentService {
 
   constructor(
-    private electronService: ElectronService, 
+    private electronService: ElectronService,
     private router: Router,
     private stateService: StateService) { }
 
@@ -41,47 +41,45 @@ export class DocumentService {
 
   }
 
-  generateProtocol(projectID:string, protocolID:string) {
+  generateProtocol(projectID: string, protocolID: string) {
 
     this.stateService.getProject(projectID)
-    .subscribe((project:any)=> {
-      this.electronService.remote.dialog.showSaveDialog({})
-      .then((res) => {
-        if (!res.canceled) {
-          this.electronService.ipcRenderer.send('create-doc', { path: res.filePath, data: project })
-        }
+      .subscribe((project: any) => {
+        this.electronService.remote.dialog.showSaveDialog({})
+          .then((res) => {
+            if (!res.canceled) {
+              this.electronService.ipcRenderer.send('create-doc', { path: res.filePath, data: project })
+            }
+          })
+
+
+        this.electronService.ipcRenderer.on('reply', (event, args) => {
+          console.log(args)
+          //this.electronService.shell.openPath(args)
+        })
       })
 
 
-      this.electronService.ipcRenderer.on('reply', (event, args) => {
-        console.log(args)
-        //this.electronService.shell.openPath(args)
-      })
-    } )
-
-    
 
   }
 
   createFromTemplate(data: any) {
 
-    // Select template
-    this.electronService.remote.dialog.showOpenDialog({})
-    .then((open) => {
-      if (!open.canceled && open.filePaths) {
-        return open.filePaths[0]
-      }
-    })
-    .then((filePath) => {
-      this.electronService.remote.dialog.showSaveDialog({})
+    const options = {
+      defaultPath: data.fileName
+    }
+
+    this.electronService.remote.dialog.showSaveDialog(null, options)
       .then((save) => {
         if (!save.canceled) {
-          this.electronService.ipcRenderer.send('createFromTemplate', {data: data, template: filePath, savePath: save.filePath})
+          this.electronService.ipcRenderer.send('createFromTemplate', { data: data.data, template: data.template, savePath: save.filePath })
+          this.electronService.ipcRenderer.on('error', (event, args) => {
+            console.error(args)
+          })
         }
       })
-    })
 
-    
+
 
   }
 

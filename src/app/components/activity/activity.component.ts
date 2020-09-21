@@ -3,6 +3,10 @@ import { ElectronService } from '../../core/services';
 import { FireBaseService } from '../../services/firebase.service';
 import { Observable } from 'rxjs';
 import { DocumentService } from 'app/services/document.service';
+import { StateService } from 'app/services/state.service';
+
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-activity',
@@ -27,7 +31,12 @@ export class ActivityComponent implements OnInit {
   checkpoints$: Observable<any>
 
 
-  constructor(private electron: ElectronService, private fireBaseService: FireBaseService, private documentService: DocumentService) { }
+  constructor(
+    private electron: ElectronService,
+    private fireBaseService: FireBaseService,
+    private documentService: DocumentService,
+    private stateService: StateService,
+    private datePipe: DatePipe) { }
 
   ngOnInit() {
 
@@ -65,10 +74,34 @@ export class ActivityComponent implements OnInit {
     if (routine.type === 'link') {
       this.openLink(routine.url)
     }
+
+    if (routine.type === 'create-doc') {
+      this.createDoc(routine)
+    }
   }
 
   openDoc(file: string) {
     this.documentService.openDoc(file);
+  }
+
+  createDoc(routine: any) {
+
+    console.log(this.electron.remote.app.getAppPath())
+
+    if (routine.template === 'risk') {
+      this.stateService.returnCurrentUser()
+        .subscribe((user: any) => {
+          this.stateService.returnCurrentProject()
+            .subscribe((project: any) => {
+              const data = {
+                createdBy: user.displayName,
+                projectName: project.name,
+                date: this.datePipe.transform(Date.now(), 'yyyy-MM-dd')
+              }
+              this.documentService.createFromTemplate({ data: data, template: 'risk', fileName: 'Riskanalys' })
+            })
+        })
+    }
   }
 
   openLink(url: string) {

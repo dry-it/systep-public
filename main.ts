@@ -121,7 +121,9 @@ try {
         console.log(res)
         shell.openPath(res)
           .then(() => console.log('file opened'))
-          .catch((err) => console.error(err))
+          .catch((err) => {
+            event.sender.send('error', err)
+          })
     }) 
   });
 
