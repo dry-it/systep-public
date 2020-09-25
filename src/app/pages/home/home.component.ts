@@ -188,6 +188,7 @@ export class HomeComponent implements OnInit {
   profilePic$: Observable<any>
 
   hideSidebar: boolean
+  currentProject$: Observable<any> = this.stateService.returnCurrentProject()
 
   mobileSidebar: boolean
 
@@ -195,6 +196,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.route.params.subscribe((res) => console.log(res))
 
     if (this.route.snapshot.paramMap.get('sHidden') === 'true') {
       this.hideSidebar = true
@@ -399,6 +401,14 @@ export class HomeComponent implements OnInit {
 
   toggleProject() {
     this.isOpenProject = !this.isOpenProject;
+  }
+
+  displayProjectMenu() {
+
+    if (this.router.url.includes('projectview')) {
+      return true
+    }
+
   }
 
   addDummy() {

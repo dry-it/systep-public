@@ -3,8 +3,8 @@
     <div class="navbar-item">
       <span class="logo has-text-white">SYSTEP</span><span class="logo has-text-info">!</span>
     </div>
-    <a (click)="mobileSidebar = !mobileSidebar" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-      data-target="navbarBasicExample">
+    <a (click)="mobileSidebar = !mobileSidebar" role="button" class="navbar-burger burger" aria-label="menu"
+      aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -89,30 +89,45 @@
 </div>
 
 <div (click)="mobileSidebar = false" *ngIf="mobileSidebar" class="overlay">
-<aside  class="menu menu-padding mobile-sidebar blur">
+  <aside class="menu menu-padding mobile-sidebar blur">
 
-  
-  <div *ngIf="user$ | async as user" class="img-div">
-    <div class="columns is-gapless">
-      <div class="column is-4">
-        <img style="border-radius: 100%" width="52" [src]="user.profilePictureUrl" alt="">
-      </div>
-      <div class="column">
-        <p class="is-size-7 has-text-weight-bold">{{user.displayName}}</p>
-        <button style="margin-top: 0.5rem" (click)="signOut()"
-          class="button is-small is-danger is-outlined">Logout</button>
+
+    <div *ngIf="user$ | async as user" class="img-div">
+      <div class="columns is-gapless">
+        <div class="column is-4">
+          <img style="border-radius: 100%" width="52" [src]="user.profilePictureUrl" alt="">
+        </div>
+        <div class="column">
+          <p class="is-size-7 has-text-weight-bold">{{user.displayName}}</p>
+          <button style="margin-top: 0.5rem" (click)="signOut()"
+            class="button is-small is-danger is-outlined">Logout</button>
+        </div>
       </div>
     </div>
-  </div>
-  <p class="menu-label has-text-white">
-    General
-  </p>
-  <ul class="menu-list">
-    <li><a routerLink="/home/start"><i class="fas fa-folder"></i> Projekt</a></li>
-    <li><a class="has-text-grey"><i class="fas fa-filter"></i> Filter</a></li>
-    <li><a routerLink="/home/settings"><i class="fas fa-cog"></i> Settings</a></li>
-    <!-- <li><a routerLink="/home/templates"><i class="fas fa-cog"></i> Mallverktyg</a></li> -->
-  </ul>
-</aside>
-</div>
+    <p class="menu-label has-text-white">
+      General
+    </p>
+    <ul class="menu-list">
+      <li><a routerLink="/home/start"><i class="fas fa-folder"></i> Projekt</a></li>
+      <li><a class="has-text-grey"><i class="fas fa-filter"></i> Filter</a></li>
+      <li><a routerLink="/home/settings"><i class="fas fa-cog"></i> Settings</a></li>
+      <!-- <li><a routerLink="/home/templates"><i class="fas fa-cog"></i> Mallverktyg</a></li> -->
+    </ul>
+    <ng-container *ngIf="displayProjectMenu()">
+      <ng-container *ngIf="currentProject$ | async as currentProject">
+        <p style="margin-top: 2rem;" class="menu-label has-text-white">
+          {{currentProject.name}}
+        </p>
+        <ul class="menu-list">
+          <li><a routerLink="/home/projectview/{{currentProject.id}}/project" routerLinkActive="active">Översikt</a>
+          </li>
+          <li><a routerLink="/home/projectview/{{currentProject.id}}/participants"
+              routerLinkActive="active">Deltagare</a>
+          </li>
+          <li><a>Inställningar</a></li>
+        </ul>
+      </ng-container>
+    </ng-container>
 
+  </aside>
+</div>

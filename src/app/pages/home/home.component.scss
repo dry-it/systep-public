@@ -132,7 +132,19 @@
     padding-top: 2rem;
     height: 100%;
 
+    li{
+        font-size: 0.9rem;
+    }
+
     a {
         color: #fff
+    }
+
+    a:hover {
+        color: #444;
+    }
+
+    .active {
+        color: rgb(191, 217, 255);
     }
 }
