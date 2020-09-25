@@ -47,9 +47,6 @@ function createWindow(): BrowserWindow {
     hasShadow: true,
     frame: frame,
     resizable: true,
-    vibrancy: 'light',
-    transparent: true,
-    backgroundColor: '#0000000',
     titleBarStyle: 'hiddenInset',
     webPreferences: {
       nodeIntegration: true,
