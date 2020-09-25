@@ -1,4 +1,4 @@
-<section class="hero is-dark">
+<section *ngIf="isElectron" class="hero is-dark">
     <div class="hero-body">
         <div class="container">
             <h1 class="title logo">
@@ -24,6 +24,10 @@
                 <div class="control">
                     <input formControlName="password" class="input" type="password" placeholder="password">
                 </div>
+            </div>
+
+            <div class="field">
+                <a routerLink="/resetpassword">Glömt lösenordet? tryck här!</a>
             </div>
 
             <button style="margin-right: 4px;" class="button is-link" type="submit"

@@ -60,6 +60,7 @@ import { UsersEffects } from './ngrx/effects/users.effects'
 import { StateService } from './services/state.service'
 import { MarkdownModule } from 'ngx-markdown';
 
+
 import { DocumentService } from './services/document.service';
 import { ProjectWrapperComponent } from './pages/project-wrapper/project-wrapper.component';
 import { FolderComponent } from './components/folder/folder.component';
@@ -72,12 +73,15 @@ import { ProjectStatusComponent } from './components/project-status/project-stat
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { ProjectParticipantsComponent } from './pages/project-participants/project-participants.component';
 import { ProfileImageComponent } from './components/profile-image/profile-image.component';
+import { TemplateToolComponent } from './pages/template-tool/template-tool.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-} 
+}
 
 @NgModule({
   declarations: [
@@ -97,6 +101,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ProjectStatusComponent,
     ProjectParticipantsComponent,
     ProfileImageComponent,
+    TemplateToolComponent,
+    LandingPageComponent,
+    PasswordRecoveryComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,7 +122,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AngularFirestoreModule,
     AngularFireStorageModule,
     AppRoutingModule,
-    FroalaEditorModule.forRoot(), 
+    FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

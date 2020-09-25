@@ -189,6 +189,8 @@ export class HomeComponent implements OnInit {
 
   hideSidebar: boolean
 
+  mobileSidebar: boolean
+
 
 
   ngOnInit(): void {
@@ -446,6 +448,7 @@ export class HomeComponent implements OnInit {
 
 
   openProject(id: string) {
+    this.mobileSidebar = false;
     this.router.navigateByUrl(`/home/projectview/${id}/project`)
     this.searchForm.patchValue({ term: '' });
     this.results = undefined;

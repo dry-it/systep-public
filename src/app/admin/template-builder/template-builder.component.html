@@ -1,0 +1,12 @@
+<div class="container is-fluid">
+    <ng-container *ngIf="template">
+        <h1 class="title">{{template.documentTitle}}</h1>
+        <section *ngFor="let section of template.sections" class="section">
+            <tb-text-area (changes)="change($event)" [data]="section">
+            </tb-text-area>
+            <article *ngFor="let block of section.blocks">
+                <tb-text-area (changes)="change($event)" [data]="block"></tb-text-area>
+            </article>
+        </section>
+    </ng-container>
+</div>

@@ -83,6 +83,11 @@ export class DocumentService {
 
   }
 
+  testDoc = (html) => {
+    this.electronService.ipcRenderer.send('testDoc', html)
+  }
+
+
   openProtocol(projectID, protocolID) {
     if (this.electronService.isElectron) {
       this.electronService.ipcRenderer.send('open-protocol', { projectID: projectID, protocolID: protocolID })

@@ -3,7 +3,7 @@
         <input [(ngModel)]="title" class="input is-large" type="text" placeholder="Titel">
     </div>
     <div class="field">
-        <div [froalaEditor] [(froalaModel)]="editorContent"></div>
+        <div [froalaEditor]="options" [(froalaModel)]="editorContent"></div>
     </div>
 
     <div class="field">

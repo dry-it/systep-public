@@ -11,10 +11,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FireBaseService } from '../services/firebase.service';
 import { CreateNewsComponent } from './create-news/create-news.component';
 import { FroalaViewModule, FroalaEditorModule } from 'angular-froala-wysiwyg';
+import { TemplateBuilderComponent } from './template-builder/template-builder.component';
+import { TextAreaComponent } from './template-builder/components/text-area/text-area.component';
 
 @NgModule({
   declarations: [
-    AdminComponent, CreateNewsComponent],
+    AdminComponent, CreateNewsComponent, TemplateBuilderComponent, TextAreaComponent],
   imports: [CommonModule, SharedModule, AdminRoutingModule, ReactiveFormsModule,     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),]
 })

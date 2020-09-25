@@ -7,6 +7,7 @@ import { StartComponent } from '../pages/start/start.component';
 
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { CreateNewsComponent } from './create-news/create-news.component';
+import { TemplateBuilderComponent} from './template-builder/template-builder.component'
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'create-news',
         component: CreateNewsComponent
+      },
+      {
+        path: 'template-builder',
+        component: TemplateBuilderComponent
       },
     ]
   },];

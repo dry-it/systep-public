@@ -1,4 +1,5 @@
-<ng-container *ngIf="project$ | async as project">
+<div style="margin: 0.5rem;" class="block">
+    <ng-container *ngIf="project$ | async as project">
     <h3 class="title is-6">Uppdragsansvarig</h3>
     <div style="padding: 5px; padding-bottom: 20px;" class="box">
         <ng-container *ngIf="returnUser$(project.owner) | async as owner">
@@ -9,7 +10,9 @@
     </div>
 
     <h3 class="title is-6">Deltagare</h3>
-    <button [disabled]="!selectedUser" (click)="addUser(project.id)" style="margin-bottom: 0.5rem" class="button is-success is-small
+
+    <div class="box">
+        <button [disabled]="!selectedUser" (click)="addUser(project.id)" style="margin-bottom: 0.5rem" class="button is-success is-small
 ">Lägg till deltagare</button>
     <div class="field">
         <select [(ngModel)]="selectedUser" *ngIf="usersList$() | async as users" name="" id="adduser"
@@ -43,6 +46,9 @@
 
         </div>
     </ng-container>
+    </div>
+    
 
 
 </ng-container>
+</div>

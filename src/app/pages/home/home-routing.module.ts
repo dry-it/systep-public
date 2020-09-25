@@ -7,9 +7,10 @@ import { StartComponent } from '../start/start.component';
 
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { CreateProjectComponent } from '../create-project/create-project.component';
-import { ProjectWrapperComponent } from 'app/pages/project-wrapper/project-wrapper.component';
-import { SettingsComponent } from 'app/pages/settings/settings.component';
+import { ProjectWrapperComponent } from '../project-wrapper/project-wrapper.component';
+import { SettingsComponent } from '../settings/settings.component';
 import { ProjectParticipantsComponent } from '../project-participants/project-participants.component';
+import { TemplateToolComponent } from '../template-tool/template-tool.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'start',
         component: StartComponent
+      },
+      {
+        path: 'templates',
+        component: TemplateToolComponent
       },
       {
         path: 'settings',

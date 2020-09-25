@@ -6,6 +6,8 @@ import { HomeRoutingModule } from './pages/home/home-routing.module';
 
 import { LoginComponent } from './pages/login/login.component';
 import { AdminRoutingModule } from './admin/admin-routing.module';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,16 @@ const routes: Routes = [
     component: LoginComponent
   }
   ,
+
+  {
+    path: 'landing',
+    component: LandingPageComponent
+  },
+
+  {
+    path: 'resetpassword',
+    component: PasswordRecoveryComponent
+  },
 
   {
     path: '**',

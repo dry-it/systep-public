@@ -3,6 +3,8 @@ import * as path from 'path';
 import * as url from 'url';
 
 import * as createDoc from './doc-creater/doc-creater'
+import * as https from 'https'
+import * as fs from 'fs'
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -98,8 +100,6 @@ try {
       });
       // Load the page + route
       win.loadURL(`http://localhost:4200/index.html#/protocol-viewer/${projectID}/${protocolID}`);
-
-
     }
 
     ipcMain.on('create-doc', (event, args) => {
@@ -115,17 +115,36 @@ try {
         .catch((err) => console.error(err))
     })
 
+    ipcMain.on('testDoc', (event, args) => {
+      createDoc.testTemplate(args)
+    })
+
     ipcMain.on('createFromTemplate', (event, args) => {
-      createDoc.fromTemplate(args)
-      .then((res) => {
-        console.log(res)
-        shell.openPath(res)
-          .then(() => console.log('file opened'))
-          .catch((err) => {
-            event.sender.send('error', err)
-          })
-    }) 
-  });
+
+      const userData = app.getPath('userData');
+      const templateFilePath = path.join(userData, 'risk.docx')
+
+      const file = fs.createWriteStream(templateFilePath);
+
+      https.get("https://firebasestorage.googleapis.com/v0/b/systep-26719.appspot.com/o/templates%2Frisk.docx?alt=media&token=ed29c742-642c-4fab-9aed-ace26e33d27f", response => {
+        response.pipe(file);
+        //const filePath = path.join(__dirname, 'templates', 'risk.docx')
+        console.log(templateFilePath);
+        setTimeout(() => {
+          createDoc.fromTemplate({ ...args, templateFilePath: templateFilePath })
+            .then((res) => {
+              console.log(res)
+              shell.openPath(res)
+                .then(() => console.log('file opened'))
+                .catch((err) => {
+                  event.sender.send('error', err);
+                })
+            })
+        }, 1000)
+
+      });
+
+    });
 
 
     ipcMain.on('open-protocol', (event, args) => {

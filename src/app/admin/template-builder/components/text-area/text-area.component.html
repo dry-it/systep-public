@@ -1,0 +1,8 @@
+<div class="box">
+    <!--   <div class="field">
+        <input [(ngModel)]="title" class="input is-large" type="text" placeholder="Titel">
+    </div> -->
+    <div class="field">
+        <textarea (change)="onChange()" [froalaEditor]="options" [(froalaModel)]="content"></textarea>
+    </div>
+</div>
