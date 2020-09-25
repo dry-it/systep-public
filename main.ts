@@ -40,8 +40,6 @@ function createWindow(): BrowserWindow {
     frame = true
   }
 
-  process.env['GH_TOKEN'] = 'dd8a20345f99e2bd83ec98deac6934df64ced300'
-
   // Create the browser window.
   win = new BrowserWindow({
     width: 1200,
