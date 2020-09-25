@@ -6,9 +6,25 @@ import * as createDoc from './doc-creater/doc-creater'
 import * as https from 'https'
 import * as fs from 'fs'
 
+import { autoUpdater } from "electron-updater"
+
+
+
+export default class AppUpdater {
+  constructor() {
+    const log = require("electron-log")
+    log.transports.file.level = "debug"
+    autoUpdater.logger = log
+    autoUpdater.checkForUpdatesAndNotify()
+  }
+}
+
+
+
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
+
 
 function createWindow(): BrowserWindow {
 
@@ -24,6 +40,7 @@ function createWindow(): BrowserWindow {
     frame = true
   }
 
+  process.env['GH_TOKEN'] = 'dd8a20345f99e2bd83ec98deac6934df64ced300'
 
   // Create the browser window.
   win = new BrowserWindow({
@@ -60,6 +77,7 @@ function createWindow(): BrowserWindow {
     }));
   }
 
+
   // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store window
@@ -71,6 +89,35 @@ function createWindow(): BrowserWindow {
   return win;
 }
 
+
+
+/* function sendStatusToWindow(text) {
+  autoUpdater.logger.info(text)
+  win.webContents.send('message', text);
+}
+
+autoUpdater.on('checking-for-update', () => {
+  sendStatusToWindow('Checking for update...');
+})
+autoUpdater.on('update-available', (info) => {
+  sendStatusToWindow('Update available.');
+})
+autoUpdater.on('update-not-available', (info) => {
+  sendStatusToWindow('Update not available.');
+})
+autoUpdater.on('error', (err) => {
+  sendStatusToWindow('Error in auto-updater. ' + err);
+})
+autoUpdater.on('download-progress', (progressObj) => {
+  let log_message = "Download speed: " + progressObj.bytesPerSecond;
+  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+  sendStatusToWindow(log_message);
+})
+autoUpdater.on('update-downloaded', (info) => {
+  sendStatusToWindow('Update downloaded');
+}); */
+
 try {
 
   app.allowRendererProcessReuse = true;
@@ -79,9 +126,14 @@ try {
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
   // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
-  app.on('ready', () => setTimeout(createWindow, 400));
+  app.on('ready', () => setTimeout(() => {
+    createWindow()
+    autoUpdater.checkForUpdatesAndNotify();
+  }, 400));
 
   app.on('ready', () => {
+
+
 
     const openProtocol = (projectID, protocolID) => {
 

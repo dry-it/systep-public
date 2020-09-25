@@ -7,6 +7,8 @@ import { StateService } from 'app/services/state.service';
 
 import { DatePipe } from '@angular/common';
 
+import { autoUpdater } from "electron-updater"
+
 
 @Component({
   selector: 'app-activity',
@@ -28,6 +30,9 @@ export class ActivityComponent implements OnInit {
   blocks$: Observable<any>
   blocks: any
 
+  currentUser: any;
+  currentProject: any;
+
   checkpoints$: Observable<any>
 
 
@@ -39,6 +44,9 @@ export class ActivityComponent implements OnInit {
     private datePipe: DatePipe) { }
 
   ngOnInit() {
+
+    this.stateService.returnCurrentUser().subscribe(user => this.currentUser = user);
+    this.stateService.returnCurrentProject().subscribe(project => this.currentProject = project);
 
     //this.blocks$ = this.fireBaseService.getCollectionSnapshot(`projects/${this.id}/activities/${this.aid}/blocks`)
 
@@ -89,6 +97,14 @@ export class ActivityComponent implements OnInit {
     console.log(this.electron.remote.app.getAppPath())
 
     if (routine.template === 'risk') {
+
+      /*       const data = {
+              createdBy: this.currentUser.displayName,
+              projectName: this.currentProject.name,
+              date: this.datePipe.transform(Date.now(), 'yyyy-MM-dd')
+            }
+            this.documentService.createFromTemplate({ data: data, template: 'risk', fileName: 'Riskanalys' }) */
+
       this.stateService.returnCurrentUser()
         .subscribe((user: any) => {
           this.stateService.returnCurrentProject()
@@ -99,8 +115,8 @@ export class ActivityComponent implements OnInit {
                 date: this.datePipe.transform(Date.now(), 'yyyy-MM-dd')
               }
               this.documentService.createFromTemplate({ data: data, template: 'risk', fileName: 'Riskanalys' })
-            })
-        })
+            }).unsubscribe()
+        }).unsubscribe()
     }
   }
 

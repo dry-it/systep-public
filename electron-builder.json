@@ -26,12 +26,18 @@
     "icon": "dist/assets/icons",
     "target": [
       "portable"
+    ],
+    "publish": [
+      "github"
     ]
   },
   "mac": {
     "icon": "dist/assets/icons",
     "target": [
       "dmg"
+    ],
+    "publish": [
+      "github"
     ]
   },
   "linux": {

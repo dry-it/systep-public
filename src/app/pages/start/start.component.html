@@ -15,8 +15,25 @@
   <div class="columns is-mobile">
     <div style="margin: 10px;" class="column">
       <h2 class="title is-5">Mina Projekt</h2>
-      <button (click)="navigate('/home/create-project')" style="margin-bottom: 1rem;"
-        class="button is-link">Skapa nytt projekt</button>
+      <button (click)="navigate('/home/create-project')" style="margin-bottom: 1rem;" class="button is-link">Skapa nytt
+        projekt</button>
+      <div class="box is-hidden-desktop">
+        <div class="columns is-size-7 is-narrow is-mobile has-text-weight-bold">
+          <div class="column is-3">Projekt</div>
+          <div class="column is-3">Kund</div>
+          <div class="column is-2">UA</div>
+          <div class="column">Deltagare</div>
+        </div>
+      </div>
+
+      <div class="box is-hidden-mobile">
+        <div class="columns is-size-7 is-narrow is-mobile has-text-weight-bold is-hidden-mobile">
+          <div class="column is-3">Projektnamn</div>
+          <div class="column is-2 has-text-centered">UA</div>
+          <div class="column is-3 has-text-centered">Deltagare</div>
+          <div class="column has-text-centered">Status</div>
+        </div>
+      </div>
       <div *ngIf="projects$ | async as projects">
         <app-project-panel *ngFor="let project of projects" [owner]="project.owner" [project]="project">
         </app-project-panel>
