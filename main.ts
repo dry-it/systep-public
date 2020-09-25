@@ -91,32 +91,11 @@ function createWindow(): BrowserWindow {
 
 
 
-/* function sendStatusToWindow(text) {
+function sendStatusToWindow(text) {
   autoUpdater.logger.info(text)
   win.webContents.send('message', text);
 }
 
-autoUpdater.on('checking-for-update', () => {
-  sendStatusToWindow('Checking for update...');
-})
-autoUpdater.on('update-available', (info) => {
-  sendStatusToWindow('Update available.');
-})
-autoUpdater.on('update-not-available', (info) => {
-  sendStatusToWindow('Update not available.');
-})
-autoUpdater.on('error', (err) => {
-  sendStatusToWindow('Error in auto-updater. ' + err);
-})
-autoUpdater.on('download-progress', (progressObj) => {
-  let log_message = "Download speed: " + progressObj.bytesPerSecond;
-  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
-  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
-  sendStatusToWindow(log_message);
-})
-autoUpdater.on('update-downloaded', (info) => {
-  sendStatusToWindow('Update downloaded');
-}); */
 
 try {
 
@@ -128,8 +107,33 @@ try {
   // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
   app.on('ready', () => setTimeout(() => {
     createWindow()
-    autoUpdater.checkForUpdatesAndNotify();
   }, 400));
+
+  app.on('ready', function () {
+    setTimeout(() => {
+      sendStatusToWindow('App ready...');
+      autoUpdater.checkForUpdates();
+    }, 1000)
+  });
+
+  autoUpdater.on('checking-for-update', () => {
+    sendStatusToWindow('checking for update')
+  })
+  autoUpdater.on('update-available', (info) => {
+    sendStatusToWindow('update found')
+  })
+  autoUpdater.on('update-not-available', (info) => {
+    sendStatusToWindow('No update avalible')
+  })
+  autoUpdater.on('error', (err) => {
+    sendStatusToWindow(err)
+  })
+  autoUpdater.on('download-progress', (progressObj) => {
+  })
+  autoUpdater.on('update-downloaded', (info) => {
+    sendStatusToWindow('update downloaded')
+    autoUpdater.quitAndInstall();
+  })
 
   app.on('ready', () => {
 
