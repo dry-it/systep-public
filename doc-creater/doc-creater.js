@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fromTemplate = exports.createDoc = void 0;
+exports.testTemplate = exports.fromTemplate = exports.createDoc = void 0;
 var docx_templates_1 = __importDefault(require("docx-templates"));
 var fs = require('fs');
 function createDoc(input) {
@@ -72,7 +72,7 @@ function fromTemplate(input) {
             switch (_a.label) {
                 case 0:
                     console.log('creating doc');
-                    template = fs.readFileSync(input.template);
+                    template = fs.readFileSync(input.templateFilePath);
                     return [4 /*yield*/, docx_templates_1.default({
                             template: template,
                             data: input.data,
@@ -88,4 +88,30 @@ function fromTemplate(input) {
     });
 }
 exports.fromTemplate = fromTemplate;
+function testTemplate(data) {
+    return __awaiter(this, void 0, void 0, function () {
+        var html, template, buffer;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log('creating doc');
+                    html = "\n     <body>\n     " + data + "\n   </body>";
+                    template = fs.readFileSync('temp/testtemplate.docx');
+                    return [4 /*yield*/, docx_templates_1.default({
+                            template: template,
+                            data: {
+                                test: 'test',
+                                html: html
+                            },
+                            rejectNullish: false
+                        })];
+                case 1:
+                    buffer = _a.sent();
+                    fs.writeFileSync("temp/testfile.docx", buffer);
+                    return [2 /*return*/, "temp/testfile.docx"];
+            }
+        });
+    });
+}
+exports.testTemplate = testTemplate;
 //# sourceMappingURL=doc-creater.js.map

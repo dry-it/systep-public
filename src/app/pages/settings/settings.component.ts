@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { StateService } from 'app/services/state.service';
 import { FireBaseService } from 'app/services/firebase.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
+import { StateService } from 'app/services/state.service';
 
 @Component({
   selector: 'app-settings',

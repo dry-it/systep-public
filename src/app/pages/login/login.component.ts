@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
+import { ElectronService } from 'app/core/services';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +17,17 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  constructor(public auth: AngularFireAuth, private router: Router) { }
+  isElectron: boolean
+
+  constructor(public auth: AngularFireAuth, private router: Router, private electron:ElectronService) { }
 
   ngOnInit(): void {
+
+    this.isElectron = this.electron.isElectron
+
+    if (!this.electron.isElectron) {
+      this.router.navigateByUrl('/landing')
+    }
   }
 
   onSubmit() {

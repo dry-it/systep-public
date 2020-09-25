@@ -1,0 +1,151 @@
+<div style="margin-top: 2rem;" class="container">
+    <p class="title">Mallverktyg</p>
+    <div class="columns">
+        <div class="column is-4">
+            <div class="box">
+                <p class="title is-6">Väl ett eller alla kontor</p>
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" name="foobar">
+                        Ett kontor
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="foobar">
+                        Alla kontor
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="foobar">
+                        Ingen adress
+                    </label>
+                </div>
+                <div style="margin-top: 1rem;" class="select is-fullwidth">
+                    <select>
+                        <option>Stockholm</option>
+                        <option>Uppsala</option>
+                        <option>Göteborg</option>
+                        <option>Malmö</option>
+                    </select>
+                </div>
+            </div>
+            <div class="box">
+                <p class="title is-6">Uppdragsspecifik information</p>
+                <div class="control">
+                    <label for="" class="label">
+                        Projektnamn:
+                    </label>
+                    <input class="input is-small" type="text">
+                </div>
+                <div class="control">
+                    <label for="" class="label">
+                        Datum:
+                    </label>
+                    <input class="input is-small" type="date">
+                </div>
+                <div class="control">
+                    <label for="" class="label">
+                        Uppdragsnummer:
+                    </label>
+                    <input class="input is-small" type="text">
+                </div>
+                <div class="control">
+                    <label for="" class="label">
+                        Status:
+                    </label>
+                    <div class="select is-fullwidth">
+                        <select>
+                            <option>Granskningshandling</option>
+                            <option>Fastställd</option>
+                            <option>Systemhandling</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control">
+                    <label for="" class="label">
+                        Reviderad datum:
+                    </label>
+                    <input class="input is-small" type="date">
+                </div>
+                <div class="control">
+                    <label for="" class="label">
+                        Version:
+                    </label>
+                    <input class="input is-small" value="1.0" type="number">
+                </div>
+                <div class="control">
+                    <label for="" class="label">
+                        Din roll i projektet:
+                    </label>
+                    <div class="select is-fullwidth">
+                        <select>
+                            <option>Uppdragsansvarig</option>
+                            <option>Handläggare</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-5">
+            <div class="box">
+                <p class="title is-6">Välj mall</p>
+                <div class="tabs is-toggle is-toggle-rounded">
+                    <ul>
+                        <li class="is-active">
+                            <a>
+                                <span class="icon is-small"><i class="fas fa-tint"></i></span>
+                                <span>Fukt</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="icon is-small"><i class="fas fa-fire"></i></span>
+                                <span>Energi</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="icon is-small"><i class="fas fa-leaf"></i></span>
+                                <span>Miljö</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
+                                <span>Övrigt</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box">
+                <p class="title is-6">Väl kund/företag</p>
+                <div class="control">
+                    <label for="" class="label">
+                        Välj kund
+                    </label>
+                    <div class="select is-fullwidth">
+                        <select>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control">
+                    <label for="" class="label">
+                        Välj kontaktperson
+                    </label>
+                    <div class="select is-fullwidth">
+                        <select>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button (click)="testDoc()" class="button is-success is-large">Generate</button>
+        </div>
+    </div>
+    <div class="box">
+        <button (click)="addData()" class="button">Add some data</button>
+        <div class="field">
+            <div [froalaEditor]="options" [(froalaModel)]="editorContent"></div>
+        </div>
+    </div>
+</div>

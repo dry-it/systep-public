@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FireBaseService } from '../../services/firebase.service';
 import { Observable } from 'rxjs';
-import { activities } from './standard-activities'
+import { activities, activitiesSmall } from './standard-activities'
 import { Router } from '@angular/router';
 
 @Component({
@@ -54,13 +54,21 @@ export class CreateProjectComponent implements OnInit {
       }
     }
 
+    let act
+
+    if (this.createProjectForm.value.type === 'sm') {
+      act = activitiesSmall
+    } else {
+      act = activities
+    }
+
 
     this.fireBaseService.addDocument('projects', { ...this.createProjectForm.value, createdBy: localStorage.uid })
       .then((project: any) => {
         const projectID = project.id
 
-        for (let i = 0; i < activities.length; i++) {
-          const a = activities[i]
+        for (let i = 0; i < act.length; i++) {
+          const a = act[i]
           if (a.checkPoints) {
             for (let j = 0; j < a.checkPoints.length; j++) {
               const checkPoint = a.checkPoints[j];
@@ -72,7 +80,7 @@ export class CreateProjectComponent implements OnInit {
           }
         }
 
-        let strippedActivities = Object.assign(activities)
+        let strippedActivities = Object.assign(act)
         for (let i = 0; i < strippedActivities.length; i++) {
           const a = strippedActivities[i]
           if (a.checkPoints) {

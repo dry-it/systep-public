@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { StateService } from 'app/services/state.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { StateService } from 'app/services/state.service';
 
 @Component({
   selector: 'app-project-panel',
@@ -17,9 +17,7 @@ export class ProjectPanelComponent implements OnInit {
   constructor(private StateService: StateService, private router:Router) { }
 
   ngOnInit(): void {
-    console.log(this.project.owner)
     this.owner$ = this.StateService.getUser('0nz9sUc9rKMrD95MS1Gn4NZ0jvi2')
-    this.owner$.subscribe((res) => console.log(res))
   }
 
   getUser$(id: string) {

@@ -33,13 +33,11 @@ export class UserEffects {
     ofType('[User] query user'),
     map((action: UserActions.Query) => action),
     switchMap(data => {
-      console.log(data.id)
       this.stateService.setLoadingState(true)
       return this.fireBaseService.getDocumentValueChanges('users', data.id)
     }),
     map((action: any) => {
       const d: any = action.payload
-      console.log(action)
       return {
         type: `[User] add user`,
         payload: {

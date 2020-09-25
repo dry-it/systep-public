@@ -35,7 +35,6 @@ export class DryfixEffects {
         mergeMap(actions => actions),
         map(action => {
           const data: any = action.payload.doc.data()
-          console.log(data)
           return {
             type: `[DryfixData] ${action.type}`,
             payload: {

@@ -1,29 +1,37 @@
 <div (click)="openProject()" style="padding: 10px; margin-bottom: 0.5rem" class="box">
-    <div class="columns">
-        <div class="column">
+    <div style="padding: 0px;" class="columns is-mobile is-hidden-touch">
+        <div class="column is-3">
             <h4 class="title is-6" style="margin: 2px;">{{project.name}}</h4>
-            <h4 class="subtitle is-6" style="margin-top: 2px;">{{project.company}}</h4>
-            <h4 class="subtitle is-7" style="margin-top: 2px;">{{project.pNumber}}</h4>
+            <p class="subtitle is-7" style="margin-top: 2px; margin-bottom: 0px;" >{{project.company}}</p>
+            <p style="margin: 0px;" class="is-size-7 has-text grey">{{project.pNumber}}</p>
         </div>
         <div class="column is-2 has-text-centered">
-            <h4 class="title is-7" style="margin: 2px;">UA</h4>
             <ng-container *ngIf="owner$ | async as owner">
-                <span class="is-block">
-                    <img class="small-avatar" [src]="owner.profilePictureUrl" alt="">
-                </span>
+                <app-profile-image [id]="owner.id"></app-profile-image>
             </ng-container>
         </div>
-        <div class="column is-2 has-text-centered">
-            <h4 class="title is-7" style="margin: 2px;">Deltagare</h4>
+        <div class="column is-3 has-text-centered">
+            <app-profile-image *ngFor="let p of project.participants" [id]="p">
+            </app-profile-image>
+        </div>
+        <div class="column">
+            <app-project-status [id]="project.id"></app-project-status>
+        </div>
+    </div>
+
+    <div class="columns is-mobile is-narrow is-size-7 is-hidden-desktop">
+        <div class="column is-3 has-text-weight-bold">{{project.name}}</div>
+        <div class="column is-3 has-text-grey">{{project.company}}</div>
+        <div class="column is-2 has-text-grey">
             <ng-container *ngIf="owner$ | async as owner">
-                <span class="is-block">
-                    <img class="small-avatar" [src]="owner.profilePictureUrl" alt="">
-                </span>
+                <app-profile-image [id]="owner.id"></app-profile-image>
             </ng-container>
         </div>
-            <div class="column">
-                <app-project-status [id]="project.id"></app-project-status>
-            </div>
+        <div class="column">
+            <app-profile-image *ngFor="let p of project.participants" [id]="p">
+            </app-profile-image>
+        </div>
+
     </div>
 
 </div>

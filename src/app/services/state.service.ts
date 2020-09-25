@@ -33,17 +33,14 @@ export class StateService {
   }
 
   getProject = (id: string) => {
-    console.log(id)
     return this.store.select(fromProjects.selectEntity, { id: id })
   }
 
   loadProject = (id: string) => {
-    console.log(id)
     this.store.dispatch(new projectActions.Query(id))
   }
 
   loadUser = (id: string) => {
-    console.log(id)
     this.store.dispatch(new userActions.Query(id));
   }
 
@@ -53,6 +50,10 @@ export class StateService {
 
   getUser = (id: string) => {
     return this.store.select(fromUsers.selectEntity, { id: id })
+  }
+
+  getUsers = () => {
+    return this.store.select(fromUsers.selectAll)
   }
 
   returnCurrentProject() {
@@ -87,7 +88,6 @@ export class StateService {
   }
 
   getProtocol = (id: string) => {
-    console.log(id)
     return this.store.select(fromProtocols.selectEntity, { id: id })
   }
 

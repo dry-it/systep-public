@@ -6,8 +6,8 @@ import { ProjectComponent } from '../pages/project/project.component';
 import { StartComponent } from '../pages/start/start.component';
 
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { BlockBuilderComponent } from './block-builder/block-builder.component';
 import { CreateNewsComponent } from './create-news/create-news.component';
+import { TemplateBuilderComponent} from './template-builder/template-builder.component'
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -23,12 +23,12 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
       {
-        path: 'block-builder',
-        component: BlockBuilderComponent
-      },
-      {
         path: 'create-news',
         component: CreateNewsComponent
+      },
+      {
+        path: 'template-builder',
+        component: TemplateBuilderComponent
       },
     ]
   },];

@@ -33,13 +33,11 @@ export class ProjectEffects {
     ofType('[Project] query project'),
     map((action: ProjectActions.Query) => action),
     switchMap(data => {
-      console.log(data.id)
       this.stateService.setLoadingState(true)
       return this.fireBaseService.getDocumentValueChanges('projects', data.id)
     }),
     map((action: any) => {
       const d: any = action.payload
-      console.log(action)
       return {
         type: `[Project] add project`,
         payload: {

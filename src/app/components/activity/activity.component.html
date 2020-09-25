@@ -11,12 +11,12 @@
   </div>
   <div class="text-container">
     <h6 class="title is-5 is-marginless">{{activity.title}}</h6>
-    <markdown [data]="activity.desc"></markdown>
+    <markdown class="is-size-7" [data]="activity.desc"></markdown>
 
 
     <ng-container *ngIf="activity.hasCheckpoints">
       <nav *ngIf="checkpoints$ | async as checkPoints" style="margin-top: 1rem;" class="panel">
-        <div *ngFor="let check of checkPoints; let i = index" class="panel-block has-text-weight-bold"
+        <div *ngFor="let check of checkPoints; let i = index" class="panel-block is-size-7 has-text-weight-bold"
           [class.has-background-success]="check.state">
           <button style="margin-top: 6px; margin-right: 10px;" (click)="deleteCheck(check)" class="delete is-small"
             [class.has-background-dark]="check.deleteable"></button>

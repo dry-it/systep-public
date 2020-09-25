@@ -1,0 +1,150 @@
+.fixed-width {
+    width: 250px;
+    min-height: 100vh;
+
+
+}
+
+.dragable {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    z-index: 100;
+    left: 238px;
+    -webkit-app-region: drag
+}
+
+.back-button {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    z-index: 100;
+    left: 238px;
+}
+
+.logo {
+    font-family: 'Righteous', cursive;
+    font-size: 1.2rem
+}
+
+.dark {
+    a {
+        color: #fff;
+    }
+
+    a:hover {
+        color: #444
+    }
+}
+
+
+.sidebar {
+    position: fixed;
+    right: 0px;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .comp {
+        position: relative;
+        margin-bottom: 0.1rem;
+        border-radius: 6px;
+    }
+
+
+    li {
+        margin: 2px;
+        padding: 2px;
+    }
+
+    ul {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .padding {
+        padding: 1rem;
+    }
+
+    .img-div {
+        text-align: center;
+    }
+
+    img {
+        border-radius: 100%;
+        border: 4px solid #fff;
+        width: 100px;
+    }
+
+    .hidden {
+        visibility: hidden;
+
+    }
+}
+
+.blur {
+    background: rgba(0, 0, 0, 0.5); // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(3px); // This be the blur
+}
+
+.blur-less {
+    background: rgba(0, 0, 0, 0.1); // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(3px); // This be the blur
+}
+
+.blur-white {
+    background: rgba(255, 255, 255, 0.8); // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(3px); // This be the blur
+}
+
+.overlay {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.5); // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(7px); // This be the blur
+}
+
+.result {
+    width: 200px;
+    max-height: 500px;
+    position: fixed;
+    padding: 5px;
+    margin-top: 2px;
+    z-index: 100;
+    color: #000;
+
+    span:hover {
+        color: rgb(40, 41, 85)
+    }
+}
+
+.mobile-sidebar {
+    position: fixed;
+    right: 0px;
+    top: 0rem;
+    color: #fff;
+    width: 250px;
+    padding: 10px;
+    padding-top: 2rem;
+    height: 100%;
+
+    li{
+        font-size: 0.9rem;
+    }
+
+    a {
+        color: #fff
+    }
+
+    a:hover {
+        color: #444;
+    }
+
+    .active {
+        color: rgb(191, 217, 255);
+    }
+}

@@ -1,8 +1,8 @@
-<div class="columns">
+<div class="columns is-mobile">
     <div *ngIf="project$ | async as project" class="column">
-        <div style="margin-top: 0.5rem;" class="box has-background-dark">
+        <div style="margin: 0.5rem;" class="box has-background-dark">
             <div class="columns">
-                <div class="column">
+                <div class="column is-8">
                     <h2 style="margin: 0px;" class="title has-text-white">{{project.name}}</h2>
                     <h3 style="margin-top: 0px;" class="subtitle is-6 has-text-light">{{project.company}} -
                         {{project.pNumber}}
@@ -10,15 +10,14 @@
                 </div>
                 <div class="column">
                     <ng-container *ngIf="owner(project.owner) | async as owner">
-                        <div class="columns">
-                            <div class="column has-text-right">
-                                <span class="is-block">
-                                    <img class="small-avatar" [src]="owner.profilePictureUrl" alt="">
-                                </span>
-                            </div>
+                        <div class="columns is-mobile">
                             <div class="column">
-                                <span style="margin-top: 0.5rem;" class="is-size-6 has-text-white has-text-weight-bold is-block">Uppdragsansvarig</span>
+                                <span style="margin-top: 0.5rem;"
+                                    class="is-size-6 has-text-white has-text-weight-bold is-block">Uppdragsansvarig</span>
                                 <span class="is-size-6 has-text-white">{{owner.displayName}}</span>
+                            </div>
+                            <div class="column is-hidden-touch">
+                                <app-profile-image [id]="owner.id"></app-profile-image>
                             </div>
                         </div>
                     </ng-container>
@@ -36,19 +35,9 @@
             </p>
             <ul class="menu-list">
                 <li><a routerLink="/home/projectview/{{id}}/project" routerLinkActive="active">Översikt</a></li>
-                <li><a>Deltagare</a></li>
-                <li><a routerLink="/home/projectview/{{id}}/project-plan" routerLinkActive="active">Projektplan</a></li>
-                <li><a routerLink="/home/projectview/{{id}}/documents" routerLinkActive="active">Dokument</a></li>
-                <li><a>Inställningar</a></li>
-            </ul>
-            <p class="menu-label mt-1">
-                Verktyg
-            </p>
-            <ul class="menu-list tools">
-                <li><a>DryFix</a></li>
-                <li><a routerLink="/home/projectview/{{id}}/template-tool" routerLinkActive="active">Mallverktyg</a>
+                <li><a routerLink="/home/projectview/{{id}}/participants" routerLinkActive="active">Deltagare</a>
                 </li>
-                <li><a>Energisignatur</a></li>
+                <li><a>Inställningar</a></li>
             </ul>
         </aside>
     </div>

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FireBaseService } from 'app/services/firebase.service';
 
+import 'froala-editor/js/plugins/align.min.js';
+import 'froala-editor/js/plugins/paragraph_format.min.js';
+
+
 @Component({
   selector: 'app-create-news',
   templateUrl: './create-news.component.html',
@@ -9,6 +13,12 @@ import { FireBaseService } from 'app/services/firebase.service';
 export class CreateNewsComponent implements OnInit {
 
   title: string;
+  options = {
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+  }
 
   constructor(private fireBaseService: FireBaseService) { }
 

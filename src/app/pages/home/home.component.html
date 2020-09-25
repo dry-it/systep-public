@@ -1,0 +1,133 @@
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation" style="-webkit-app-region: drag">
+  <div class="navbar-brand">
+    <div class="navbar-item">
+      <span class="logo has-text-white">SYSTEP</span><span class="logo has-text-info">!</span>
+    </div>
+    <a (click)="mobileSidebar = !mobileSidebar" role="button" class="navbar-burger burger" aria-label="menu"
+      aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+
+  </div>
+
+</nav>
+<div class="dragable">
+</div>
+
+<!-- <div class="back-button" style="margin-top: 20px; margin-left: -20px; z-index: 10000;">
+  <a (click)="_location.back()"><i class="fas fa-chevron-left has-text-dark"></i></a>
+</div> -->
+
+<div class="columns">
+  <div *ngIf="!hideSidebar" style="-webkit-app-region: drag"
+    class="column is-2 has-background-light is-hidden-touch fixed-width">
+    <aside style="margin-top: 1.5rem; position:fixed;" class="menu menu-padding">
+      <form [formGroup]="searchForm">
+        <div style="margin-bottom: 1rem;" class="field is-fullwidth">
+          <div class="control">
+            <input formControlName="term" class="input is-fullwidth" type="text" placeholder="Find a project">
+          </div>
+        </div>
+      </form>
+      <div *ngIf="results" class="result blur-white">
+        <span class="is-block has-text-weight-bold">Sökresultat</span>
+        <div (click)="openProject(result.id)" style="margin-bottom: 1rem;" *ngFor="let result of results"
+          class="is-block">
+          <span class="is-block">{{result.name}}</span>
+          <span class="is-block has-text-info is-size-7">{{result.pNumber}}</span>
+        </div>
+      </div>
+
+      <div *ngIf="user$ | async as user" class="img-div">
+        <div class="columns is-gapless">
+          <div class="column is-4">
+            <img style="border-radius: 100%" width="52" [src]="user.profilePictureUrl" alt="">
+          </div>
+          <div class="column">
+            <p class="is-size-7 has-text-weight-bold">{{user.displayName}}</p>
+            <button style="margin-top: 0.5rem" (click)="signOut()"
+              class="button is-small is-danger is-outlined">Logout</button>
+          </div>
+        </div>
+      </div>
+      <p class="menu-label">
+        General
+      </p>
+      <ul class="menu-list">
+        <li><a routerLink="/home/start"><i class="fas fa-folder"></i> Projekt</a></li>
+        <li><a class="has-text-grey"><i class="fas fa-filter"></i> Filter</a></li>
+        <li><a routerLink="/home/settings"><i class="fas fa-cog"></i> Settings</a></li>
+        <!-- <li><a routerLink="/home/templates"><i class="fas fa-cog"></i> Mallverktyg</a></li> -->
+      </ul>
+
+    </aside>
+  </div>
+  <div class="column">
+    <div style="margin-top: 5px">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+
+
+
+</div>
+
+<div *ngIf=" activate" class="overlay">
+  <div style="margin-top: 4rem;" class="container">
+    <div class="box blur-white">
+      <h1 class="title is-2">Välkommen</h1>
+      <p class="lead">Innan du kan använda ditt konto måste det aktiveras. Fyll i formuläret nedan för att aktivera
+        ditt
+        konto</p>
+      <app-activate (activate)="checkUser()"></app-activate>
+    </div>
+  </div>
+</div>
+
+<div (click)="mobileSidebar = false" *ngIf="mobileSidebar" class="overlay">
+  <aside class="menu menu-padding mobile-sidebar blur">
+
+
+    <div *ngIf="user$ | async as user" class="img-div">
+      <div class="columns is-gapless">
+        <div class="column is-4">
+          <img style="border-radius: 100%" width="52" [src]="user.profilePictureUrl" alt="">
+        </div>
+        <div class="column">
+          <p class="is-size-7 has-text-weight-bold">{{user.displayName}}</p>
+          <button style="margin-top: 0.5rem" (click)="signOut()"
+            class="button is-small is-danger is-outlined">Logout</button>
+        </div>
+      </div>
+    </div>
+    <p class="menu-label has-text-white">
+      General
+    </p>
+    <ul class="menu-list">
+      <li><a routerLink="/home/start"><i class="fas fa-folder"></i> Projekt</a></li>
+      <li><a class="has-text-grey"><i class="fas fa-filter"></i> Filter</a></li>
+      <li><a routerLink="/home/settings"><i class="fas fa-cog"></i> Settings</a></li>
+      <!-- <li><a routerLink="/home/templates"><i class="fas fa-cog"></i> Mallverktyg</a></li> -->
+    </ul>
+    <ng-container *ngIf="displayProjectMenu()">
+      <ng-container *ngIf="currentProject$ | async as currentProject">
+        <p style="margin-top: 2rem;" class="menu-label has-text-white">
+          {{currentProject.name}}
+        </p>
+        <ul class="menu-list">
+          <li><a routerLink="/home/projectview/{{currentProject.id}}/project" routerLinkActive="active">Översikt</a>
+          </li>
+          <li><a routerLink="/home/projectview/{{currentProject.id}}/participants"
+              routerLinkActive="active">Deltagare</a>
+          </li>
+          <li><a>Inställningar</a></li>
+        </ul>
+      </ng-container>
+    </ng-container>
+
+  </aside>
+</div>

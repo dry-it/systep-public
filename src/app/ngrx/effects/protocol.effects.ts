@@ -33,7 +33,6 @@ export class protocolsEffects {
     ofType('[Dryfix-Protocol] query protocols'),
     map((action: ProtocolActions.Query) => action),
     switchMap(data => {
-      console.log(data.id)
       this.stateService.setLoadingState(true)
       return this.fireBaseService.getProtocols(data.id)
     }),
