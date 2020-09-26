@@ -18,7 +18,7 @@
     "electron:serve-tsc": "tsc --esModuleInterop true -p tsconfig.serve.json",
     "electron:serve": "wait-on tcp:4200 && npm run electron:serve-tsc && npx electron . --serve",
     "electron:local": "npm run build:prod && npx electron .",
-    "electron:build": "npm run build:prod && electron-builder build --win --mac",
+    "electron:build:release:patch": "npm version patch && npm run build:prod && electron-builder build --win --mac -p always",
     "electron:win": "npm run build:prod && electron-builder build --win",
     "firebase:hosting": "ng build --prod && firebase deploy --only hosting",
     "test": "ng test --watch=false",
