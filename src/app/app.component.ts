@@ -21,13 +21,12 @@ export class AppComponent {
       console.log('Mode electron');
       console.log('Electron ipcRenderer', electronService.ipcRenderer);
       console.log('NodeJS childProcess', electronService.childProcess);
+      this.electronService.ipcRenderer.on('message', (event, message) => {
+        console.log(message)
+      })
     } else {
       console.log('Mode web');
     }
-
-    this.electronService.ipcRenderer.on('message', (event, message) => {
-      console.log(message)
-    })
 
   }
 }
