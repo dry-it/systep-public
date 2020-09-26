@@ -1,5 +1,14 @@
+## <small>0.0.11 (2020-09-26)</small>
+
+* Create main.yml ([7ad9562](https://github.com/dry-it/systep-public/commit/7ad9562))
+* Delete main.yml ([25e2b06](https://github.com/dry-it/systep-public/commit/25e2b06))
+* Updated package ([ad347f9](https://github.com/dry-it/systep-public/commit/ad347f9))
+
+
+
 ## <small>0.0.10 (2020-09-26)</small>
 
+* 0.0.10 ([9e99a68](https://github.com/dry-it/systep-public/commit/9e99a68))
 * Hide nav on desktop ([76dc950](https://github.com/dry-it/systep-public/commit/76dc950))
 * Moved update check inside isElectron ([7a55533](https://github.com/dry-it/systep-public/commit/7a55533))
 * Updated scripts ([03c6199](https://github.com/dry-it/systep-public/commit/03c6199))
