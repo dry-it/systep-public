@@ -61,22 +61,24 @@ export class ActivateComponent implements OnInit {
   onSubmit() {
     this.currentUser$.then((user: User) => {
       user.updateProfile({ displayName: this.activateForm.value.displayName })
+      .then(() => {
+        user.updatePassword(this.activateForm.value.password)
+          .then((res) => {
+            console.log(res)
+            delete this.activateForm.value.password
+          })
+          .catch((err) => {
+            if (err.code === 'auth/requires-recent-login') {
+
+            }
+          })
+      })
         .then(() => {
           console.log('profile updated')
           this.fireBaseService.setDocument('users', this.user.uid, {
             ...this.user, ...this.activateForm.value, active: true
           })
-            .then(() => {
-              user.updatePassword(this.activateForm.value.password)
-                .then((res) => {
-                  console.log(res)
-                })
-                .catch((err) => {
-                  if (err.code === 'auth/requires-recent-login') {
-
-                  }
-                })
-            })
+          
             .then(() => {
               this.activate.emit()
             })

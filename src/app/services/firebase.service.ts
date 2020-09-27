@@ -78,6 +78,20 @@ export class FireBaseService {
     })
   }
 
+  queryAllProjects = (orderBy:string) => {
+    return this.afs.collection('projects', ref => ref.orderBy(orderBy, 'asc'))
+    .snapshotChanges()
+      .pipe(
+        map(actions =>
+          actions.map(a => {
+            const data = a.payload.doc.data() as any;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+        )
+      );
+  }
+
   getMyProjects = (uid: string) => {
 
     const queryOwner = this.afs.collection('projects', ref => ref.where('owner', '==', uid).orderBy('modifiedDate', 'asc'))

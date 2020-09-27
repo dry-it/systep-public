@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="title">Alla projekt</h1>
+    <div class="field">
+        <div class="control">
+            <input [(ngModel)]="filterString" class="input is-primary" type="text" placeholder="Filtrera">
+        </div>
+    </div>
+    <table *ngIf="projects$ | async as projects" class="table is-fullwidth is-narrow is-hoverable is-striped">
+        <thead class="is-size-7 has-background-dark">
+            <th class="has-text-white">Projektnamn</th>
+            <th class="has-text-white">Pnummer</th>
+            <th class="has-text-white">Kund</th>
+            <th class="has-text-white">Senaste ändring</th>
+            <th class="has-text-white">Skapades</th>
+            <th class="has-text-white">Uppdragsansvarig</th>
+            <th></th>
+        </thead>
+        <tbody class="is-size-7">
+            <tr *ngFor="let p of projects | filterBy: ['name', 'pNumber']: filterString">
+                <td class="td-padding">{{p.name}}</td>
+                <td class="td-padding">{{p.pNumber}}</td>
+                <td class="td-padding">{{p.company}}</td>
+                <td class="td-padding">{{(p.modifiedDate.seconds * 1000) | date: 'yyyy-MM-dd HH:mm'}}</td>
+                <td class="td-padding">{{(p.createdDate.seconds * 1000) | date: 'yyyy-MM-dd HH:mm'}}</td>
+                <td class="td-padding" *ngIf="getOwner$(p.owner) | async as o">{{o.displayName}}</td>
+                <td> <a (click)="openProject(p.id)" class="tag is-link is-small">Visa projekt</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

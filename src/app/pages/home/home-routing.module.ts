@@ -12,6 +12,7 @@ import { ProjectWrapperComponent } from '../project-wrapper/project-wrapper.comp
 import { SettingsComponent } from '../settings/settings.component';
 import { ProjectParticipantsComponent } from '../project-participants/project-participants.component';
 import { TemplateToolComponent } from '../template-tool/template-tool.component';
+import { FilterComponent } from '../filter/filter.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -45,6 +46,10 @@ const routes: Routes = [
       {
         path: 'start',
         component: StartComponent
+      },
+      {
+        path: 'filter',
+        component: FilterComponent
       },
       {
         path: 'templates',
