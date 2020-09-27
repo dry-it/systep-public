@@ -3,11 +3,11 @@
         <h3 class="has-text-success">{{((done / total) * 100).toFixed(0)}}%</h3>
     </div>
     <div class="column  has-text-centered is-hidden-touch">
-        <h3 *ngIf="project_registerd" class="has-text-success"><i class="fas fa-check-circle"></i></h3>
-        <h3 *ngIf="!project_registerd" class="has-text-danger"><i class="fas fa-times-circle"></i></h3>
+        <span *ngIf="project_registerd" class="has-text-success"><span class="tag is-success">pyramid</span></span>
+        <span *ngIf="!project_registerd" class="has-text-success"><span class="tag is-grey">pyramid</span></span>
     </div>
     <div class="column has-text-centered is-hidden-touch">
-        <h3 *ngIf="project_order" class="has-text-success"><i class="fas fa-check-circle"></i></h3>
-        <h3 *ngIf="!project_order" class="has-text-danger"><i class="fas fa-times-circle"></i></h3>
+        <span *ngIf="project_order" class="has-text-success"><span class="tag is-success">orderbekr.</span></span>
+        <span *ngIf="!project_order" class="has-text-danger"><span class="tag is-grey">orderbekr.</span></span>
     </div>
 </div>

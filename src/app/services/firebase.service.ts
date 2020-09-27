@@ -20,7 +20,7 @@ export class FireBaseService {
     }
   }
 
-  getImgUrl(path:string) {
+  getImgUrl(path: string) {
     return this.storage.ref(path).getDownloadURL()
   }
 
@@ -66,16 +66,45 @@ export class FireBaseService {
     return this.getDocumentValueChanges('devices', doc);
   }
 
-  addParticipant = (userID:string, projectID:string) => {
+  addParticipant = (userID: string, projectID: string) => {
     return this.afs.collection('projects').doc(projectID).update({
       participants: firestore.FieldValue.arrayUnion(userID)
     })
   }
 
-  removeParticipant = (userID:string, projectID:string) => {
+  removeParticipant = (userID: string, projectID: string) => {
     return this.afs.collection('projects').doc(projectID).update({
       participants: firestore.FieldValue.arrayRemove(userID)
     })
+  }
+
+  getMyProjects = (uid: string) => {
+
+    const queryOwner = this.afs.collection('projects', ref => ref.where('owner', '==', uid).orderBy('modifiedDate', 'asc'))
+      .snapshotChanges()
+      .pipe(
+        map(actions =>
+          actions.map(a => {
+            const data = a.payload.doc.data() as any;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+        )
+      );
+
+    const queryParticipants = this.afs.collection('projects', ref => ref.where('participants', 'array-contains', uid).orderBy('modifiedDate', 'asc'))
+      .snapshotChanges()
+      .pipe(
+        map(actions =>
+          actions.map(a => {
+            const data = a.payload.doc.data() as any;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+        )
+      );
+
+    return zip(queryOwner, queryParticipants).pipe(map(x => x[0].concat(x[1])))
   }
 
   getControlUnit = (doc: string) => {

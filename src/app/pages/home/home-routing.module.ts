@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { ProjectComponent } from '../project/project.component';
 import { StartComponent } from '../start/start.component';
 
+
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { CreateProjectComponent } from '../create-project/create-project.component';
 import { ProjectWrapperComponent } from '../project-wrapper/project-wrapper.component';

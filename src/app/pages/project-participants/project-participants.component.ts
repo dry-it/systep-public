@@ -31,11 +31,16 @@ export class ProjectParticipantsComponent implements OnInit {
     return this.stateService.getUsers()
   }
 
-  addUser(projectID: string) {
+  addUser(projectID: string, owner: string) {
     if (this.selectedUser) {
-      console.log(this.selectedUser);
-      this.fireBaseService.addParticipant(this.selectedUser, projectID);
-      this.selectedUser = undefined
+      if (this.selectedUser === owner) {
+        console.log('can not add OWNER as PARTICIPANT')
+      } else {
+        console.log(this.selectedUser);
+        this.fireBaseService.addParticipant(this.selectedUser, projectID);
+        this.selectedUser = undefined
+      }
+
     }
 
   }
