@@ -6,6 +6,12 @@
         </div>
     </div>
     <div class="field">
+        <label class="label">Lösenord</label>
+        <div class="control">
+            <input formControlName="password" class="input" type="password" placeholder="Lösenord">
+        </div>
+    </div>
+    <div class="field">
         <label class="label">Namn</label>
         <div class="control">
             <input formControlName="displayName" class="input" type="text" placeholder="Förnamn Efternamn">
@@ -32,7 +38,8 @@
 
     <button style="margin-right: 4px;" class="button is-large is-success" type="submit"
         [disabled]="!activateForm.valid">Aktivera</button>
-    
+    <a class="is-block" (click)="signOut()">Logga ut</a>
+
 
 
 </form>

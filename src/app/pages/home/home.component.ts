@@ -386,7 +386,7 @@ export class HomeComponent implements OnInit {
   isOpenProject = false;
 
   activated: boolean
-  activate: boolean
+  activate: boolean = true;
 
   toggleUser() {
     this.isOpen = !this.isOpen;
