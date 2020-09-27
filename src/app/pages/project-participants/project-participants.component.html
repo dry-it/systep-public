@@ -12,7 +12,7 @@
     <h3 class="title is-6">Deltagare</h3>
 
     <div class="box">
-        <button [disabled]="!selectedUser" (click)="addUser(project.id)" style="margin-bottom: 0.5rem" class="button is-success is-small
+        <button [disabled]="!selectedUser || selectedUser === project.owner" (click)="addUser(project.id, project.owner)" style="margin-bottom: 0.5rem" class="button is-success is-small
 ">Lägg till deltagare</button>
     <div class="field">
         <select [(ngModel)]="selectedUser" *ngIf="usersList$() | async as users" name="" id="adduser"
@@ -20,6 +20,7 @@
             <option *ngFor="let user of users" [value]="user.id">{{user.displayName}}</option>
         </select>
     </div>
+    <p class="has-text-danger" *ngIf="selectedUser === project.owner">Kan inte lägga till Uppdragsansvarig som deltagare</p>
     <ng-container *ngIf="project.participants">
         <div *ngFor="let participant of project.participants" style="padding: 5px; padding-bottom: 20px;" class="box">
             <div *ngIf="returnUser$(participant) | async as user" class="columns">

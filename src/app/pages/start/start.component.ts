@@ -28,7 +28,8 @@ const language = 'typescript';
 ### Blockquote
 > Blockquote to the max`;
 
-  projects$: Observable<any> = this.fireBaseService.getCollectionSnapshot('projects')
+  projects$: Observable<any> = this.fireBaseService.queryAllProjects('modifiedDate')
+  uid: string = localStorage.uid
 
   constructor(private router: Router, private fireBaseService: FireBaseService, private electronService: ElectronService) { }
 

@@ -76,6 +76,8 @@ import { ProfileImageComponent } from './components/profile-image/profile-image.
 import { TemplateToolComponent } from './pages/template-tool/template-tool.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
+import {NgPipesModule} from 'ngx-pipes';
+import { FilterComponent } from './pages/filter/filter.component';
 
 
 // AoT requires an exported function for factories
@@ -104,6 +106,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     TemplateToolComponent,
     LandingPageComponent,
     PasswordRecoveryComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -122,6 +125,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AngularFirestoreModule,
     AngularFireStorageModule,
     AppRoutingModule,
+    NgPipesModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     TranslateModule.forRoot({

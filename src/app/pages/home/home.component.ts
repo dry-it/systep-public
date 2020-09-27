@@ -16,6 +16,7 @@ import { Location } from '@angular/common';
 import { FormGroup, FormControl } from '@angular/forms';
 import { auditTime } from 'rxjs/operators';
 import { StateService } from '../../services/state.service';
+import { ElectronService } from 'app/core/services';
 
 interface Activity {
   title: string;
@@ -181,7 +182,8 @@ export class HomeComponent implements OnInit {
     private fireBaseService: FireBaseService,
     public _location: Location,
     public route: ActivatedRoute,
-    private stateService: StateService) { }
+    private stateService: StateService,
+    private electron: ElectronService) { }
 
   results: any
 
@@ -191,6 +193,9 @@ export class HomeComponent implements OnInit {
   currentProject$: Observable<any> = this.stateService.returnCurrentProject()
 
   mobileSidebar: boolean
+  isElectron: boolean = this.electron.isElectron
+
+  downloadLink: string = ''
 
 
 
@@ -386,7 +391,7 @@ export class HomeComponent implements OnInit {
   isOpenProject = false;
 
   activated: boolean
-  activate: boolean
+  activate: boolean = true;
 
   toggleUser() {
     this.isOpen = !this.isOpen;

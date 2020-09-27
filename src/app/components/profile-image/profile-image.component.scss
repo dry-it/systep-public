@@ -3,6 +3,7 @@
     width: 40px;
     height: 40px;
     border-radius: 100%;
+    position: absolute;
 }
 
 .mobile-avatar {
@@ -18,10 +19,9 @@
     border-radius: 100%;
     background-color: rgb(38, 51, 50);
     position: absolute;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-family: 'Ubuntu Mono', monospace;
     font-weight: 400;
-    margin-right: 6px;
     color: #fff;
     display: inline-block;
 }
