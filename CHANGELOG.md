@@ -1,5 +1,16 @@
+## <small>1.0.1 (2020-09-28)</small>
+
+* Added auto update toast ([3752fc6](https://github.com/dry-it/systep-public/commit/3752fc6))
+* Added filter page ([27c0f4a](https://github.com/dry-it/systep-public/commit/27c0f4a))
+* Removed FB functions from repo ([c9fd8b8](https://github.com/dry-it/systep-public/commit/c9fd8b8))
+* Updated my-projects list ([85ad0f1](https://github.com/dry-it/systep-public/commit/85ad0f1))
+* Updated version ([3492cdb](https://github.com/dry-it/systep-public/commit/3492cdb))
+
+
+
 ## <small>0.0.11 (2020-09-26)</small>
 
+* 0.0.11 ([bcc8391](https://github.com/dry-it/systep-public/commit/bcc8391))
 * Create main.yml ([7ad9562](https://github.com/dry-it/systep-public/commit/7ad9562))
 * Delete main.yml ([25e2b06](https://github.com/dry-it/systep-public/commit/25e2b06))
 * Updated package ([ad347f9](https://github.com/dry-it/systep-public/commit/ad347f9))
