@@ -1,5 +1,12 @@
+## <small>1.0.3 (2020-09-28)</small>
+
+* added version info ([60d5c0c](https://github.com/dry-it/systep-public/commit/60d5c0c))
+
+
+
 ## <small>1.0.2 (2020-09-28)</small>
 
+* 1.0.2 ([da0d334](https://github.com/dry-it/systep-public/commit/da0d334))
 * Added download link ([8dafdb1](https://github.com/dry-it/systep-public/commit/8dafdb1))
 
 
