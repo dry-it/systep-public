@@ -1,5 +1,12 @@
+## <small>1.0.2 (2020-09-28)</small>
+
+* Added download link ([8dafdb1](https://github.com/dry-it/systep-public/commit/8dafdb1))
+
+
+
 ## <small>1.0.1 (2020-09-28)</small>
 
+* 1.0.1 ([f7f4862](https://github.com/dry-it/systep-public/commit/f7f4862))
 * Added auto update toast ([3752fc6](https://github.com/dry-it/systep-public/commit/3752fc6))
 * Added filter page ([27c0f4a](https://github.com/dry-it/systep-public/commit/27c0f4a))
 * Removed FB functions from repo ([c9fd8b8](https://github.com/dry-it/systep-public/commit/c9fd8b8))
