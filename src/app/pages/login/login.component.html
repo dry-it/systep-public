@@ -13,6 +13,7 @@
 <div style="margin-top: 1rem;" class="container">
     <div class="box">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <p *ngIf="message" class="has-text-danger is-size-5">{{message}}</p>
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
