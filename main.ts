@@ -126,7 +126,7 @@ try {
   autoUpdater.on('download-progress', (progressObj) => {
   })
   autoUpdater.on('update-downloaded', (info) => {
-    sendStatusToWindow('update downloaded')
+    sendStatusToWindow('update downloaded, closing app to install')
     autoUpdater.quitAndInstall();
   })
 

@@ -103,7 +103,8 @@
     "ng-simple-markdown-editor": "1.0.26",
     "ngx-image-uploader": "6.0.0-beta.1",
     "ngx-markdown": "10.1.1",
-    "ngx-pipes": "2.7.5"
+    "ngx-pipes": "2.7.5",
+    "ngx-toastr": "13.0.0"
   },
   "engines": {
     "node": ">=10.13.0"
