@@ -106,29 +106,37 @@ try {
 
   app.on('ready', function () {
     setTimeout(() => {
-      sendStatusToWindow('App ready...');
-      autoUpdater.checkForUpdates();
+      if (!serve) {
+        sendStatusToWindow('App ready...');
+        autoUpdater.checkForUpdates();
+      }
+
     }, 1000)
   });
 
-  autoUpdater.on('checking-for-update', () => {
-    sendStatusToWindow('checking for update')
-  })
-  autoUpdater.on('update-available', (info) => {
-    sendStatusToWindow('update found')
-  })
-  autoUpdater.on('update-not-available', (info) => {
-    sendStatusToWindow('No update avalible')
-  })
-  autoUpdater.on('error', (err) => {
-    sendStatusToWindow(err)
-  })
-  autoUpdater.on('download-progress', (progressObj) => {
-  })
-  autoUpdater.on('update-downloaded', (info) => {
-    sendStatusToWindow('update downloaded, closing app to install')
-    autoUpdater.quitAndInstall();
-  })
+  if (!serve) {
+    autoUpdater.on('checking-for-update', () => {
+      sendStatusToWindow('checking for update');
+    })
+    autoUpdater.on('update-available', (info) => {
+      sendStatusToWindow('update found');
+    })
+    autoUpdater.on('update-not-available', (info) => {
+      sendStatusToWindow('No update avalible');
+    })
+    autoUpdater.on('error', (err) => {
+      sendStatusToWindow(err)
+    })
+    autoUpdater.on('download-progress', (progressObj) => {
+    })
+    autoUpdater.on('update-downloaded', (info) => {
+      sendStatusToWindow('update downloaded, closing app to install')
+      autoUpdater.quitAndInstall();
+    })
+
+  }
+
+
 
   app.on('ready', () => {
 
