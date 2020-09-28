@@ -195,7 +195,7 @@ export class HomeComponent implements OnInit {
   mobileSidebar: boolean
   isElectron: boolean = this.electron.isElectron
 
-  downloadLink: string = ''
+  downloadLink: string = 'https://firebasestorage.googleapis.com/v0/b/systep-26719.appspot.com/o/files%2FSYSTEP%20Setup%201.0.1.exe?alt=media&token=49319892-5907-4710-b9e3-944426f6ef79'
 
 
 
