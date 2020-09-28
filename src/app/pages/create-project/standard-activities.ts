@@ -55,7 +55,7 @@ export const activities = [
     checkPoints: [
       { label: 'Offert godkänd av kund', state: false },
       { label: 'Uppdragsbekräftelse/Avtal skickat', state: false },
-      { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false },
+      { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false, flag: 'project_order' },
       { label: 'Faktureringsrutiner fastställda i pramid', state: false },
     ]
   },
@@ -233,7 +233,7 @@ export const activitiesSmall = [
     checkPoints: [
       { label: 'Offert godkänd av kund', state: false },
       { label: 'Uppdragsbekräftelse/Avtal skickat', state: false },
-      { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false },
+      { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false, flag: 'project_order' },
       { label: 'Faktureringsrutiner fastställda i pramid', state: false },
     ]
   },
