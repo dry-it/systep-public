@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ElectronService } from './core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { AppConfig } from '../environments/environment';
 export class AppComponent {
   constructor(
     public electronService: ElectronService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private toastr: ToastrService
   ) {
     translate.setDefaultLang('en');
     //console.log('AppConfig', AppConfig);
@@ -23,6 +25,7 @@ export class AppComponent {
       console.log('NodeJS childProcess', electronService.childProcess);
       this.electronService.ipcRenderer.on('message', (event, message) => {
         console.log(message)
+        this.toastr.info(message);
       })
     } else {
       console.log('Mode web');
