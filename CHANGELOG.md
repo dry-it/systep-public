@@ -1,5 +1,13 @@
+## <small>1.0.4 (2020-09-28)</small>
+
+* Removed mac build ([5126118](https://github.com/dry-it/systep-public/commit/5126118))
+* Updated flags ([f078d4f](https://github.com/dry-it/systep-public/commit/f078d4f))
+
+
+
 ## <small>1.0.3 (2020-09-28)</small>
 
+* 1.0.3 ([cc1a27f](https://github.com/dry-it/systep-public/commit/cc1a27f))
 * added version info ([60d5c0c](https://github.com/dry-it/systep-public/commit/60d5c0c))
 
 
