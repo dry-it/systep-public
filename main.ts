@@ -96,7 +96,6 @@ function createLoadingWindow(): BrowserWindow {
     height: 379,
     hasShadow: true,
     frame: false,
-    transparent: true,
     resizable: false,
     webPreferences: {
       nodeIntegration: true,
