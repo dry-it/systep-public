@@ -1,5 +1,12 @@
+## <small>1.0.6 (2020-09-28)</small>
+
+* removed invisible window ([dfdefe2](https://github.com/dry-it/systep-public/commit/dfdefe2))
+
+
+
 ## <small>1.0.5 (2020-09-28)</small>
 
+* 1.0.5 ([95b62a6](https://github.com/dry-it/systep-public/commit/95b62a6))
 * Added loading screen ([ea64fee](https://github.com/dry-it/systep-public/commit/ea64fee))
 * Added wrong password info ([fde5c6e](https://github.com/dry-it/systep-public/commit/fde5c6e))
 * Cahnged sorting order ([2d8f46b](https://github.com/dry-it/systep-public/commit/2d8f46b))
