@@ -18,8 +18,9 @@ export class LoginComponent implements OnInit {
   });
 
   isElectron: boolean
+  message: string
 
-  constructor(public auth: AngularFireAuth, private router: Router, private electron:ElectronService) { }
+  constructor(public auth: AngularFireAuth, private router: Router, private electron: ElectronService) { }
 
   ngOnInit(): void {
 
@@ -37,7 +38,10 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/home/start')
         }
       })
-      .catch((err) => console.error(err))
+      .catch((err) => {
+        console.error(err)
+        this.message = err.message
+      })
 
   }
 

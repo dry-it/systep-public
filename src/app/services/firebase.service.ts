@@ -78,9 +78,9 @@ export class FireBaseService {
     })
   }
 
-  queryAllProjects = (orderBy:string) => {
-    return this.afs.collection('projects', ref => ref.orderBy(orderBy, 'asc'))
-    .snapshotChanges()
+  queryAllProjects = (orderBy: string) => {
+    return this.afs.collection('projects', ref => ref.orderBy(orderBy, 'desc'))
+      .snapshotChanges()
       .pipe(
         map(actions =>
           actions.map(a => {
