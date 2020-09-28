@@ -80,6 +80,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 import {NgPipesModule} from 'ngx-pipes';
 import { FilterComponent } from './pages/filter/filter.component';
+import { LoadResourcesComponent } from './components/load-resources/load-resources.component';
 
 
 // AoT requires an exported function for factories
@@ -109,6 +110,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     LandingPageComponent,
     PasswordRecoveryComponent,
     FilterComponent,
+    LoadResourcesComponent,
   ],
   imports: [
     BrowserModule,

@@ -84,11 +84,60 @@ function createWindow(): BrowserWindow {
   return win;
 }
 
+let load: BrowserWindow = null;
+
+function createLoadingWindow(): BrowserWindow {
+
+
+
+  // Create the browser window.
+  load = new BrowserWindow({
+    width: 539,
+    height: 379,
+    hasShadow: true,
+    frame: false,
+    transparent: true,
+    resizable: false,
+    webPreferences: {
+      nodeIntegration: true,
+      allowRunningInsecureContent: (serve) ? true : false,
+    },
+  });
+
+  if (serve) {
+
+    load.webContents.openDevTools({ mode: 'undocked' })
+
+    require('electron-reload')(__dirname, {
+      electron: require(`${__dirname}/node_modules/electron`)
+    });
+    load.loadURL('http://localhost:4200/index.html#/load');
+
+  } else {
+    load.loadURL(url.format({
+      pathname: path.join(__dirname, 'dist/index.html#/load'),
+      protocol: 'file:',
+      slashes: true
+    }));
+  }
+
+
+  // Emitted when the window is closed.
+  load.on('closed', () => {
+    // Dereference the window object, usually you would store window
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    load = null;
+  });
+
+  return load;
+}
+
 
 
 function sendStatusToWindow(text) {
   autoUpdater.logger.info(text)
-  win.webContents.send('message', text);
+  load.webContents.send('message', text);
 }
 
 
@@ -101,40 +150,69 @@ try {
   // Some APIs can only be used after this event occurs.
   // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
   app.on('ready', () => setTimeout(() => {
-    createWindow()
+    //createWindow()
+    createLoadingWindow()
   }, 400));
 
   app.on('ready', function () {
-    setTimeout(() => {
+
+
+    ipcMain.on('load', (event, message) => {
+      console.log(message)
+      const sendMessage = (text) => {
+        event.sender.send('listening', text)
+      }
+
+      autoUpdater.checkForUpdates();
+
       if (!serve) {
-        sendStatusToWindow('App ready...');
+        autoUpdater.on('checking-for-update', () => {
+          sendMessage('checking for update');
+        })
+        autoUpdater.on('update-available', (info) => {
+          sendMessage('update found');
+        })
+        autoUpdater.on('update-not-available', (info) => {
+          sendMessage('No update avalible');
+          createWindow()
+          setTimeout(() => {
+            load.close()
+          }, 1000)
+          
+        })
+        autoUpdater.on('error', (err) => {
+          sendMessage(err)
+        })
+        autoUpdater.on('download-progress', (progressObj) => {
+        })
+        autoUpdater.on('update-downloaded', (info) => {
+          sendMessage('update downloaded, closing app to install')
+          autoUpdater.quitAndInstall();
+        })
+    
+      } else {
+        createWindow()
+          setTimeout(() => {
+            load.close()
+          }, 1000)
+      }
+
+
+    })
+
+    setTimeout(() => {
+      sendStatusToWindow('App ready...');
+      if (!serve) {
+        // sendStatusToWindow('App ready...');
         autoUpdater.checkForUpdates();
       }
+
+      //load.webContents.send('message', 'test');
 
     }, 1000)
   });
 
-  if (!serve) {
-    autoUpdater.on('checking-for-update', () => {
-      sendStatusToWindow('checking for update');
-    })
-    autoUpdater.on('update-available', (info) => {
-      sendStatusToWindow('update found');
-    })
-    autoUpdater.on('update-not-available', (info) => {
-      sendStatusToWindow('No update avalible');
-    })
-    autoUpdater.on('error', (err) => {
-      sendStatusToWindow(err)
-    })
-    autoUpdater.on('download-progress', (progressObj) => {
-    })
-    autoUpdater.on('update-downloaded', (info) => {
-      sendStatusToWindow('update downloaded, closing app to install')
-      autoUpdater.quitAndInstall();
-    })
-
-  }
+  
 
 
 

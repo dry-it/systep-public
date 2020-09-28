@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
+import { LoadResourcesComponent } from './components/load-resources/load-resources.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  }
+  ,
+
+  {
+    path: 'load',
+    component: LoadResourcesComponent
   }
   ,
 

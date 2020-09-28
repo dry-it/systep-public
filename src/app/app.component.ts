@@ -23,10 +23,10 @@ export class AppComponent {
       console.log('Mode electron');
       console.log('Electron ipcRenderer', electronService.ipcRenderer);
       console.log('NodeJS childProcess', electronService.childProcess);
-      this.electronService.ipcRenderer.on('message', (event, message) => {
+/*       this.electronService.ipcRenderer.on('message', (event, message) => {
         console.log(message)
         this.toastr.info(message);
-      })
+      }) */
     } else {
       console.log('Mode web');
     }
