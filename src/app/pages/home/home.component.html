@@ -66,6 +66,8 @@
           class="button bottom is-small is-link">Ladda ner skrivbordsversion <i style="margin-left: 5px;"
             class="fas fa-download"></i></a></div>
 
+      <div *ngIf="isElectron" class="bottom has-text-center is-size-7">Version {{currentVersion}}</div>
+
     </aside>
 
   </div>
