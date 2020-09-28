@@ -1,5 +1,15 @@
+## <small>1.0.5 (2020-09-28)</small>
+
+* Added loading screen ([ea64fee](https://github.com/dry-it/systep-public/commit/ea64fee))
+* Added wrong password info ([fde5c6e](https://github.com/dry-it/systep-public/commit/fde5c6e))
+* Cahnged sorting order ([2d8f46b](https://github.com/dry-it/systep-public/commit/2d8f46b))
+* Removed download from page ([1861029](https://github.com/dry-it/systep-public/commit/1861029))
+
+
+
 ## <small>1.0.4 (2020-09-28)</small>
 
+* 1.0.4 ([56fab27](https://github.com/dry-it/systep-public/commit/56fab27))
 * Removed mac build ([5126118](https://github.com/dry-it/systep-public/commit/5126118))
 * Updated flags ([f078d4f](https://github.com/dry-it/systep-public/commit/f078d4f))
 
