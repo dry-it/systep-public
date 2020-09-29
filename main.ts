@@ -114,9 +114,10 @@ function createLoadingWindow(): BrowserWindow {
 
   } else {
     load.loadURL(url.format({
-      pathname: path.join(__dirname, 'dist/index.html#/load'),
+      pathname: path.join(__dirname, 'dist/index.html'),
       protocol: 'file:',
-      slashes: true
+      slashes: true,
+      hash: `/load`
     }));
   }
 
@@ -130,6 +131,51 @@ function createLoadingWindow(): BrowserWindow {
   });
 
   return load;
+}
+
+let dw: BrowserWindow = null;
+
+function createDocWindow(p:string): BrowserWindow {
+
+  
+
+  // Create the browser window.
+  var dw = new BrowserWindow({
+    width: 800,
+    height: 1000,
+    center: true,
+    hasShadow: true,
+    frame: false,
+  });
+
+  if (serve) {
+
+    // dw.webContents.openDevTools({ mode: 'undocked' })
+
+    require('electron-reload')(__dirname, {
+      electron: require(`${__dirname}/node_modules/electron`)
+    });
+    dw.loadURL(`http://localhost:4200/index.html#/${p}`);
+
+  } else {
+    dw.loadURL(url.format({
+      pathname: path.join(__dirname, 'dist/index.html'),
+      protocol: 'file:',
+      slashes: true,
+      hash: `/${p}`
+    }));
+  }
+
+
+  // Emitted when the window is closed.
+  dw.on('closed', () => {
+    // Dereference the window object, usually you would store window
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    dw = null;
+  });
+
+  return dw;
 }
 
 
@@ -210,6 +256,13 @@ try {
 
     }, 1000)
   });
+
+
+  app.on('ready', () => {
+    ipcMain.on('open-doc', (event, p) => {
+      createDocWindow(p)
+    })
+  })
 
   
 

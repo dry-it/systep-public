@@ -21,7 +21,11 @@ export class DocumentService {
       const f = filepath.replace(/[/]/g, "%2F")
       const BrowserWindow = this.electronService.remote.BrowserWindow;
 
-      // Create a browser window
+      const path = `doc;file=${f}`
+
+      this.electronService.ipcRenderer.send('open-doc', path)
+
+    /*   // Create a browser window
       var win = new BrowserWindow({
         width: 800,
         height: 1000,
@@ -35,6 +39,14 @@ export class DocumentService {
       });
       // Load the page + route
       win.loadURL(`http://localhost:4200/index.html#/doc;file=${f}`);
+
+      win.loadURL(url.format({
+        pathname: path.join(__dirname, 'dist/index.html'),
+        protocol: 'file:',
+        slashes: true,
+        hash: `/load`
+      })); */
+
     } else {
       this.router.navigate(['doc', { file: filepath }])
     }
