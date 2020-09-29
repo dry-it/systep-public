@@ -30,6 +30,8 @@ export class LoadResourcesComponent implements OnInit {
       this.realMessage = message
     })
 
+    this.message = this.sample.transform(this.messages, 1)[0]
+
     setInterval(() => {
       this.message = this.sample.transform(this.messages, 1)[0]
     }, 5000)
