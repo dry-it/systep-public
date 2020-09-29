@@ -145,7 +145,7 @@ function createDocWindow(p:string): BrowserWindow {
     height: 1000,
     center: true,
     hasShadow: true,
-    frame: false,
+    frame: true,
   });
 
   if (serve) {
