@@ -1,5 +1,12 @@
+## <small>1.0.7 (2020-09-29)</small>
+
+* Updated doc window ([a0a9795](https://github.com/dry-it/systep-public/commit/a0a9795))
+
+
+
 ## <small>1.0.6 (2020-09-28)</small>
 
+* 1.0.6 ([7c49315](https://github.com/dry-it/systep-public/commit/7c49315))
 * removed invisible window ([dfdefe2](https://github.com/dry-it/systep-public/commit/dfdefe2))
 
 
