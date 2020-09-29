@@ -1,5 +1,13 @@
+## <small>1.0.8 (2020-09-29)</small>
+
+* Fixed formatting for MD ([ff71d51](https://github.com/dry-it/systep-public/commit/ff71d51))
+* updated image and message ([2ef155f](https://github.com/dry-it/systep-public/commit/2ef155f))
+
+
+
 ## <small>1.0.7 (2020-09-29)</small>
 
+* 1.0.7 ([d92565c](https://github.com/dry-it/systep-public/commit/d92565c))
 * Updated doc window ([a0a9795](https://github.com/dry-it/systep-public/commit/a0a9795))
 
 
