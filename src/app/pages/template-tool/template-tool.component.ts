@@ -20,9 +20,9 @@ export class TemplateToolComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  testDoc() {
+  /* testDoc() {
     this.documentService.testDoc(this.editorContent)
-  }
+  } */
 
   addData() {
     this.editorContent = this.editorContent + `<table style="width: 100%;">
