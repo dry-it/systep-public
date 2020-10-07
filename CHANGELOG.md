@@ -1,5 +1,12 @@
+## <small>1.0.13 (2020-10-07)</small>
+
+* fixed overlay ([3413487](https://github.com/dry-it/systep-public/commit/3413487))
+
+
+
 ## <small>1.0.12 (2020-10-07)</small>
 
+* 1.0.12 ([3839eba](https://github.com/dry-it/systep-public/commit/3839eba))
 * fixed start page and logout ([fcf00ce](https://github.com/dry-it/systep-public/commit/fcf00ce))
 
 
