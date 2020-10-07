@@ -404,10 +404,7 @@ export class HomeComponent implements OnInit {
   }
 
   signOut() {
-    this.auth.signOut()
-      .then(() => {
-        this.router.navigateByUrl('/login')
-      })
+    this.router.navigateByUrl('/logout')
   }
 
   toggleProject() {

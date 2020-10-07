@@ -34,9 +34,14 @@
           <div class="column has-text-centered">Status</div>
         </div>
       </div>
+      {{localStorage.uid}}
       <div *ngIf="projects$ | async as projects">
-        <app-project-panel *ngFor="let project of projects | filterBy: ['owner', 'participants']: uid" [project]="project">
-        </app-project-panel>
+        <ng-container *ngIf="uid">
+          <app-project-panel *ngFor="let project of projects | filterBy: ['owner', 'participants']: localStorage.uid"
+            [project]="project">
+          </app-project-panel>
+        </ng-container>
+
       </div>
     </div>
   </div>

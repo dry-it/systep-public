@@ -81,6 +81,7 @@ import { PasswordRecoveryComponent } from './pages/password-recovery/password-re
 import {NgPipesModule} from 'ngx-pipes';
 import { FilterComponent } from './pages/filter/filter.component';
 import { LoadResourcesComponent } from './components/load-resources/load-resources.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 
 
 // AoT requires an exported function for factories
@@ -111,6 +112,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     PasswordRecoveryComponent,
     FilterComponent,
     LoadResourcesComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
