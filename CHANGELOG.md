@@ -1,3 +1,12 @@
+## <small>1.0.10 (2020-10-07)</small>
+
+* 1.0.9 ([c1d4e81](https://github.com/dry-it/systep/commit/c1d4e81))
+* Fixed profile images ([7db40ee](https://github.com/dry-it/systep/commit/7db40ee))
+* removed test function ([716bcea](https://github.com/dry-it/systep/commit/716bcea))
+* Updated activities ([9713eac](https://github.com/dry-it/systep/commit/9713eac))
+
+
+
 ## <small>1.0.9 (2020-09-29)</small>
 
 * 1.0.8 ([0643a74](https://github.com/dry-it/systep/commit/0643a74))
