@@ -1,6 +1,13 @@
+## <small>1.0.12 (2020-10-07)</small>
+
+* fixed start page and logout ([fcf00ce](https://github.com/dry-it/systep-public/commit/fcf00ce))
+
+
+
 ## <small>1.0.11 (2020-10-07)</small>
 
 * 1.0.10 ([a533217](https://github.com/dry-it/systep-public/commit/a533217))
+* 1.0.11 ([bae9265](https://github.com/dry-it/systep-public/commit/bae9265))
 * 1.0.9 ([c1d4e81](https://github.com/dry-it/systep-public/commit/c1d4e81))
 * Fixed profile images ([7db40ee](https://github.com/dry-it/systep-public/commit/7db40ee))
 * removed test function ([716bcea](https://github.com/dry-it/systep-public/commit/716bcea))
