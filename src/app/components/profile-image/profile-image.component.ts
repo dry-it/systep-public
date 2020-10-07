@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { StateService } from 'app/services/state.service';
+import { StateService } from '../../services/state.service';
 import { start } from 'repl';
 import { Observable } from 'rxjs';
 
