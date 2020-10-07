@@ -16,10 +16,10 @@ export const activities = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Projekt registrerat i pyramid', state: false, flag: 'project_registerd' },
-      { label: 'Projektmapp skapad', state: false },
-      { label: 'Uppdragsansvarig utsedd', state: false },
-      { label: 'Uppdragsorganisation', state: false },
+      { label: 'Projekt registrerat i pyramid', state: false, flag: 'project_registerd', identity: 'pyramid_registerd' },
+      { label: 'Projektmapp skapad', state: false, identity: 'folder_created' },
+      { label: 'Uppdragsansvarig utsedd', state: false, identity: 'owner_selected' },
+      { label: 'Uppdragsorganisation', state: false, identity: 'project_organisation_created' },
     ]
 
     ,
@@ -34,11 +34,11 @@ export const activities = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Startmöte utfört', state: false },
-      { label: 'Behovsanalys utförd', state: false },
-      { label: 'Uppdraget definierat', state: false },
-      { label: 'Offert upprättad', state: false },
-      { label: 'Offert Levererad/Pressenterad', state: false }
+      { label: 'Startmöte utfört', state: false, identity: 'start_meeting' },
+      { label: 'Behovsanalys utförd', state: false, identity: 'resource_planing_done' },
+      { label: 'Uppdraget definierat', state: false, identity: 'project_defined' },
+      { label: 'Offert upprättad', state: false, identity: 'estimate_created' },
+      { label: 'Offert Levererad/Pressenterad', state: false, identity: 'estimate_delivered' }
     ]
   },
   {
@@ -53,10 +53,10 @@ export const activities = [
     type: 'checkList',
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Offert godkänd av kund', state: false },
-      { label: 'Uppdragsbekräftelse/Avtal skickat', state: false },
-      { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false, flag: 'project_order' },
-      { label: 'Faktureringsrutiner fastställda i pramid', state: false },
+      { label: 'Offert godkänd av kund', state: false, identity: 'estimate_aproved' },
+      { label: 'Uppdragsbekräftelse/Avtal skickat', state: false, identity: 'confirmation_sent' },
+      { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false, flag: 'project_order', identity: 'confirmation_aproved' },
+      { label: 'Faktureringsrutiner fastställda i pramid', state: false, identity: 'invoice_routine_set' },
     ]
   },
 
@@ -96,10 +96,10 @@ export const activities = [
 
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Uppdragsplan Upprättad', state: false },
-      { label: 'Startmöte utfört', state: false },
-      { label: 'Kvalitets och miljöplan upprättad', state: false },
-      { label: 'Avstämning med kund', state: false },
+      { label: 'Uppdragsplan Upprättad', state: false, identity: 'project_plan_created' },
+      { label: 'Startmöte utfört', state: false, identity: 'start_meeting_done' },
+      { label: 'Kvalitets och miljöplan upprättad', state: false, identity: 'quality_plan_done' },
+      { label: 'Avstämning med kund', state: false, identity: 'walktrough_with_customer' },
     ]
   },
   {
@@ -111,7 +111,7 @@ export const activities = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Interngranskning Utförd', state: false },
+      { label: 'Interngranskning Utförd', state: false, identity: 'internal_review_done' },
     ]
   },
   {
@@ -123,7 +123,7 @@ export const activities = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Slutleverans Utförd', state: false },
+      { label: 'Slutleverans Utförd', state: false, identity: 'final_delivery' },
     ]
   },
   {
@@ -145,7 +145,7 @@ export const activities = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Fakturering utförd', state: false },
+      { label: 'Fakturering utförd', state: false, identity: 'invoice_done' },
     ]
   },
   {
@@ -169,8 +169,8 @@ export const activities = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Avslutningsmöte', state: false },
-      { label: 'Lönsamhetsanalys', state: false },
+      { label: 'Avslutningsmöte', state: false, identity: 'closing_meeting' },
+      { label: 'Lönsamhetsanalys', state: false, identity: 'profit_check' },
     ]
   },
 
@@ -194,10 +194,10 @@ export const activitiesSmall = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Projekt registrerat i pyramid', state: false, flag: 'project_registerd' },
-      { label: 'Projektmapp skapad', state: false },
-      { label: 'Uppdragsansvarig utsedd', state: false },
-      { label: 'Uppdragsorganisation', state: false },
+      { label: 'Projekt registrerat i pyramid', state: false, flag: 'project_registerd', identity: 'pyramid_registerd' },
+      { label: 'Projektmapp skapad', state: false, identity: 'folder_created' },
+      { label: 'Uppdragsansvarig utsedd', state: false, identity: 'owner_selected' },
+      { label: 'Uppdragsorganisation', state: false, identity: 'project_organisation_created' },
     ]
 
     ,
@@ -212,11 +212,11 @@ export const activitiesSmall = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Startmöte utfört', state: false },
-      { label: 'Behovsanalys utförd', state: false },
-      { label: 'Uppdraget definierat', state: false },
-      { label: 'Offert upprättad', state: false },
-      { label: 'Offert Levererad/Pressenterad', state: false }
+      { label: 'Startmöte utfört', state: false, identity: 'start_meeting' },
+      { label: 'Behovsanalys utförd', state: false, identity: 'resource_planing_done' },
+      { label: 'Uppdraget definierat', state: false, identity: 'project_defined' },
+      { label: 'Offert upprättad', state: false, identity: 'estimate_created' },
+      { label: 'Offert Levererad/Pressenterad', state: false, identity: 'estimate_delivered' }
     ]
   },
   {
@@ -231,10 +231,10 @@ export const activitiesSmall = [
     type: 'checkList',
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Offert godkänd av kund', state: false },
-      { label: 'Uppdragsbekräftelse/Avtal skickat', state: false },
-      { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false, flag: 'project_order' },
-      { label: 'Faktureringsrutiner fastställda i pramid', state: false },
+      { label: 'Offert godkänd av kund', state: false, identity: 'estimate_aproved' },
+      { label: 'Uppdragsbekräftelse/Avtal skickat', state: false, identity: 'confirmation_sent' },
+      { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false, flag: 'project_order', identity: 'confirmation_aproved' },
+      { label: 'Faktureringsrutiner fastställda i pramid', state: false, identity: 'invoice_routine_set' },
     ]
   },
 
@@ -263,7 +263,7 @@ export const activitiesSmall = [
 
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Avstämning med kund', state: false },
+      { label: 'Avstämning med kund', state: false, identity: 'walktrough_with_customer' },
     ]
   },
   {
@@ -275,7 +275,7 @@ export const activitiesSmall = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Interngranskning Utförd', state: false },
+      { label: 'Interngranskning Utförd', state: false, identity: 'internal_review' },
     ]
   },
   {
@@ -287,7 +287,7 @@ export const activitiesSmall = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Slutleverans Utförd', state: false },
+      { label: 'Slutleverans Utförd', state: false, identity: 'final_delivery' },
     ]
   },
   {
@@ -309,7 +309,7 @@ export const activitiesSmall = [
     },
     checkListTitle: 'Checkpoints',
     checkPoints: [
-      { label: 'Fakturering utförd', state: false },
+      { label: 'Fakturering utförd', state: false, identity: 'invoice_done' },
     ]
   },
   {
