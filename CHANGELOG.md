@@ -1,5 +1,12 @@
+## <small>1.0.14 (2020-10-07)</small>
+
+* fixed password bugg ([5914b62](https://github.com/dry-it/systep-public/commit/5914b62))
+
+
+
 ## <small>1.0.13 (2020-10-07)</small>
 
+* 1.0.13 ([93e3f3d](https://github.com/dry-it/systep-public/commit/93e3f3d))
 * fixed overlay ([3413487](https://github.com/dry-it/systep-public/commit/3413487))
 
 
