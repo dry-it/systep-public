@@ -2,34 +2,29 @@
     <p class="title">Mallverktyg</p>
     <form [formGroup]="templateForm" (ngSubmit)="onSubmit()">
         <div class="columns">
-            <div class="column is-4">
+            <div class="column is-6">
                 <div class="box">
-                    <p class="title is-6">Väl ett eller alla kontor</p>
-                    <div class="control">
-                        <label class="radio">
-                            <input type="radio" value="one" formControlName="officeStyle">
-                            Ett kontor
-                        </label>
-                        <label class="radio">
-                            <input type="radio" value="all" formControlName="officeStyle">
-                            Alla kontor
-                        </label>
-                        <label class="radio">
-                            <input type="radio" value="none" formControlName="officeStyle">
-                            Ingen adress
-                        </label>
-                    </div>
-                    <div style="margin-top: 1rem;" class="select is-fullwidth">
+                    <p class="title is-6">Adress</p>
+                    <div class="select is-fullwidth">
                         <select [disabled]="!templateForm.value.officeStyle === 'one'" formControlName="office">
-                            <option>Stockholm</option>
-                            <option>Uppsala</option>
-                            <option>Göteborg</option>
-                            <option>Malmö</option>
+                            <option value="all">Alla</option>
+                            <option value="none">Ingen adress</option>
+                            <option value="sth">Stockholm</option>
+                            <option value="upp">Uppsala</option>
+                            <option value="gbg">Göteborg</option>
+                            <option value="mlm">Malmö</option>
                         </select>
                     </div>
                 </div>
                 <div class="box">
                     <p class="title is-6">Uppdragsspecifik information</p>
+                    <div class="control">
+                        <label for="" class="label">
+                            Dokumentnamn:
+                        </label>
+                        <input formControlName="docName" placeholder="ex. innomhusmiljöutredning" class="input is-small"
+                            type="text">
+                    </div>
                     <div class="control">
                         <label for="" class="label">
                             Projektnamn:
@@ -70,7 +65,7 @@
                         <label for="" class="label">
                             Version:
                         </label>
-                        <input formControlName="version" class="input is-small" value="1.0" type="number">
+                        <input formControlName="version" class="input is-small" type="number">
                     </div>
                     <div class="control">
                         <label for="" class="label">
@@ -85,38 +80,8 @@
                     </div>
                 </div>
             </div>
-            <div class="column is-5">
-                <div class="box">
-                    <p class="title is-6">Välj mall</p>
-                    <div class="tabs is-toggle is-toggle-rounded">
-                        <ul>
-                            <li class="is-active">
-                                <a>
-                                    <span class="icon is-small"><i class="fas fa-tint"></i></span>
-                                    <span>Fukt</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <span class="icon is-small"><i class="fas fa-fire"></i></span>
-                                    <span>Energi</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <span class="icon is-small"><i class="fas fa-leaf"></i></span>
-                                    <span>Miljö</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
-                                    <span>Övrigt</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="column is-6">
+                <app-template-selector (selected)="addTemplate($event)"></app-template-selector>
                 <div class="box">
                     <p class="title is-6">Väl kund/företag</p>
                     <div class="control">
@@ -144,14 +109,27 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="button is-success is-large">Generate</button>
+                <div class="box">
+                    <p class="title is-6">Alternativ</p>
+                    <label class="checkbox">
+                        <input [(ngModel)]="options.tableOfContents" [ngModelOptions]="{standalone: true}"
+                            type="checkbox">
+                        Innehållsförteckning
+                    </label>
+                </div>
+                <button type="submit" [disabled]="!templateForm.valid" class="button is-success is-large">Skapa Dokument
+                </button>
+                <span *ngIf="loading" class="is-block">Skapar dokument <i class="fas fa-spinner fa-spin"></i></span>
+                <span *ngIf="message" class="is-block has-text-success">Ditt dokument skapades!</span>
             </div>
         </div>
+
+
     </form>
-    <div class="box">
+    <!--     <div class="box">
         <button (click)="addData()" class="button">Add some data</button>
         <div class="field">
             <div [froalaEditor]="options" [(froalaModel)]="editorContent"></div>
         </div>
-    </div>
+    </div> -->
 </div>

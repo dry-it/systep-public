@@ -7,7 +7,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class DataService {
 
-  baseurl: string = 'http://35.228.151.35:8080/'
+  //baseurl: string = 'https://api.systep.se/'
+  baseurl: string = 'http://localhost:8080/'
 
   constructor(private http: HttpClient, private auth: AngularFireAuth) { }
 
@@ -39,6 +40,31 @@ export class DataService {
 
 
   }
+
+
+  createDocument = (path: string, body: any, fileName: string) => new Promise((resolve, reject) => {
+    this.auth.currentUser
+      .then((user) => {
+        user.getIdToken()
+          .then((token) => {
+            this.http.post(this.baseurl + path, body, { headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.token) })
+              .subscribe((response: any) => {
+                console.log(response)
+                this.get(`document?id=${response.file}`)
+                  .subscribe((data: any) => {
+                    let blob = new Blob([data], { type: 'application/docx' });
+                    var downloadURL = window.URL.createObjectURL(data);
+                    var link = document.createElement('a');
+                    link.href = downloadURL;
+                    link.download = `${fileName}.docx`;
+                    link.click();
+                    resolve('success')
+                  })
+              });
+          })
+      })
+  })
+
 
 
 
