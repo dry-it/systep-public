@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FireBaseService } from '../../services/firebase.service';
 import { Observable } from 'rxjs';
 import { ElectronService } from 'app/core/services';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-start',
@@ -29,11 +30,20 @@ const language = 'typescript';
 > Blockquote to the max`;
 
   projects$: Observable<any> = this.fireBaseService.queryAllProjects('modifiedDate')
-  uid: string = localStorage.uid
+  uid: string
+  localStorage = localStorage
 
-  constructor(private router: Router, private fireBaseService: FireBaseService, private electronService: ElectronService) { }
+  constructor(
+    private router: Router,
+    private fireBaseService: FireBaseService,
+    private electronService: ElectronService,
+    private auth: AngularFireAuth) { }
 
   ngOnInit(): void {
+    this.auth.currentUser.then((user) => {
+      console.log(user.uid)
+      this.uid = user.uid
+    })
   }
 
   navigate(route) {
