@@ -1,6 +1,7 @@
 export const activities = [
   {
     title: 'Uppdragsförfrågan',
+    identity: 'startup',
     desc: 'Inkommande uppdrag registeras i Pyramid och projektmapp upprättas. Ny kund kontrolleras via UC av ekonomiavd. Uppdragsansvarig utses, vilken även utser uppdragsorganisationen.',
     hideSubActivities: true,
     routines: [{
@@ -26,6 +27,7 @@ export const activities = [
   },
   {
     title: 'Behovsanalys/Offert',
+    identity: 'resources',
     desc: 'Uppdragsansvarig genomför en behovsanalys med kund där uppdraget definieras (omfattning, tider, ansvar, kompetens, risker, ect). Offert upprättars för uppdraget. Offert presenteras personligen för kund.',
     style: {
       color: 'dark',
@@ -43,6 +45,7 @@ export const activities = [
   },
   {
     title: 'Uppdragsbekräftelse/Avtal',
+    identity: 'aproval',
     desc: 'När kunden har godkänt upprättad offert bekräftas uppdraget genom ett avtal som kunden upprättar alt skickar uppdragsansvarig (UA) uppdragsbekräftelse. (Uppdragsbekräftelse måste godkännas av kund  alt signerat avtal innan arbete påbörjas.)',
     style: {
       color: 'dark',
@@ -56,12 +59,13 @@ export const activities = [
       { label: 'Offert godkänd av kund', state: false, identity: 'estimate_aproved' },
       { label: 'Uppdragsbekräftelse/Avtal skickat', state: false, identity: 'confirmation_sent' },
       { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false, flag: 'project_order', identity: 'confirmation_aproved' },
-      { label: 'Faktureringsrutiner fastställda i pramid', state: false, identity: 'invoice_routine_set' },
+      { label: 'Faktureringsrutiner fastställda i pyramid', state: false, identity: 'invoice_routine_set' },
     ]
   },
 
   {
     title: 'Genomförande',
+    identity: 'performance',
     routines: [{
       label: 'Agendo',
       type: 'link',
@@ -97,13 +101,13 @@ export const activities = [
     checkListTitle: 'Checkpoints',
     checkPoints: [
       { label: 'Uppdragsplan Upprättad', state: false, identity: 'project_plan_created' },
-      { label: 'Startmöte utfört', state: false, identity: 'start_meeting_done' },
       { label: 'Kvalitets och miljöplan upprättad', state: false, identity: 'quality_plan_done' },
       { label: 'Avstämning med kund', state: false, identity: 'walktrough_with_customer' },
     ]
   },
   {
     title: 'Intern granskning',
+    identity: 'review',
     desc: 'Resultatet intern granskas av mer erfaren konsult, ',
     style: {
       color: 'info',
@@ -116,6 +120,7 @@ export const activities = [
   },
   {
     title: 'Leverans',
+    identity: 'delivery',
     desc: 'Resultatet ska levereras och presenteras för kund (personligen)',
     style: {
       color: 'info',
@@ -128,6 +133,7 @@ export const activities = [
   },
   {
     title: 'Fortsatt Uppdrag?',
+    identity: 'continue',
     desc: 'Löpande utvärderas om det finns mer vi kan göra i projektet...',
     style: {
       color: 'warning',
@@ -137,6 +143,7 @@ export const activities = [
   },
   {
     title: 'Fakturering',
+    identity: 'invoice',
     desc: 'Uppdragsansvarig godkänner fakturaunderlag utifrån tidrapporter av involverade konsulter och säkerställer att det stämmer överens enligt gällande avtal/oderbekräftelse. ',
     style: {
       color: 'dark',
@@ -150,6 +157,7 @@ export const activities = [
   },
   {
     title: 'Uppdraget avslutas',
+    identity: 'end',
     desc: `
       #### Avslutningsmöte
       Avslutningsmöte hålls med kund för utvärdering och erfarenhetsåterföring
@@ -179,6 +187,7 @@ export const activities = [
 export const activitiesSmall = [
   {
     title: 'Uppdragsförfrågan',
+    identity: 'startup',
     desc: 'Inkommande uppdrag registeras i Pyramid och projektmapp upprättas. Ny kund kontrolleras via UC av ekonomiavd. Uppdragsansvarig utses, vilken även utser uppdragsorganisationen.',
     hideSubActivities: true,
     routines: [{
@@ -204,6 +213,7 @@ export const activitiesSmall = [
   },
   {
     title: 'Behovsanalys/Offert',
+    identity: 'resources',
     desc: 'Uppdragsansvarig genomför en behovsanalys med kund där uppdraget definieras (omfattning, tider, ansvar, kompetens, risker, ect). Offert upprättars för uppdraget. Offert presenteras personligen för kund.',
     style: {
       color: 'dark',
@@ -216,11 +226,12 @@ export const activitiesSmall = [
       { label: 'Behovsanalys utförd', state: false, identity: 'resource_planing_done' },
       { label: 'Uppdraget definierat', state: false, identity: 'project_defined' },
       { label: 'Offert upprättad', state: false, identity: 'estimate_created' },
-      { label: 'Offert Levererad/Pressenterad', state: false, identity: 'estimate_delivered' }
+      { label: 'Offert Levererad/Presenterad', state: false, identity: 'estimate_delivered' }
     ]
   },
   {
     title: 'Uppdragsbekräftelse/Avtal',
+    identity: 'aproval',
     desc: 'När kunden har godkänt upprättad offert bekräftas uppdraget genom ett avtal som kunden upprättar alt skickar uppdragsansvarig (UA) uppdragsbekräftelse. (Uppdragsbekräftelse måste godkännas av kund  alt signerat avtal innan arbete påbörjas.)',
     style: {
       color: 'dark',
@@ -234,12 +245,13 @@ export const activitiesSmall = [
       { label: 'Offert godkänd av kund', state: false, identity: 'estimate_aproved' },
       { label: 'Uppdragsbekräftelse/Avtal skickat', state: false, identity: 'confirmation_sent' },
       { label: 'Uppdragsbekräftelse/Avtal godkänt', state: false, flag: 'project_order', identity: 'confirmation_aproved' },
-      { label: 'Faktureringsrutiner fastställda i pramid', state: false, identity: 'invoice_routine_set' },
+      { label: 'Faktureringsrutiner fastställda i pyramid', state: false, identity: 'invoice_routine_set' },
     ]
   },
 
   {
     title: 'Genomförande',
+    identity: 'performance',
     routines: [{
       label: 'Agendo',
       type: 'link',
@@ -268,6 +280,7 @@ export const activitiesSmall = [
   },
   {
     title: 'Intern granskning',
+    identity: 'review',
     desc: 'Resultatet intern granskas av mer erfaren konsult, ',
     style: {
       color: 'info',
@@ -280,6 +293,7 @@ export const activitiesSmall = [
   },
   {
     title: 'Leverans',
+    identity: 'delivery',
     desc: 'Resultatet ska levereras och presenteras för kund (personligen)',
     style: {
       color: 'info',
@@ -292,6 +306,7 @@ export const activitiesSmall = [
   },
   {
     title: 'Fortsatt Uppdrag?',
+    identity: 'continue',
     desc: 'Löpande utvärderas om det finns mer vi kan göra i projektet...',
     style: {
       color: 'warning',
@@ -301,6 +316,7 @@ export const activitiesSmall = [
   },
   {
     title: 'Fakturering',
+    identity: 'invoice',
     desc: 'Uppdragsansvarig godkänner fakturaunderlag utifrån tidrapporter av involverade konsulter och säkerställer att det stämmer överens enligt gällande avtal/oderbekräftelse. ',
     style: {
       color: 'dark',
@@ -314,6 +330,7 @@ export const activitiesSmall = [
   },
   {
     title: 'Uppdraget avslutas',
+    identity: 'end',
     desc: `    
       #### Diskussion om kommande projekt
       Diskussion förs med kund ang. eventuella kommande projekt där vi kan vara delaktiga

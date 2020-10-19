@@ -118,6 +118,29 @@ export class ActivityComponent implements OnInit {
             }).unsubscribe()
         }).unsubscribe()
     }
+
+    if (routine.template === 'projectplan') {
+
+      /*       const data = {
+              createdBy: this.currentUser.displayName,
+              projectName: this.currentProject.name,
+              date: this.datePipe.transform(Date.now(), 'yyyy-MM-dd')
+            }
+            this.documentService.createFromTemplate({ data: data, template: 'risk', fileName: 'Riskanalys' }) */
+
+      this.stateService.returnCurrentUser()
+        .subscribe((user: any) => {
+          this.stateService.returnCurrentProject()
+            .subscribe((project: any) => {
+              const data = {
+                createdBy: user.displayName,
+                projectName: project.name,
+                date: this.datePipe.transform(Date.now(), 'yyyy-MM-dd')
+              }
+              this.documentService.createFromTemplate({ data: data, template: 'projectplan', fileName: 'uppdragsplan' })
+            }).unsubscribe()
+        }).unsubscribe()
+    }
   }
 
   openLink(url: string) {
