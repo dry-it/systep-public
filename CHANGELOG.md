@@ -1,27 +1,49 @@
-## <small>1.0.8 (2020-09-29)</small>
+## <small>1.0.13 (2020-10-07)</small>
 
+* fixed overlay ([3413487](https://github.com/dry-it/systep-public/commit/3413487))
+
+
+
+## <small>1.0.12 (2020-10-07)</small>
+
+* 1.0.12 ([3839eba](https://github.com/dry-it/systep-public/commit/3839eba))
+* fixed start page and logout ([fcf00ce](https://github.com/dry-it/systep-public/commit/fcf00ce))
+
+
+
+## <small>1.0.11 (2020-10-07)</small>
+
+* 1.0.10 ([a533217](https://github.com/dry-it/systep-public/commit/a533217))
+* 1.0.11 ([bae9265](https://github.com/dry-it/systep-public/commit/bae9265))
+* 1.0.9 ([c1d4e81](https://github.com/dry-it/systep-public/commit/c1d4e81))
+* Fixed profile images ([7db40ee](https://github.com/dry-it/systep-public/commit/7db40ee))
+* removed test function ([716bcea](https://github.com/dry-it/systep-public/commit/716bcea))
+* Updated activities ([9713eac](https://github.com/dry-it/systep-public/commit/9713eac))
+
+
+
+## <small>1.0.9 (2020-09-29)</small>
+
+* 1.0.8 ([0643a74](https://github.com/dry-it/systep-public/commit/0643a74))
+* added frame on doc window ([0bc2492](https://github.com/dry-it/systep-public/commit/0bc2492))
 * Fixed formatting for MD ([ff71d51](https://github.com/dry-it/systep-public/commit/ff71d51))
+* Tried to fix scrollbar, gave up! ([f68048e](https://github.com/dry-it/systep-public/commit/f68048e))
 * updated image and message ([2ef155f](https://github.com/dry-it/systep-public/commit/2ef155f))
 
 
 
 ## <small>1.0.7 (2020-09-29)</small>
 
-* 1.0.7 ([d92565c](https://github.com/dry-it/systep-public/commit/d92565c))
-* Updated doc window ([a0a9795](https://github.com/dry-it/systep-public/commit/a0a9795))
-
-
-
-## <small>1.0.6 (2020-09-28)</small>
-
+* 1.0.5 ([95b62a6](https://github.com/dry-it/systep-public/commit/95b62a6))
 * 1.0.6 ([7c49315](https://github.com/dry-it/systep-public/commit/7c49315))
+* 1.0.7 ([d92565c](https://github.com/dry-it/systep-public/commit/d92565c))
 * removed invisible window ([dfdefe2](https://github.com/dry-it/systep-public/commit/dfdefe2))
+* Updated doc window ([a0a9795](https://github.com/dry-it/systep-public/commit/a0a9795))
 
 
 
 ## <small>1.0.5 (2020-09-28)</small>
 
-* 1.0.5 ([95b62a6](https://github.com/dry-it/systep-public/commit/95b62a6))
 * Added loading screen ([ea64fee](https://github.com/dry-it/systep-public/commit/ea64fee))
 * Added wrong password info ([fde5c6e](https://github.com/dry-it/systep-public/commit/fde5c6e))
 * Cahnged sorting order ([2d8f46b](https://github.com/dry-it/systep-public/commit/2d8f46b))
@@ -31,49 +53,29 @@
 
 ## <small>1.0.4 (2020-09-28)</small>
 
-* 1.0.4 ([56fab27](https://github.com/dry-it/systep-public/commit/56fab27))
-* Removed mac build ([5126118](https://github.com/dry-it/systep-public/commit/5126118))
-* Updated flags ([f078d4f](https://github.com/dry-it/systep-public/commit/f078d4f))
-
-
-
-## <small>1.0.3 (2020-09-28)</small>
-
-* 1.0.3 ([cc1a27f](https://github.com/dry-it/systep-public/commit/cc1a27f))
-* added version info ([60d5c0c](https://github.com/dry-it/systep-public/commit/60d5c0c))
-
-
-
-## <small>1.0.2 (2020-09-28)</small>
-
-* 1.0.2 ([da0d334](https://github.com/dry-it/systep-public/commit/da0d334))
-* Added download link ([8dafdb1](https://github.com/dry-it/systep-public/commit/8dafdb1))
-
-
-
-## <small>1.0.1 (2020-09-28)</small>
-
-* 1.0.1 ([f7f4862](https://github.com/dry-it/systep-public/commit/f7f4862))
-* Added auto update toast ([3752fc6](https://github.com/dry-it/systep-public/commit/3752fc6))
-* Added filter page ([27c0f4a](https://github.com/dry-it/systep-public/commit/27c0f4a))
-* Removed FB functions from repo ([c9fd8b8](https://github.com/dry-it/systep-public/commit/c9fd8b8))
-* Updated my-projects list ([85ad0f1](https://github.com/dry-it/systep-public/commit/85ad0f1))
-* Updated version ([3492cdb](https://github.com/dry-it/systep-public/commit/3492cdb))
-
-
-
-## <small>0.0.11 (2020-09-26)</small>
-
+* 0.0.10 ([9e99a68](https://github.com/dry-it/systep-public/commit/9e99a68))
 * 0.0.11 ([bcc8391](https://github.com/dry-it/systep-public/commit/bcc8391))
+* 1.0.1 ([f7f4862](https://github.com/dry-it/systep-public/commit/f7f4862))
+* 1.0.2 ([da0d334](https://github.com/dry-it/systep-public/commit/da0d334))
+* 1.0.3 ([cc1a27f](https://github.com/dry-it/systep-public/commit/cc1a27f))
+* 1.0.4 ([56fab27](https://github.com/dry-it/systep-public/commit/56fab27))
+* Added auto update toast ([3752fc6](https://github.com/dry-it/systep-public/commit/3752fc6))
+* Added download link ([8dafdb1](https://github.com/dry-it/systep-public/commit/8dafdb1))
+* Added filter page ([27c0f4a](https://github.com/dry-it/systep-public/commit/27c0f4a))
+* added version info ([60d5c0c](https://github.com/dry-it/systep-public/commit/60d5c0c))
 * Create main.yml ([7ad9562](https://github.com/dry-it/systep-public/commit/7ad9562))
 * Delete main.yml ([25e2b06](https://github.com/dry-it/systep-public/commit/25e2b06))
+* Removed FB functions from repo ([c9fd8b8](https://github.com/dry-it/systep-public/commit/c9fd8b8))
+* Removed mac build ([5126118](https://github.com/dry-it/systep-public/commit/5126118))
+* Updated flags ([f078d4f](https://github.com/dry-it/systep-public/commit/f078d4f))
+* Updated my-projects list ([85ad0f1](https://github.com/dry-it/systep-public/commit/85ad0f1))
 * Updated package ([ad347f9](https://github.com/dry-it/systep-public/commit/ad347f9))
+* Updated version ([3492cdb](https://github.com/dry-it/systep-public/commit/3492cdb))
 
 
 
 ## <small>0.0.10 (2020-09-26)</small>
 
-* 0.0.10 ([9e99a68](https://github.com/dry-it/systep-public/commit/9e99a68))
 * Hide nav on desktop ([76dc950](https://github.com/dry-it/systep-public/commit/76dc950))
 * Moved update check inside isElectron ([7a55533](https://github.com/dry-it/systep-public/commit/7a55533))
 * Updated scripts ([03c6199](https://github.com/dry-it/systep-public/commit/03c6199))

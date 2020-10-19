@@ -204,7 +204,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.isElectron) {
-     this.currentVersion = this.electron.remote.app.getVersion()
+      this.currentVersion = this.electron.remote.app.getVersion()
     }
 
     this.route.params.subscribe((res) => console.log(res))
@@ -397,17 +397,14 @@ export class HomeComponent implements OnInit {
   isOpenProject = false;
 
   activated: boolean
-  activate: boolean = true;
+  activate: boolean
 
   toggleUser() {
     this.isOpen = !this.isOpen;
   }
 
   signOut() {
-    this.auth.signOut()
-      .then(() => {
-        this.router.navigateByUrl('/login')
-      })
+    this.router.navigateByUrl('/logout')
   }
 
   toggleProject() {

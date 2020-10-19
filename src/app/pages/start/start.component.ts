@@ -46,6 +46,7 @@ const language = 'typescript';
     })
   }
 
+
   navigate(route) {
     this.router.navigateByUrl(route)
   }

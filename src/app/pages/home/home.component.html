@@ -83,8 +83,8 @@
 
 </div>
 
-<div *ngIf=" activate" class="overlay">
-  <div style="margin-top: 4rem;" class="container">
+<div *ngIf="!activated" class="overlay">
+  <div *ngIf="activate" style="margin-top: 4rem;" class="container">
     <div class="box blur-white">
       <h1 class="title is-2">Välkommen</h1>
       <p class="lead">Innan du kan använda ditt konto måste det aktiveras. Fyll i formuläret nedan för att aktivera
