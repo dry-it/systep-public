@@ -1,0 +1,123 @@
+<ng-container *ngIf="currentProject$ | async as p">
+    <ng-container *ngIf="p.type === 'sm'">
+    <div *ngIf="activity.identity === 'startup'" class="block">
+        Inkommande uppdrag registeras i Pyramid och projektmapp upprättas. Ny kund kontrolleras via UC av ekonomiavd. Uppdragsansvarig utses, vilken även utser uppdragsorganisationen.
+    </div>
+    <div *ngIf="activity.identity === 'resources'" class="block">
+        Uppdragsansvarig genomför en behovsanalys med kund där uppdraget definieras (omfattning, tider, ansvar, kompetens, risker, ect). Offert upprättars för uppdraget. Offert presenteras personligen för kund.
+    </div>
+    <div *ngIf="activity.identity === 'aproval'" class="block">
+        När kunden har godkänt upprättad offert bekräftas uppdraget genom ett avtal som kunden upprättar alt skickar uppdragsansvarig (UA) uppdragsbekräftelse. (Uppdragsbekräftelse måste godkännas av kund  alt signerat avtal innan arbete påbörjas.)
+    </div>
+    <div *ngIf="activity.identity === 'performance'" class="block">
+        <div class="block">
+            <p class="title is-6 no-margin">Kvalitets och miljöplan</p>
+        <span>Kvalitets och miljöplan skall upprättas</span>
+        </div>
+        <div class="block">
+            <p class="title is-6 no-margin">Utförande</p>
+        <span>Uppdraget utförs enligt gällande tjänstebeskrivning</span>
+        </div>
+        <div class="block">
+            <p class="title is-6 no-margin">Avstämningar</p>
+        <span>Kontinuerliga avstämmningar internt och externt (kund) (aktiviteter, tidplan, ekonomi, omfattning, risker,  ev ÄTA) 
+        </span>
+        </div>
+        
+    </div>
+    <div *ngIf="activity.identity === 'review'" class="block">
+        Resultatet intern granskas av mer erfaren konsult,
+    </div>
+    <div *ngIf="activity.identity === 'delivery'" class="block">
+        Resultatet ska levereras och presenteras för kund (personligen)
+    </div>
+    <div *ngIf="activity.identity === 'continue'" class="block">
+        Löpande utvärderas om det finns mer vi kan göra i projektet...
+    </div>
+    <div *ngIf="activity.identity === 'invoice'" class="block">
+        Uppdragsansvarig godkänner fakturaunderlag utifrån tidrapporter av involverade konsulter och säkerställer att det stämmer överens enligt gällande avtal/oderbekräftelse. 
+    </div>
+    <div *ngIf="activity.identity === 'end'" class="block">
+        <div class="block">
+            <p class="title is-6 no-margin">Diskussion om kommande projekt</p>
+        <span> Diskussion förs med kund ang. eventuella kommande projekt där vi kan vara delaktiga</span>
+        </div>
+        <div class="block">
+            <p class="title is-6 no-margin">Avsluta projektet i pyramid</p>
+        <span>Projektet avslutas i pyramid</span>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="p.type === 'lg'">
+    <div *ngIf="activity.identity === 'startup'" class="block">
+        Inkommande uppdrag registeras i Pyramid och projektmapp upprättas. Ny kund kontrolleras via UC av ekonomiavd. Uppdragsansvarig utses, vilken även utser uppdragsorganisationen.
+    </div>
+    <div *ngIf="activity.identity === 'resources'" class="block">
+        Uppdragsansvarig genomför en behovsanalys med kund där uppdraget definieras (omfattning, tider, ansvar, kompetens, risker, ect). Offert upprättars för uppdraget. Offert presenteras personligen för kund.
+    </div>
+    <div *ngIf="activity.identity === 'aproval'" class="block">
+        När kunden har godkänt upprättad offert bekräftas uppdraget genom ett avtal som kunden upprättar alt skickar uppdragsansvarig (UA) uppdragsbekräftelse. (Uppdragsbekräftelse måste godkännas av kund  alt signerat avtal innan arbete påbörjas.)
+    </div>
+    <div *ngIf="activity.identity === 'performance'" class="block">
+        <div class="block">
+            <p class="title is-6 no-margin">Uppdragsplan</p>
+        <span class="is-block">Uppdragsplan (ekonomi, tidplan med (milstolpar), aktiviteter att genomföras, risker, leverans, organisation, mötesintervaller) upprättas av uppdragsansvarig. Genomgång av uppdragsplan med uppdragsorganisation.
+        </span>
+        <button (click)="generateDocument('uppdragsplan', p)" style="margin-top: 0.5rem;" class="button is-link">Generera uppdragsplan</button>
+        </div>
+        <div class="block">
+            <p class="title is-6 no-margin">Startmöte</p>
+        <span class="is-block">Startmöte med kund (genomgång av uppdrag, uppdragsplan)
+        </span>
+        </div>
+        <div class="block">
+            <p class="title is-6 no-margin">Kvalitets och miljöplan</p>
+        <span>Kvalitets och miljöplan skall upprättas</span>
+        </div>
+        <div class="block">
+            <p class="title is-6 no-margin">Utförande</p>
+        <span>Uppdraget utförs enligt gällande tjänstebeskrivning</span>
+        </div>
+        <div class="block">
+            <p class="title is-6 no-margin">Avstämningar</p>
+        <span>Kontinuerliga avstämmningar internt och externt (kund) (aktiviteter, tidplan, ekonomi, omfattning, risker,  ev ÄTA) 
+        </span>
+        </div>
+        
+    </div>
+    <div *ngIf="activity.identity === 'review'" class="block">
+        Resultatet intern granskas av mer erfaren konsult,
+    </div>
+    <div *ngIf="activity.identity === 'delivery'" class="block">
+        Resultatet ska levereras och presenteras för kund (personligen)
+    </div>
+    <div *ngIf="activity.identity === 'continue'" class="block">
+        Löpande utvärderas om det finns mer vi kan göra i projektet...
+    </div>
+    <div *ngIf="activity.identity === 'invoice'" class="block">
+        Uppdragsansvarig godkänner fakturaunderlag utifrån tidrapporter av involverade konsulter och säkerställer att det stämmer överens enligt gällande avtal/oderbekräftelse. 
+    </div>
+    <div *ngIf="activity.identity === 'end'" class="block">
+        <div class="block">
+            <p class="title is-6 no-margin">Avslutningsmöte</p>
+        <span>Avslutningsmöte hålls med kund för utvärdering och erfarenhetsåterföring
+        </span>
+        </div>
+        <div class="block">
+            <p class="title is-6 no-margin">Diskussion om kommande projekt</p>
+        <span>Diskussion förs med kund ang. eventuella kommande projekt där vi kan vara delaktiga
+        </span>
+        </div>
+        <div class="block">
+            <p class="title is-6 no-margin">Avsluta projektet i pyramid</p>
+        <span>Projektet avslutas i pyramid</span>
+        </div>
+        <div class="block">
+            <p class="title is-6 no-margin">Lönsamhetsanalys</p>
+        <span>Lönsamhetsanalys upprättas</span>
+        </div>
+    </div>
+</ng-container>
+</ng-container>
+
+

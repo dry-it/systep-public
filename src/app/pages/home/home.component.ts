@@ -16,7 +16,7 @@ import { Location } from '@angular/common';
 import { FormGroup, FormControl } from '@angular/forms';
 import { auditTime } from 'rxjs/operators';
 import { StateService } from '../../services/state.service';
-import { ElectronService } from 'app/core/services';
+import { ElectronService } from '../../core/services';
 
 interface Activity {
   title: string;
@@ -433,8 +433,9 @@ export class HomeComponent implements OnInit {
   }
 
   checkUser() {
-    this.auth.currentUser.then((u: any) => {
+    this.auth.currentUser.then((u) => {
       if (u) {
+        u.getIdToken().then((token) => localStorage.token = token)
         this.stateService.loadUser(u.uid);
         this.stateService.returnCurrentUser()
           .subscribe((user: any) => {

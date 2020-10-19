@@ -1,0 +1,47 @@
+<div style="margin-bottom: 1rem;" class="box">
+    <p class="title is-6">Välj mall</p>
+    <div class="tabs is-toggle is-toggle-rounded">
+        <ul>
+            <li [class.is-active]="!filter || filter === ''">
+
+                <a (click)="filter = ''">
+                    <span class="icon is-small"><i class="fas fa-globe-europe"></i></span>
+                    <span>Alla</span>
+                </a>
+            </li>
+            <li [class.is-active]="filter === 'humidity'">
+
+                <a (click)="filter = 'humidity'">
+                    <span class="icon is-small"><i class="fas fa-tint"></i></span>
+                    <span>Fukt</span>
+                </a>
+            </li>
+            <li [class.is-active]="filter === 'energy'">
+                <a (click)="filter = 'energy'">
+                    <span class="icon is-small"><i class="fas fa-fire"></i></span>
+                    <span>Energi</span>
+                </a>
+            </li>
+            <li [class.is-active]="filter === 'environment'">
+                <a (click)="filter = 'environment'">
+                    <span class="icon is-small"><i class="fas fa-leaf"></i></span>
+                    <span>Miljö</span>
+                </a>
+            </li>
+            <li [class.is-active]="filter === 'misc'">
+                <a (click)="filter = 'misc'">
+                    <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
+                    <span>Övrigt</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="select is-multiple is-fullwidth">
+        <select style="height: auto" [(ngModel)]="selectedTemplate" (change)="change()" *ngIf="templates" size="7">
+            <option
+                *ngFor="let template of templates | filterBy: ['category']: filter | orderBy: ['name'] ; let i = index"
+                [value]="template.id">
+                {{template.name}}</option>
+        </select>
+    </div>
+</div>

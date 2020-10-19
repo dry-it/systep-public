@@ -1,151 +1,137 @@
 <div style="margin-top: 2rem;" class="container">
     <p class="title">Mallverktyg</p>
-    <div class="columns">
-        <div class="column is-4">
-            <div class="box">
-                <p class="title is-6">Väl ett eller alla kontor</p>
-                <div class="control">
-                    <label class="radio">
-                        <input type="radio" name="foobar">
-                        Ett kontor
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="foobar">
-                        Alla kontor
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="foobar">
-                        Ingen adress
-                    </label>
-                </div>
-                <div style="margin-top: 1rem;" class="select is-fullwidth">
-                    <select>
-                        <option>Stockholm</option>
-                        <option>Uppsala</option>
-                        <option>Göteborg</option>
-                        <option>Malmö</option>
-                    </select>
-                </div>
-            </div>
-            <div class="box">
-                <p class="title is-6">Uppdragsspecifik information</p>
-                <div class="control">
-                    <label for="" class="label">
-                        Projektnamn:
-                    </label>
-                    <input class="input is-small" type="text">
-                </div>
-                <div class="control">
-                    <label for="" class="label">
-                        Datum:
-                    </label>
-                    <input class="input is-small" type="date">
-                </div>
-                <div class="control">
-                    <label for="" class="label">
-                        Uppdragsnummer:
-                    </label>
-                    <input class="input is-small" type="text">
-                </div>
-                <div class="control">
-                    <label for="" class="label">
-                        Status:
-                    </label>
+    <form [formGroup]="templateForm" (ngSubmit)="onSubmit()">
+        <div class="columns">
+            <div class="column is-6">
+                <div class="box">
+                    <p class="title is-6">Adress</p>
                     <div class="select is-fullwidth">
-                        <select>
-                            <option>Granskningshandling</option>
-                            <option>Fastställd</option>
-                            <option>Systemhandling</option>
+                        <select [disabled]="!templateForm.value.officeStyle === 'one'" formControlName="office">
+                            <option value="all">Alla</option>
+                            <option value="none">Ingen adress</option>
+                            <option value="sth">Stockholm</option>
+                            <option value="upp">Uppsala</option>
+                            <option value="gbg">Göteborg</option>
+                            <option value="mlm">Malmö</option>
                         </select>
                     </div>
                 </div>
-                <div class="control">
-                    <label for="" class="label">
-                        Reviderad datum:
-                    </label>
-                    <input class="input is-small" type="date">
-                </div>
-                <div class="control">
-                    <label for="" class="label">
-                        Version:
-                    </label>
-                    <input class="input is-small" value="1.0" type="number">
-                </div>
-                <div class="control">
-                    <label for="" class="label">
-                        Din roll i projektet:
-                    </label>
-                    <div class="select is-fullwidth">
-                        <select>
-                            <option>Uppdragsansvarig</option>
-                            <option>Handläggare</option>
-                        </select>
+                <div class="box">
+                    <p class="title is-6">Uppdragsspecifik information</p>
+                    <div class="control">
+                        <label for="" class="label">
+                            Dokumentnamn:
+                        </label>
+                        <input formControlName="docName" placeholder="ex. innomhusmiljöutredning" class="input is-small"
+                            type="text">
+                    </div>
+                    <div class="control">
+                        <label for="" class="label">
+                            Projektnamn:
+                        </label>
+                        <input formControlName="name" class="input is-small" type="text">
+                    </div>
+                    <div class="control">
+                        <label for="" class="label">
+                            Datum:
+                        </label>
+                        <input formControlName="date" class="input is-small" type="date">
+                    </div>
+                    <div class="control">
+                        <label for="" class="label">
+                            Uppdragsnummer:
+                        </label>
+                        <input formControlName="pNumber" class="input is-small" type="text">
+                    </div>
+                    <div class="control">
+                        <label for="" class="label">
+                            Status:
+                        </label>
+                        <div class="select is-fullwidth">
+                            <select formControlName="status">
+                                <option>Granskningshandling</option>
+                                <option>Fastställd</option>
+                                <option>Systemhandling</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control">
+                        <label for="" class="label">
+                            Reviderad datum:
+                        </label>
+                        <input formControlName="revicedDate" class="input is-small" type="date">
+                    </div>
+                    <div class="control">
+                        <label for="" class="label">
+                            Version:
+                        </label>
+                        <input formControlName="version" class="input is-small" type="number">
+                    </div>
+                    <div class="control">
+                        <label for="" class="label">
+                            Din roll i projektet:
+                        </label>
+                        <div class="select is-fullwidth">
+                            <select formControlName="role">
+                                <option>Uppdragsansvarig</option>
+                                <option>Handläggare</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="column is-5">
-            <div class="box">
-                <p class="title is-6">Välj mall</p>
-                <div class="tabs is-toggle is-toggle-rounded">
-                    <ul>
-                        <li class="is-active">
-                            <a>
-                                <span class="icon is-small"><i class="fas fa-tint"></i></span>
-                                <span>Fukt</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="icon is-small"><i class="fas fa-fire"></i></span>
-                                <span>Energi</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="icon is-small"><i class="fas fa-leaf"></i></span>
-                                <span>Miljö</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
-                                <span>Övrigt</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="box">
-                <p class="title is-6">Väl kund/företag</p>
-                <div class="control">
-                    <label for="" class="label">
-                        Välj kund
-                    </label>
-                    <div class="select is-fullwidth">
-                        <select>
-                            <option></option>
-                        </select>
+            <div class="column is-6">
+                <app-template-selector (selected)="addTemplate($event)"></app-template-selector>
+                <div class="box">
+                    <p class="title is-6">Väl kund/företag</p>
+                    <div class="control">
+                        <label for="" class="label">
+                            Välj kund
+                        </label>
+                        <div *ngIf="customers$ | async as customers" class="select is-fullwidth">
+                            <select formControlName="selectedCustomer" (change)="selectContacts()">
+                                <option selected>Välj kund</option>
+                                <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control" *ngIf="contacts$ | async as contacts">
+                        <label for="" class="label">
+                            Välj kontaktperson
+                        </label>
+                        <div class="select is-fullwidth">
+                            <select (change)="selectContact()" formControlName="selectedContact">
+                                <option selected>Välj kontaktperson</option>
+                                <option *ngFor="let contact of contacts" [value]="contact.id">{{contact.firstName}}
+                                    {{contact.lastName}}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="control">
-                    <label for="" class="label">
-                        Välj kontaktperson
+                <div class="box">
+                    <p class="title is-6">Alternativ</p>
+                    <label class="checkbox">
+                        <input [(ngModel)]="options.tableOfContents" [ngModelOptions]="{standalone: true}"
+                            type="checkbox">
+                        Innehållsförteckning
                     </label>
-                    <div class="select is-fullwidth">
-                        <select>
-                            <option></option>
-                        </select>
-                    </div>
                 </div>
+                <button type="submit" [disabled]="!templateForm.valid" class="button is-success is-large">Skapa Dokument
+                </button>
+                <span *ngIf="loading" class="is-block">Skapar dokument <i class="fas fa-spinner fa-spin"></i></span>
+                <span *ngIf="message" class="is-block has-text-success">Ditt dokument skapades!</span>
             </div>
             <button  class="button is-success is-large">Generate</button>
+
         </div>
-    </div>
-    <div class="box">
+
+
+    </form>
+    <!--     <div class="box">
         <button (click)="addData()" class="button">Add some data</button>
         <div class="field">
             <div [froalaEditor]="options" [(froalaModel)]="editorContent"></div>
         </div>
-    </div>
+    </div> -->
 </div>

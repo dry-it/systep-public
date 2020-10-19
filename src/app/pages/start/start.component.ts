@@ -31,10 +31,13 @@ const language = 'typescript';
 
   projects$: Observable<any> = this.fireBaseService.queryAllProjects('modifiedDate')
   uid: string
-
   localStorage = localStorage
 
-  constructor(private router: Router, private fireBaseService: FireBaseService, private electronService: ElectronService, private auth: AngularFireAuth) { }
+  constructor(
+    private router: Router,
+    private fireBaseService: FireBaseService,
+    private electronService: ElectronService,
+    private auth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.auth.currentUser.then((user) => {
