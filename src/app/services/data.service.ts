@@ -8,7 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class DataService {
 
   //baseurl: string = 'https://api.systep.se/'
-  baseurl: string = 'http://localhost:8080/'
+  baseurl: string = 'https://api.systep.se/'
 
   constructor(private http: HttpClient, private auth: AngularFireAuth) { }
 
