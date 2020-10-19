@@ -82,6 +82,7 @@ import {NgPipesModule} from 'ngx-pipes';
 import { FilterComponent } from './pages/filter/filter.component';
 import { LoadResourcesComponent } from './components/load-resources/load-resources.component';
 import { TemplateSelectorComponent } from './components/template-selector/template-selector.component';
+import { ActivityDescriptionComponent } from './components/activity/activity-description/activity-description.component';
 
 
 // AoT requires an exported function for factories
@@ -113,6 +114,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     FilterComponent,
     LoadResourcesComponent,
     TemplateSelectorComponent,
+    ActivityDescriptionComponent,
   ],
   imports: [
     BrowserModule,
