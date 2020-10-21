@@ -1,5 +1,33 @@
+## <small>1.0.16 (2020-10-19)</small>
+
+* fixed compile errors ([d140008](https://github.com/dry-it/systep-public/commit/d140008))
+
+
+
+## <small>1.0.15 (2020-10-19)</small>
+
+* 1.0.15 ([e58f948](https://github.com/dry-it/systep-public/commit/e58f948))
+* Added new web-version ([8e0a940](https://github.com/dry-it/systep-public/commit/8e0a940))
+* Added support for creating documents ([f231d29](https://github.com/dry-it/systep-public/commit/f231d29))
+* Added template tool ([2aab130](https://github.com/dry-it/systep-public/commit/2aab130))
+* added uid ([e3f6f32](https://github.com/dry-it/systep-public/commit/e3f6f32))
+* changed bas url ([bad4e85](https://github.com/dry-it/systep-public/commit/bad4e85))
+* Removed template tool link ([8127dc1](https://github.com/dry-it/systep-public/commit/8127dc1))
+* Some changes ([6e50b72](https://github.com/dry-it/systep-public/commit/6e50b72))
+* update ([2d987d0](https://github.com/dry-it/systep-public/commit/2d987d0))
+
+
+
+## <small>1.0.14 (2020-10-07)</small>
+
+* 1.0.14 ([aa19831](https://github.com/dry-it/systep-public/commit/aa19831))
+* fixed password bugg ([5914b62](https://github.com/dry-it/systep-public/commit/5914b62))
+
+
+
 ## <small>1.0.13 (2020-10-07)</small>
 
+* 1.0.13 ([93e3f3d](https://github.com/dry-it/systep-public/commit/93e3f3d))
 * fixed overlay ([3413487](https://github.com/dry-it/systep-public/commit/3413487))
 
 
