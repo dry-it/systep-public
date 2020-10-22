@@ -1,0 +1,25 @@
+<div class="container">
+    <h1 class="title is-3">Create new protocol</h1>
+    <div class="box">
+         <form [formGroup]="protocolForm" (ngSubmit)="onSubmit()">
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input formControlName="name" class="input" type="text" placeholder="Protocol name">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+                <input formControlName="desc" class="input" type="text" placeholder="Description">
+            </div>
+        </div>
+       
+
+        <button style="margin-right: 4px;" class="button is-link" type="submit"
+            [disabled]="!protocolForm.valid">Create</button>
+
+    </form> 
+    </div>
+  
+</div>

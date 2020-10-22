@@ -40,6 +40,10 @@ export class StateService {
     this.store.dispatch(new projectActions.Query(id))
   }
 
+  loadMps = (protocolID: string) => {
+    this.store.dispatch(new mpActions.Query(protocolID))
+  }
+
   loadUser = (id: string) => {
     this.store.dispatch(new userActions.Query(id));
   }
@@ -65,12 +69,12 @@ export class StateService {
   }
 
   queryMps = (protocolID: string) => {
-    this.store.dispatch(new mpActions.Query(protocolID))
+    //this.store.dispatch(new mpActions.Query(protocolID))
     return this.store.select(fromMps.selectAll)
   }
 
   queryMpsIds = (protocolID: string) => {
-    this.store.dispatch(new mpActions.Query(protocolID))
+    //this.store.dispatch(new mpActions.Query(protocolID))
     return this.store.select(fromMps.selectIds)
   }
 

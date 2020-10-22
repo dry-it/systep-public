@@ -1,0 +1,21 @@
+<div [formGroup]="form" class="columns is-size-7">
+    <div class="column is-1"><input class="input is-small" (blur)="update()" formControlName="name" type="text"
+            placeholder="Mätpunktsnamn"></div>
+    <div class="column is-1"><input class="input is-small" (blur)="update()" formControlName="thickness" type="text"
+            placeholder="Tjocklek"></div>
+    <div class="column is-1"><input class="input is-small" (blur)="update()" formControlName="vct" type="text"
+            placeholder="vct"></div>
+    <div class="column is-1"><input class="input is-small" (blur)="update()" formControlName="levelingScreed"
+            type="text" placeholder="Avjämning"></div>
+    <div class="column is-1"><input class="input is-small" (blur)="update()" formControlName="dehydration" type="text"
+            placeholder="Uttorkning"></div>
+    <div class="column is-1"><input class="input is-small" (blur)="update()" formControlName="ekvDepth" type="text"
+            placeholder="Ekv"></div>
+    <div class="column is-1"><input class="input is-small" (blur)="update()" formControlName="depth" type="text"
+            placeholder="Borrdjup"> </div>
+    <div class="column is-2"><input class="input is-small" (blur)="update()" formControlName="drillDate" type="date"
+            placeholder="Datum borr."> </div>
+    <div class="column is-1"><input class="input is-small" (blur)="update()" type="text" placeholder="OK"> </div>
+    <div class="column is-2"><input class="input is-small" (blur)="update()" formControlName="placement" type="text"
+            placeholder="PLacement"> </div>
+</div>

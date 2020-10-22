@@ -13,6 +13,10 @@ import { SettingsComponent } from '../settings/settings.component';
 import { ProjectParticipantsComponent } from '../project-participants/project-participants.component';
 import { TemplateToolComponent } from '../template-tool/template-tool.component';
 import { FilterComponent } from '../filter/filter.component';
+import { DryfixComponent } from '../dryfix/dryfix.component';
+import { DfProjectComponent } from '../dryfix/df-project/df-project.component';
+import { DfProtocolComponent } from '../dryfix/df-protocol/df-protocol.component';
+import { ProtocolViewComponent } from 'app/dryfix/protocol-view/protocol-view.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -62,8 +66,26 @@ const routes: Routes = [
       {
         path: 'create-project',
         component: CreateProjectComponent
-      }
+      },
+      {
+        path: 'dryfix',
+        component: DryfixComponent
+      },
+      {
+        path: 'dryfix/project/:id',
+        component: DfProjectComponent
+      },
+      {
+        path: 'dryfix/project/:id/protocol/:pid',
+        component: DfProtocolComponent
+      },
     ]
+  },
+  {
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    path: 'protocol-viewer/:projectid/:protocolid',
+    component: ProtocolViewComponent
   }]
 
 @NgModule({

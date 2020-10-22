@@ -84,6 +84,38 @@ import { LoadResourcesComponent } from './components/load-resources/load-resourc
 import { TemplateSelectorComponent } from './components/template-selector/template-selector.component';
 import { ActivityDescriptionComponent } from './components/activity/activity-description/activity-description.component';
 // AoT requires an exported function for factories
+
+// DryFix
+import { ProtocolViewComponent } from './dryfix/protocol-view/protocol-view.component';
+import { MpOverviewComponent } from './dryfix/protocol-view/components/mp-overview/mp-overview.component';
+import { MpOverviewHeaderComponent } from './dryfix/protocol-view/components/mp-overview-header/mp-overview-header.component';
+import { MpConstructionHeaderComponent } from './dryfix/protocol-view/components/mp-construction-header/mp-construction-header.component';
+import { MpConstructionComponent } from './dryfix/protocol-view/components/mp-construction/mp-construction.component';
+import { MpMountHeaderComponent } from './dryfix/protocol-view/components/mp-mount-header/mp-mount-header.component';
+import { MpMountComponent } from './dryfix/protocol-view/components/mp-mount/mp-mount.component';
+import { MpProbesHeaderComponent } from './dryfix/protocol-view/components/mp-probes-header/mp-probes-header.component';
+import { MpProbesComponent } from './dryfix/protocol-view/components/mp-probes/mp-probes.component';
+import { InfoPanelComponent } from './dryfix/protocol-view/components/info-panel/info-panel.component';
+import { HeaderPanelComponent } from './dryfix/protocol-view/components/header-panel/header-panel.component';
+import { FooterPanelComponent } from './dryfix/protocol-view/components/footer-panel/footer-panel.component';
+
+import { DryfixComponent } from './pages/dryfix/dryfix.component';
+import { DfCreateProjectComponent } from './pages/dryfix/df-create-project/df-create-project.component';
+import { DfProjectsListComponent } from './pages/dryfix/df-projects-list/df-projects-list.component';
+import { DfProjectComponent } from './pages/dryfix/df-project/df-project.component';
+import { DfCreateProtocolComponent } from './pages/dryfix/df-create-protocol/df-create-protocol.component';
+import { DfProtocolsListComponent } from './pages/dryfix/df-protocols-list/df-protocols-list.component';
+import { DfProtocolComponent } from './pages/dryfix/df-protocol/df-protocol.component';
+import { DfProtocolDrillComponent } from './pages/dryfix/df-protocol-drill/df-protocol-drill.component';
+import { DfMpCreateComponent } from './pages/dryfix/df-mp-create/df-mp-create.component';
+import { DfProtocolDrillMpComponent } from './pages/dryfix/df-protocol-drill-mp/df-protocol-drill-mp.component';
+import { DfProtocolMountComponent } from './pages/dryfix/df-protocol-mount/df-protocol-mount.component';
+import { DfProtocolMountMpComponent } from './pages/dryfix/df-protocol-mount-mp/df-protocol-mount-mp.component';
+import { DfProtocolReadComponent } from './pages/dryfix/df-protocol-read/df-protocol-read.component';
+import { DfProtocolReadMpComponent } from './pages/dryfix/df-protocol-read-mp/df-protocol-read-mp.component';
+import { DfProtocolCopyComponent } from './pages/dryfix/df-protocol-copy/df-protocol-copy.component';
+
+
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -113,6 +145,41 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     LoadResourcesComponent,
     TemplateSelectorComponent,
     ActivityDescriptionComponent,
+    //Dryfix
+    DryfixComponent,
+    DfCreateProjectComponent,
+    DfProjectsListComponent,
+    DfProjectComponent,
+    DfCreateProtocolComponent,
+    DfProtocolsListComponent,
+    DfProtocolComponent,
+    DfProtocolDrillComponent,
+    DfMpCreateComponent,
+    DfProtocolDrillMpComponent,
+    DfProtocolMountComponent,
+    DfProtocolMountMpComponent,
+    DfProtocolReadComponent,
+    DfProtocolReadMpComponent,
+    ProjectWrapperComponent,
+    FolderComponent,
+    FileComponent,
+    FileIconComponent,
+    SettingsComponent,
+    ProjectPanelComponent,
+    ProjectStatusComponent,
+    ProtocolViewComponent,
+    MpOverviewComponent,
+    MpOverviewHeaderComponent,
+    MpConstructionHeaderComponent,
+    MpConstructionComponent,
+    MpMountHeaderComponent,
+    MpMountComponent,
+    MpProbesHeaderComponent,
+    MpProbesComponent,
+    InfoPanelComponent,
+    HeaderPanelComponent,
+    FooterPanelComponent,
+    DfProtocolCopyComponent,
   ],
   imports: [
     BrowserModule,

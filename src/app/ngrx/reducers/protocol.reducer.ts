@@ -33,6 +33,9 @@ export function protocolsReducer(
 
     switch (action.type) {
 
+        case actions.QUERY:
+            return protocolAdapter.removeAll(state)
+
         case actions.ADDED:
             return protocolAdapter.addOne(action.payload, state)
 

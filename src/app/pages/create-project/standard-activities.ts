@@ -179,6 +179,7 @@ export const activities = [
     checkPoints: [
       { label: 'Avslutningsmöte', state: false, identity: 'closing_meeting' },
       { label: 'Lönsamhetsanalys', state: false, identity: 'profit_check' },
+      { label: 'Projekt avslutat i pyramid', state: false, identity: 'pyramid_ended' },
     ]
   },
 
@@ -256,6 +257,11 @@ export const activitiesSmall = [
       label: 'Agendo',
       type: 'link',
       url: 'https://agendo.se'
+    },
+    {
+      label: 'Riskanalys i fält',
+      type: 'create-doc',
+      template: 'risk'
     }],
     desc: `
       #### Kvalitets och miljöplan
@@ -276,6 +282,7 @@ export const activitiesSmall = [
     checkListTitle: 'Checkpoints',
     checkPoints: [
       { label: 'Avstämning med kund', state: false, identity: 'walktrough_with_customer' },
+      { label: 'Riskanalys i fält utförd', state: false, identity: 'risk_in_production' },
     ]
   },
   {
@@ -343,6 +350,11 @@ export const activitiesSmall = [
       icon: 'smile',
       arrow: ''
     },
+
+    checkPoints: [
+      { label: 'Projekt avslutat i pyramid', state: false, identity: 'pyramid_ended' },
+    ]
+
   },
 
 ]
