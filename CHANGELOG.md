@@ -1,5 +1,14 @@
+## <small>1.0.17 (2020-10-22)</small>
+
+* Added a lot of changes ([fce98c0](https://github.com/dry-it/systep-public/commit/fce98c0))
+* hosting chace ([62a6ac6](https://github.com/dry-it/systep-public/commit/62a6ac6))
+* Updated activities ([70ef3fb](https://github.com/dry-it/systep-public/commit/70ef3fb))
+
+
+
 ## <small>1.0.16 (2020-10-19)</small>
 
+* 1.0.16 ([550fcef](https://github.com/dry-it/systep-public/commit/550fcef))
 * fixed compile errors ([d140008](https://github.com/dry-it/systep-public/commit/d140008))
 
 
