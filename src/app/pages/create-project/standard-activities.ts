@@ -179,6 +179,7 @@ export const activities = [
     checkPoints: [
       { label: 'Avslutningsmöte', state: false, identity: 'closing_meeting' },
       { label: 'Lönsamhetsanalys', state: false, identity: 'profit_check' },
+      { label: 'Projekt avslutat i pyramid', state: false, identity: 'pyramid_ended' },
     ]
   },
 
@@ -349,6 +350,11 @@ export const activitiesSmall = [
       icon: 'smile',
       arrow: ''
     },
+
+    checkPoints: [
+      { label: 'Projekt avslutat i pyramid', state: false, identity: 'pyramid_ended' },
+    ]
+
   },
 
 ]
