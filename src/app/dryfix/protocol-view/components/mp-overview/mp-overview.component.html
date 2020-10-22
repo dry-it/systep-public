@@ -1,0 +1,17 @@
+<div [formGroup]="form" class="columns is-size-7">
+        <div class="column is-2"><input class="input is-small" (blur)="update()" formControlName="name" type="text"
+                        placeholder="Mätpunktsnamn"></div>
+        <div class="column is-4"><input class="input is-small" (blur)="update()" formControlName="placement" type="text"
+                        placeholder="Mätplats"></div>
+        <div class="column is-1"><input class="input is-small" (blur)="update()" formControlName="rhLimit" type="text"
+                        placeholder="RFkrit">
+        </div>
+        <div class="column is-1"><input class="input is-small" (blur)="update()" readonly formControlName="result"
+                        type="text" placeholder="RFslut">
+        </div>
+        <div class="column is-1"><input class="input is-small" (blur)="update()" formControlName="temp" type="text"
+                        placeholder="Temp."></div>
+        <div class="column is-3"><input class="input is-small" (blur)="update()" formControlName="date"
+                        type="datetime-local" placeholder="Datum avl.">
+        </div>
+</div>

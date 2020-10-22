@@ -1,0 +1,28 @@
+<div class="container">
+    <ng-container *ngIf="projects$ | async as projects">
+        <div class="box">
+               <table class="table is-fullwidth">
+            <thead>
+                <th>Project Name</th>
+                <th>Company</th>
+                <th>Pnumber</th>
+            </thead>
+            <tbody>
+                <tr (click)="open(project.id)" *ngFor="let project of projects">
+                    <td>{{project.name}}</td>
+                    <td>{{project.company}}</td>
+                    <td>{{project.pNumber}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ng-container *ngIf="!projects.length">
+            <p>Loading projects <i class="fas fa-spinner fa-spin"></i> </p>
+        </ng-container>   
+        </div>
+  
+
+
+    </ng-container>
+
+</div>

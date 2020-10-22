@@ -1,0 +1,45 @@
+<div class="overlay">
+    <div class="container">
+        <div style="margin-top: 3rem;" class="box">
+            <h1 class="title">Copy measurement</h1>
+            <div class="field">
+                <div class="control">
+                  <input [(ngModel)]="protocolName" class="input is-large" type="text" placeholder="Protocol Name">
+                </div>
+              </div>
+
+                <table class="table is-fullwidth">
+                    <thead>
+                        <th><input type="checkbox"></th>
+                        <th>Name</th>
+                        <th>Placement</th>
+                        <th>Construction</th>
+                        <th>Thickness</th>
+                        <th>Depth</th>
+                        <th>Ekv Depth</th>
+                        <th>Temp</th>
+                        <th>Result</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let mp of newMps">
+                            <td><input [(ngModel)]="mp.copy" type="checkbox"></td>
+                            <td>{{mp.name}}</td>
+                            <td>{{mp.placement}}</td>
+                            <td>{{mp.constructionType}}</td>
+                            <td>{{mp.thickness}}</td>
+                            <td>{{mp.depth}}</td>
+                            <td>{{mp.ekvDepth}}</td>
+                            <td><span *ngIf="mp.readout">{{mp.readout.temp}}°C</span></td>
+                            <td><span *ngIf="mp.readout">{{mp.readout.result}}%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="buttons">
+                    <button [disabled]="!protocolName" (click)="copyMeasurement()" class="button is-link">Create measurement with selected</button>
+                <button (click)="cancel()" class="button is-danger">Cancel</button>
+                </div>
+                
+        </div>
+    </div>
+</div>

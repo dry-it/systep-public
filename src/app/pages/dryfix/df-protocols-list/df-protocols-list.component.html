@@ -1,0 +1,38 @@
+<div style="margin-top: 1rem;" class="container">
+    <div class="box">
+        <ng-container *ngIf="protocols$ | async as protocols">
+<!--             <ng-container *ngIf="!loading$ | async">
+                <ng-container *ngIf="protocols.length == 0">No protocols found...</ng-container>
+            </ng-container>  -->      
+        <table *ngIf="protocols.length > 0" class="table is-fullwidth">
+            <thead>
+                <th>Name</th>
+                <th>Desc</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let protocol of protocols">
+                    <td (click)="open(protocol.id)" >{{protocol.name}}</td>
+                    <td>{{protocol.desc}}</td>
+                    <td>
+                        <div class="buttons">
+                            <button (click)="copy = true" class="button is-small is-dark">Kopiera
+                                alla</button>
+                            <button (click)="copyProtocol(protocol)" class="button is-small is-dark">Kopiera ej
+                                godkända</button>
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </ng-container>
+
+        <df-protocol-copy (initiateCopy)="newMeasurement($event)" *ngIf="copy" [mps]="mps"></df-protocol-copy>
+
+<!--         <ng-container *ngIf="loading$ | async">
+            <p>Loading protocols <i class="fas fa-spinner fa-spin"></i> </p>
+        </ng-container> -->
+
+    </div>
+</div>
