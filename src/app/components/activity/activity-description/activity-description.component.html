@@ -13,6 +13,9 @@
         <div class="block">
             <p class="title is-6 no-margin">Kvalitets och miljöplan</p>
         <span>Kvalitets och miljöplan skall upprättas</span>
+        <div class="buttons">
+         <button (click)="generateDocument('riskanalys', p)" style="margin-top: 0.5rem;" class="button is-link">Generera riskanalys i fält</button>   
+         </div>
         </div>
         <div class="block">
             <p class="title is-6 no-margin">Utförande</p>
@@ -22,11 +25,14 @@
             <p class="title is-6 no-margin">Avstämningar</p>
         <span>Kontinuerliga avstämmningar internt och externt (kund) (aktiviteter, tidplan, ekonomi, omfattning, risker,  ev ÄTA) 
         </span>
+        <div class="buttons">
+            <button (click)="generateDocument('uppdragsmote_internt', p)" style="margin-top: 0.5rem;" class="button is-link">Mötesprotokoll Internt</button>
+         </div>
         </div>
         
     </div>
     <div *ngIf="activity.identity === 'review'" class="block">
-        Resultatet intern granskas av mer erfaren konsult,
+        Resultatet interngranskas av mer erfaren konsult,
     </div>
     <div *ngIf="activity.identity === 'delivery'" class="block">
         Resultatet ska levereras och presenteras för kund (personligen)
@@ -63,12 +69,19 @@
             <p class="title is-6 no-margin">Uppdragsplan</p>
         <span class="is-block">Uppdragsplan (ekonomi, tidplan med (milstolpar), aktiviteter att genomföras, risker, leverans, organisation, mötesintervaller) upprättas av uppdragsansvarig. Genomgång av uppdragsplan med uppdragsorganisation.
         </span>
-        <button (click)="generateDocument('uppdragsplan', p)" style="margin-top: 0.5rem;" class="button is-link">Generera uppdragsplan</button>
+        <div class="buttons">
+           <button (click)="generateDocument('uppdragsplan', p)" style="margin-top: 0.5rem;" class="button is-link">Generera uppdragsplan</button>
+        <button (click)="generateDocument('riskanalys', p)" style="margin-top: 0.5rem;" class="button is-link">Generera riskanalys i fält</button>   
+        </div>
+      
         </div>
         <div class="block">
             <p class="title is-6 no-margin">Startmöte</p>
         <span class="is-block">Startmöte med kund (genomgång av uppdrag, uppdragsplan)
         </span>
+        <div class="buttons">
+            <button (click)="generateDocument('uppdragsuppfoljning', p)" style="margin-top: 0.5rem;" class="button is-link">Checklista inför möte</button>
+         </div>
         </div>
         <div class="block">
             <p class="title is-6 no-margin">Kvalitets och miljöplan</p>
@@ -82,6 +95,9 @@
             <p class="title is-6 no-margin">Avstämningar</p>
         <span>Kontinuerliga avstämmningar internt och externt (kund) (aktiviteter, tidplan, ekonomi, omfattning, risker,  ev ÄTA) 
         </span>
+        <div class="buttons">
+            <button (click)="generateDocument('uppdragsmote_internt', p)" style="margin-top: 0.5rem;" class="button is-link">Mötesprotokoll Internt</button>
+         </div>
         </div>
         
     </div>

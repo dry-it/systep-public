@@ -38,7 +38,7 @@ export class ActivityDescriptionComponent implements OnInit {
   generateDocument(template: string, project: any) {
 
     this.stateService.getUser(project.owner).subscribe((owner) => {
-      this.data.createDocument('generate', { data: { project: { ...project, owner: owner } }, template: template }, 'Uppdragsplan')
+      this.data.createDocument('generate', { data: { project: { ...project, owner: owner }, date: new Date().toLocaleDateString() }, template: template }, template)
         .then(() => console.log('skapades'))
     })
 
