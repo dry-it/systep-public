@@ -1,5 +1,14 @@
+## <small>1.0.18 (2020-11-12)</small>
+
+* Added buttons to generate more docs ([6d4c0ad](https://github.com/dry-it/systep-public/commit/6d4c0ad))
+* Display email insted of name in list ([f71b6bf](https://github.com/dry-it/systep-public/commit/f71b6bf))
+* Firebase hosting cache ([484bae7](https://github.com/dry-it/systep-public/commit/484bae7))
+
+
+
 ## <small>1.0.17 (2020-10-22)</small>
 
+* 1.0.17 ([26d2896](https://github.com/dry-it/systep-public/commit/26d2896))
 * Added a lot of changes ([fce98c0](https://github.com/dry-it/systep-public/commit/fce98c0))
 * hosting chace ([62a6ac6](https://github.com/dry-it/systep-public/commit/62a6ac6))
 * Updated activities ([70ef3fb](https://github.com/dry-it/systep-public/commit/70ef3fb))
