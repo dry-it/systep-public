@@ -17,7 +17,7 @@
     <div class="field">
         <select [(ngModel)]="selectedUser" *ngIf="usersList$() | async as users" name="" id="adduser"
             class="select is-fullwidth">
-            <option *ngFor="let user of users" [value]="user.id">{{user.displayName}}</option>
+            <option *ngFor="let user of users" [value]="user.id">{{user.email}}</option>
         </select>
     </div>
     <p class="has-text-danger" *ngIf="selectedUser === project.owner">Kan inte lägga till Uppdragsansvarig som deltagare</p>
