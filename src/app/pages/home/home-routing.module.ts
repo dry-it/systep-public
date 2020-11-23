@@ -17,6 +17,7 @@ import { DryfixComponent } from '../dryfix/dryfix.component';
 import { DfProjectComponent } from '../dryfix/df-project/df-project.component';
 import { DfProtocolComponent } from '../dryfix/df-protocol/df-protocol.component';
 import { ProtocolViewComponent } from 'app/dryfix/protocol-view/protocol-view.component';
+import { ProjectSettingsComponent } from '../project-settings/project-settings.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
@@ -43,6 +44,10 @@ const routes: Routes = [
           {
             path: 'participants',
             component: ProjectParticipantsComponent
+          },
+          {
+            path: 'settings',
+            component: ProjectSettingsComponent
           }
         ]
       },

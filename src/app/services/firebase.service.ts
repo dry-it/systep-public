@@ -79,7 +79,7 @@ export class FireBaseService {
   }
 
   queryAllProjects = (orderBy: string) => {
-    return this.afs.collection('projects', ref => ref.orderBy(orderBy, 'desc'))
+    return this.afs.collection('projects', ref => ref.orderBy(orderBy, 'desc').where('deleted', '==', false))
       .snapshotChanges()
       .pipe(
         map(actions =>

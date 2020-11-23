@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-content">
+        <div *ngIf="message" class="notification is-success">
+            <button class="delete"></button>
+            {{message}}
+          </div>
+        <h1>Inställningar</h1>
+        <div class="box">
+            <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+            <div class="field">
+                <label class="label">Projektnamn</label>
+                <div class="control">
+                    <input formControlName="name" class="input" type="text" placeholder="Projektnamn">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Pnummer</label>
+                <div class="control">
+                    <input formControlName="pNumber" class="input" type="text" placeholder="Pnummer">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Kund</label>
+                <div class="control">
+                    <input formControlName="company" class="input" type="text" placeholder="Kund">
+                </div>
+            </div>
+
+            <div class="field">
+                 <label class="checkbox">
+                <input formControlName="ended" type="checkbox">
+                Projektet är avslutat
+              </label>
+
+            </div>
+           
+
+            <button style="margin-right: 4px;" class="button is-link" type="submit"
+                [disabled]="!projectForm.valid">Uppdatera projekt</button>
+
+
+        </form>
+        </div>
+        <button (click)="deleteProject()" class="button is-danger is-small">Radera Projekt</button>
+        
+    </div>
+</div>

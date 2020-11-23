@@ -234,7 +234,7 @@ export class HomeComponent implements OnInit {
 
     this.user$ = this.stateService.returnCurrentUser()
 
-    this.projects$ = this.fireBaseService.getCollectionSnapshot('projects')
+    this.projects$ = this.fireBaseService.queryAllProjects('name')
 
     this.activities = [
       {

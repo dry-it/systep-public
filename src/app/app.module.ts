@@ -114,6 +114,7 @@ import { DfProtocolMountMpComponent } from './pages/dryfix/df-protocol-mount-mp/
 import { DfProtocolReadComponent } from './pages/dryfix/df-protocol-read/df-protocol-read.component';
 import { DfProtocolReadMpComponent } from './pages/dryfix/df-protocol-read-mp/df-protocol-read-mp.component';
 import { DfProtocolCopyComponent } from './pages/dryfix/df-protocol-copy/df-protocol-copy.component';
+import { ProjectSettingsComponent } from './pages/project-settings/project-settings.component';
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -180,6 +181,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HeaderPanelComponent,
     FooterPanelComponent,
     DfProtocolCopyComponent,
+    ProjectSettingsComponent,
   ],
   imports: [
     BrowserModule,
